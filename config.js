@@ -7,7 +7,6 @@ module.exports = {
         description: 'Rants about code and stuff...',
         keywords: ['Joomla!', 'Extensions', 'JavaScript', 'Node.js', 'PHP'],
         baseUrl: '/blog',
-        markdownFolder: __dirname + '/markdown',
         postsFolder: __dirname + '/posts',
         postsFile: './posts.json'
     },
