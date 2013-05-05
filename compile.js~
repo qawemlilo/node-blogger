@@ -31,7 +31,7 @@ var compile = function (filename, fn) {
     var contents = fs.readFileSync('./template/index.ejs', 'utf8'),
         postdata = getPostObject(filename),
         html,
-        postContent = mdToHtml('./posts/' + filename + '.md'),
+        postContent = mdToHtml('./posts/' + filename),
         
         html = ejs.render(contents, {
             blog: {
@@ -58,15 +58,14 @@ var compile = function (filename, fn) {
 };
 
 
-compile('2013-5-6_hello-world', function(html) {
-    fs.writeFile('./posts/2013-5-6_hello-world.html', html, function (error) {
-       if (error) {
-           console.log('An error occured');
-       } 
-       else {
-           console.log(html);
-       }
+function compile (files, dir) {
+    var self = this, files = readDirSync('./posts'); 
+    self.cache = Object.create({});
+   
+    files.forEach(function (file) {
+        var data = fs.readFileSync('./posts/' + '/' + file + '.html', 'utf8');
+        self.cache[file] = data;
     });
-})
+};
     
 
