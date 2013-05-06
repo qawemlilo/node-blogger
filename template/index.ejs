@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" />
 <meta name="description" content="<%= blog.description %>" />
-<link href="css/style.css" rel="stylesheet" />
-<link href="css/prettify.css" type="text/css" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" />
 <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" />
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,25 +36,10 @@
   
   <section id="content">
     <div class="post">
-      <h2><%= post.title %></h2>
-      
-      <div class="date"><%= post.day %> <%= post.month %> <%= post.year %></div>
-      
+      <h2><%= blog.title %></h2>
+      <br>
       <%- post.content %>
     </div>
   </section>
-
-<script src="js/jquery.js"></script>
-<script type="text/javascript" src="js/prettify.js"></script>
-<script type="text/javascript">
-(function ($) {
-   $(function () {
-       $('pre').addClass('prettyprint linenums');
-   });
-}(jQuery))
-window.onload = function() {
-    prettyPrint();
-};
-</script>
 </body>
 </html>

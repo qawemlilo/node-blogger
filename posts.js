@@ -1,19 +1,34 @@
-var fs = require('fs'), Posts;
+var fs = require('fs'), 
+    postsTxt;
 
-Posts = function (dir) {
-    var self = this, files = readdirSync(dir);; 
+
+
+function Posts () {
+    var self = this, postsTxt, postsObject;
+    
+    postsTxt = fs.readFileSync('./posts.json', 'utf8');
+    postsObject = JSON.parse(postsTxt);  
+    
     self.cache = Object.create({});
+    self.posts = postsObject;
+    
+    // add the home page
+    self.cache['home'] = fs.readFileSync('./posts/home.html', 'utf8');
    
-    files.forEach(function (filename) {
-        if (filename.indexOf('.html') > 0) {
-            var data = fs.readFileSync(dir + '/' + filename, 'utf8');
-            self.cache[file] = data;
-        }
+    postsObject.forEach(function (file) {
+        var data = fs.readFileSync('./posts/' + file.filename + '.html', 'utf8');
+        
+        self.cache[file.filename] = data;
     });
 };
 
-Posts.prototype.renderPost = function (page) {
-    return this.cache[page];   
+Posts.prototype.renderPage = function (page) {
+    if (this.cache.hasOwnProperty(page)) {
+        return this.cache[page];
+    } 
+    else {
+        return false;
+    }    
 };
 
 

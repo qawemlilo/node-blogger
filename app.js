@@ -1,14 +1,53 @@
 
-var Post = require('./lib/post'),
-    ejs = require('ejs');
+var http = require('http'),
+    url = require('url'),
+    connect = require('connect'),
+    port = process.env.PORT || 3080,
+    routes = require('./routes'), 
+    app;
 
-var post = new Post({
-    title: 'Hello world'
-});
 
-post.on('error', function (error) {
-    console.log(error.msg);
-});
-post.on('complete', function () {
-    console.log('Post created');
+function parseFilename(path) {
+    if (path === '/') {
+        return path;
+    }
+    var separatorIndex = path.lastIndexOf('/'), tempFilename, filename;
+    
+    tempFilename = path.substring(1, separatorIndex) + '_' + path.substring(separatorIndex + 1);
+    filename = tempFilename.replace(/\//g, '-');
+    
+    return filename;
+}
+
+
+app = connect()
+  .use(connect.static('template'))
+  .use(function (req, res) {
+    var path = url.parse(req.url).path, filename; 
+    
+    if (path === '/') {
+        routes.loadHome(function (page) {
+            res.writeHead(200, {
+                'Content-Type': 'text/html; charset=utf-8'
+            });
+            
+            res.end(page);
+        });
+    }
+    else {
+        filename = parseFilename(path);
+    
+        routes.getPage(filename, function (page) {
+            res.writeHead(200, {
+                'Content-Type': 'text/html; charset=utf-8'
+            });
+            
+            res.end(page);
+        });
+    }
+  });
+
+
+http.createServer(app).listen(port, function() {
+  console.log('App running at port %s', port);
 });

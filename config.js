@@ -6,7 +6,7 @@ module.exports = {
         name: 'Raging Flame Blog',
         description: 'Rants about code and stuff...',
         keywords: ['Joomla!', 'Extensions', 'JavaScript', 'Node.js', 'PHP'],
-        baseUrl: '/blog',
+        baseUrl: '/',
         postsFolder: __dirname + '/posts',
         postsFile: './posts.json'
     },
@@ -17,7 +17,7 @@ module.exports = {
         email: 'qawemlilo@gmail.com',
         twitterHandle: 'ragingflameblog',
         facbookPage: '',
-        avatar: 'img/qawe.png'
+        avatar: '/img/qawe.png'
     },
     
     posts: {
