@@ -2,13 +2,17 @@
 
 Node Blogger is a small Node.js blogging engine that generates static html files.
 
-## Install (npm)
+## Installation
 ```
 git clone https://github.com/qawemlilo/node-blogger.git
 
 cd node-blogger && npm install
 
+
 npm link
+
+# if you are using linux (I using ubuntu) you may need to use `sudo npm link`
+
 ```
 
 ## How it works
@@ -19,11 +23,18 @@ Firstly you need to create new post:
 ```
 # simply type the newpost command
 newpost
+
+# prompt
+Title: My NodeJS adventures
+Categories: node.js, javascript
+Date: 
 ````
 
-This newpost command prompts you to enter the title of your post, categories for the post and date. Categories and date are optional.
+ - Title: is the title of your new post (required)
+ - Categories: categories for your post (optional - will be used in a future feature)
+ - Date: publishing date (optional - include this so that I could move posts from my old blog)
+ 
 A new markdown file is created with some placeholding text. You can find that file in the /posts directory, use it to write your post.
-
 
 After you have finished writing your post in markdown format, create an html file by running the compile command.
 
