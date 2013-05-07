@@ -1,11 +1,15 @@
 {
   "name": "node-blogger",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A tiny Node.js blogging engine",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile":"node compile-homepage compile"
+    "compile":"node compile"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "newpost": "bin/newpost" 
   },
   "repository": {
     "type": "git",
@@ -22,7 +26,6 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "commander": "~1.1.1",
     "ejs": "~0.8.3",
     "markdown": "~0.4.0",
     "connect": "~2.7.8"

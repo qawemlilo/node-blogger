@@ -1,16 +1,17 @@
 
-var Posts = require('./posts'), 
-    allposts = new Posts();
+var Posts = require('./posts'), myposts, 
 
+// Read all posts and create a cache 
+myposts = new Posts();
 
-module.exports.getPage = function (filename, fn) {
-    var page = allposts.renderPage(filename) || 'Page not found';
+module.exports.getPost = function (filename, fn) {
+    var page = myposts.fetchPost(filename) || 'Page not found';
 
     fn(page);
 };
 
-module.exports.loadHome = function (fn) {
-    var page = allposts.renderPage('home');
+module.exports.loadIndex = function (fn) {
+    var page = myposts.fetchPost('index');
 
     fn(page);
 };

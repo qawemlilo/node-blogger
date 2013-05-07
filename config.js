@@ -12,11 +12,14 @@ module.exports = {
     },
     
     author: {
-        name: 'Qawelesizwe Mlilo(Que)',
+        name: 'Qawelesizwe Mlilo (Que)',
         autobio: 'Hi, my name is Qawelesizwe Mlilo(Que), I write code and build stuff on the web. This is the official blog for Raging Flame Lab.',
         email: 'qawemlilo@gmail.com',
         twitterHandle: 'ragingflameblog',
-        facbookPage: '',
+        website: 'http://www.ragingflame.co.za',
+        facbookPage: '#',
+        googlePage: '#',
+        rss: '#',
         avatar: '/img/qawe.png'
     },
     

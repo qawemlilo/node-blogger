@@ -26,7 +26,7 @@ app = connect()
     var path = url.parse(req.url).path, filename; 
     
     if (path === '/') {
-        routes.loadHome(function (page) {
+        routes.loadIndex(function (page) {
             res.writeHead(200, {
                 'Content-Type': 'text/html; charset=utf-8'
             });
@@ -37,7 +37,7 @@ app = connect()
     else {
         filename = parseFilename(path);
     
-        routes.getPage(filename, function (page) {
+        routes.getPost(filename, function (page) {
             res.writeHead(200, {
                 'Content-Type': 'text/html; charset=utf-8'
             });
