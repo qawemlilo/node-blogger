@@ -18,5 +18,5 @@ app = connect()
 
 
 http.createServer(app).listen(port, function() {
-  console.log('App running at port %s', port);
+  console.log('Blog server running at port %s', port);
 });
