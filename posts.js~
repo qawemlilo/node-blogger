@@ -3,7 +3,6 @@
    This file contains the program that holds all posts and serves them out
 */
 
-
 var fs = require('fs');
 
 
