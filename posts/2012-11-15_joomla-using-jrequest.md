@@ -27,7 +27,7 @@ When dealing with user input, one of the first and most import things to do is s
 So far I have used 3 arguments when calling the getVar method. The first first argument is the name of the variable that you want to fetch, the second one is the value that you want to assign as a default and the third is the type of request.
 
 The above examples will simply capture any type of data contained in the variable, you can go further and filter the type of data that you expect fetched. There are several data types that getVar accepts:
-`INT, INTEGER, FLOAT, DOUBLE, BOOL, BOOLEAN, WORD, ALNUM, CMD, BASE64, STRING, ARRAY, PATH, USERNAME`.
+`INT, INTEGER, FLOAT, DOUBLE, BOOL, BOOLEAN, WORD,` `ALNUM, CMD, BASE64, STRING, ARRAY, PATH, USERNAME`
 
     <?php
     /*
