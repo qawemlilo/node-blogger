@@ -7,8 +7,11 @@
 
 var url = require('url'),
     Posts = require('./posts'), 
+    RSS = require('./rss'),
+    rss, 
     myposts;
 
+rss = new RSS();
 myposts = new Posts();
 
 
@@ -67,6 +70,12 @@ module.exports = function (req, res) {
     
     if (path === '/') {
         loadPage('index', res);
+    }
+    else if (path === '/rss') {
+        res.writeHead(200, {
+            'Content-Type': 'application/xml; charset=utf-8'
+        });
+        res.end(rss.xml);
     }
     else {
         filename = parseFilename(path);

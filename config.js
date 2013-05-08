@@ -20,8 +20,8 @@ module.exports = {
         twitterHandle: 'ragingflameblog',
         website: 'http://www.ragingflame.co.za',
         facbookPage: '#',
-        googlePage: '#',
-        rss: '#',
+        googlePage: 'https://plus.google.com/111595084798587457827/posts?hl=en&partnerid=gplp0',
+        rss: '/rss',
         avatar: '/img/qawe.png'
     },
     
