@@ -1,0 +1,241 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Raging Flame Blog - Running Node.js in production, my first app</title> 
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
+<meta name="description" content="Rants about code and stuff..." /> 
+<link href="/css/style.css" rel="stylesheet" /> 
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" /> 
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" /> 
+<!--[if lt IE 9]> 
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+<![endif]--> 
+</head> 
+<body> 
+ 
+  <header> 
+  </header> 
+ 
+  <aside> 
+    <h1><a href="/"><img src="/img/qawe.png"class="img-circle" title="Qawelesizwe Mlilo (Que)" alt="Qawelesizwe Mlilo (Que)" /></a></h1> 
+   
+    <p class="description"> 
+      Hi, my name is Qawelesizwe Mlilo(Que), I write code and build stuff on the web. This is the official blog for Raging Flame Lab. 
+    </p> 
+   
+    <ul> 
+      <li><a href="/">Home</a></li> 
+      <li><a target="_blank" href="http://www.ragingflame.co.za">My Website</a></li> 
+      <li><a target="_blank" href="mailto:qawemlilo@gmail.com">Contact Me</a></li> 
+    </ul> 
+   
+    <p class="author"> 
+      <a target="_blank" href="#" title="Facebook" alt="Facebook" class="facebook"> </a>  
+      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" alt="Twitter" class="twitter"> </a>  
+      <a target="_blank" href="#" title="Google" alt="Google" class="google"> </a>  
+      <a target="_blank" href="#" title="RSS" alt="RSS" class="rss"> </a> 
+    </p> 
+  </aside> 
+   
+  <section id="content"> 
+    <div class="post"> 
+      <h2>Running Node.js in production, my first app</h2> 
+       
+      <div class="date">7 Jun 2012</div> 
+       
+      <p>Love it or hate, you just cannot ignore JavaScript, there are countless tools and languages that compile to JavaScript popping up everywhere. Being a JavaScript lover it was only natural that I got really excited when Node.js was released. If you are unfamiliar with Node.js (have you been living under a rock? lol) please head over to <a href="http://nodejs.org">http://nodejs.org</a> to find what it&#39;s all about.</p>
+
+<p>This article is not a fan-boy rant but rather a documentation of how I&#39;m using Node.js to make real world apps.</p>
+
+<h3>My Environment</h3>
+
+<p>My first taste of Node was on a Windows XP machine, when the Node Windows installer became available I downloaded it and started experimenting and writing small programs. Everything worked out fine but running everything locally became a bit of a bore,  so earlier this year I signed up for a VPS with my web hosting company so that I could start using Node in production.</p>
+
+<h3>Server Specs</h3>
+
+<ul><li>CentOS</li><li>2 vCPUs</li><li>4 Gig RAM</li><li>Software: CPanel 11.32.3</li></ul>
+
+<h3>Installing Node.js</h3>
+
+<p>This is my first time managing and running a dedicated server so I have been doing a lot of  &#39;googling&#39; to get things done.</p>
+
+<p>I found a useful gist posted by the current Node.js gatekeeper Isaac Schlueter, the first method of installation worked for me. My work station has a windows installation so I usually use the Windows Command line to make a SSH connection to my server.</p>
+
+<pre><code>echo &#39;export PATH=$HOME/local/bin:$PATH&#39; &gt;&gt; ~/.bashrc
+. ~/.bashrc 
+mkdir ~/local
+mkdir ~/node-latest-install
+cd ~/node-latest-install
+curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
+./configure --prefix=~/local
+make install # ok, fine, this step probably takes more than 30 seconds...
+curl http://npmjs.org/install.sh | sh</code></pre>
+
+<p>With these few lines of code Node.js was installed without any hiccups, what is awesome about Node.js is that it comes bungled with NPM, a Node package manager, which is a handy tool when installing modules for your projects.</p>
+
+<h3>The App</h3>
+
+<p>My first Node.js app is the official website for my projects, I didn&#39;t want to get too fancy on uncharted territory so I kept it simple.  To get started I needed a mature and robust framework, fortunately I have had a bit of experience with Express on my local server and I&#39;m a big fan of the author&#39;s work, <a href="https://github.com/visionmedia">TJ Holowaychuk</a>. Navigate to your projects directory from the command line and install Express.</p>
+
+<pre><code>#use npm to install express
+npm install -g express
+
+#start a project
+express ragingflame
+
+#open the project directory and install dependencies
+cd ragingflame &amp;amp;&amp;amp; npm install</code></pre>
+
+<p>This took care of creating my project directory and installing all the dependencies required by Express. I&#39;m primarily a PHP developer and I work mostly with Joomla! CMS, I love templates and creating dynamic content. I needed to create a template for my website which has a static footer and header. An Express project contains a Views folder that has 2 files, <code>layout.jade</code> and <code>index.jade</code>. <code>Layout.jade</code> is the main file that other views are rendered on, I modified it to include a footer at the bottom.</p>
+
+<h3>layout.jade</h3>
+
+<pre><code>!!!
+html
+  head
+    title= title
+    meta(charset=&#39;utf-8&#39;)
+    meta(name=&#39;author&#39;, content=&#39;Qawelesizwe Mlio&#39;)
+    meta(name=&#39;description&#39;, content=&#39;Raging Flame Laboratory - web and software development&#39;)
+    link(rel=&#39;stylesheet&#39;, href=&#39;/stylesheets/style.css&#39;)
+    link(rel=&#39;stylesheet&#39;, href=&#39;/stylesheets/tipTip.css&#39;)
+    script(src=&#39;/javascripts/libs/modernizr-2.5.3.min.js&#39;)
+  body
+    div.container
+      div.content!= body
+      div.foot!= partial(&#39;footer&#39;)</code></pre>
+
+<p>Jade is the template engine of my choice and I&#39;m using the partial function to include the <code>footer.jade</code> on all views. The footer contains the main navigation for my website and some JavaScript files.</p>
+
+<h3>index.jade</h3>
+
+<pre><code>img(src=&#39;/images/rflab.png&#39;, style=&#39;margin-bottom: 20px;&#39;)
+&lt;strong&gt;about.jade&lt;/strong&gt;
+h1 About Raging Flame Lab
+p
+  a(href=&#39;/&#39;, style=&#39;margin:0px; padding: 0px; color: #448800;&#39;) Home
+  |  :: About
+p Raging Flame Lab is a Web &amp;amp;amp; Software development studio. We are geeks who love hacking and experimenting with cutting edge technologies.
+p We are the creators of
+  a(href=&#39;http://email2article.com/&#39;, target=&#39;_blank&#39;, style=&#39;margin:0px; padding: 0px; font-weight: bold; color: #448800;&#39;) email2article
+  | , an app that converts emails to Joomla! CMS articles.
+br
+p(style=&#39;font-style: italic&#39;)
+  | This website is running on
+  a(href=&#39;http://nodejs.org/&#39;, class=&#39;first&#39;, target=&#39;_blank&#39;, style=&#39;color: #448800; font-weight: bold; margin: 0px&#39;) Node.JS
+  | , a server-side JavaScript environment.</code></pre>
+
+<p>The Views are all done, the next step was getting the routing to work so that the home page loaded the <code>index.jade</code> file and the <code>/about</code> request loaded the <code>about.jade</code> file, I edited the <code>routes/index.js</code> file.</p>
+
+<h3>routes/index.js</h3>
+
+<pre><code>/*
+ * GET home page.
+ */
+exports.index = function(req, res){
+    res.render(&#39;index&#39;, {title: &#39;Raging Flame Laboratory&#39;})
+};
+
+/*
+ * GET about page.
+ */
+exports.about = function(req, res){
+    res.render(&#39;about&#39;, {title: &#39;Raging Flame Laboratory - About&#39;})
+};</code></pre>
+
+<p>Add one line of code to <code>app.js</code> that will handle the <code>/about</code> request.</p>
+
+<pre><code>/*
+  below app.get(&#39;/&#39;, routes.index); add app.get(&#39;/about&#39;, routes.about);
+*/
+app.get(&#39;/&#39;, routes.index);
+app.get(&#39;/about&#39;, routes.about);</code></pre>
+
+<p>Finito, with that my app is complete, let&#39;s fire it up!</p>
+
+<pre><code>node app.js</code></pre>
+
+<p>Ok, that works but it blocks the command line from performing other tasks until we kill the current app process, not very helpful. I have used a Node module called forever on my local server to solve this problem, it can run multiple Node servers in the background and restart a server if it crushes. NPM to the rescue:</p>
+
+<pre><code>npm install -g forever
+#then start the app with forever
+forever start app.js</code></pre>
+
+<p>To view my app I need to go to port 3000 of my website: <code>http://mywebsite.com:3000</code>. This is ok if you are still testing and developing but its not ideal for public access. The recommended way to run Node.js apps in production is by using Nginx as your front-end server that proxies requests to Node.js servers.</p>
+
+<p>Installing Nginx</p>
+
+<p>I have WHM Cpanel installed on my server and I found a tutorial that explained how to install NginxAdmin.</p>
+
+<pre><code>cd /usr/local/src
+wget http://nginxcp.com/latest/nginxadmin.tar
+tar xf nginxadmin.tar
+cd publicnginx
+./nginxinstaller install
+
+#Restart apache
+/etc/init.d/httpd restart</code></pre>
+
+<p>After running this code I got an error that ended with this line: 
+<code>SyntaxError: &#39;yield&#39; not allowed in a &#39;try&#39; block with a &#39;finally&#39; clause</code>. 
+To fix it I ran the code below:</p>
+
+<pre><code>cd /usr/lib/python2.4/site-packages
+mv PyYAML-3.10-py2.4-linux-x86_64.egg PyYAML-3.10-py2.4-linux-x86_64.egg_
+wget http://www.booser.com/wp-content/uploads/PyYAML-3.09-py2.4-linux-x86_64.egg
+
+#Once this is done run the install command
+./nginxinstaller install</code></pre>
+
+<p>Nginx installation took care of re-configuring my Apache settings and started handling all requests to my server. A directory with Nginx config files for all my domains was also created and all I had to do was edit the file for my domain to route requests to my Node.js app.</p>
+
+<h3>/etc/nginx/vhosts/rflab.co.za</h3>
+
+<pre><code># the IP(s) on which your node server is running i choose the port 3000
+upstream rflab.co.za {
+    server 127.0.0.1:3000;
+}
+
+# the nginx server instance
+server {
+    listen 41.76.212.119:80;
+    server_name rflab.co.za www.rflab.co.za;
+    access_log /usr/local/apache/domlogs/rflab.co.za-bytes_log bytes_log;
+    access_log /usr/local/apache/domlogs/rflab.co.za combined;
+    root /home/ragingfl/public_html;
+    charset utf-8;
+    error_page 404 /404.html;
+
+    # pass the request to the node.js server with the correct headers and much more can be added, see nginx config options
+    location / {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://rflab.co.za/;
+      proxy_redirect off;
+    }
+
+    location ~.*\.(3gp|gif|jpg|jpeg|png|ico|wmv|avi|asf|asx|mpg|mpeg|mp4|pls|mp3|mid|wav|swf|flv|html|htm|txt|js|css|exe|zip|tar|rar|gz|tgz|bz2|uha|7z|doc|docx|xls|xlsx|pdf|iso)$ {
+      expires 7d;
+      try_files $uri @backend;
+    }
+
+    # opt-in to the future
+    add_header &amp;quot;X-UA-Compatible&amp;quot; &amp;quot;IE=Edge,chrome=1&amp;quot;;
+}</code></pre>
+
+<p>At the top of the file I inserted the code above and restarted Nginx.</p>
+
+<p>This is only the beginning of my journey in discovering the awesome world of Node.js, please don&#39;t hesitate to share your thoughts, opinions and advice. Keep hacking!</p> 
+    </div> 
+  </section> 
+ 
+ 
+<script type="text/javascript" src="/js/prettify.js"></script> 
+<script type="text/javascript" src="/js/script.js"></script> 
+</body> 
+</html> 

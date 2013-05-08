@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Raging Flame Blog - $.Shout - Simple jQuery notifications</title> 
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
+<meta name="description" content="Rants about code and stuff..." /> 
+<link href="/css/style.css" rel="stylesheet" /> 
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" /> 
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" /> 
+<!--[if lt IE 9]> 
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+<![endif]--> 
+</head> 
+<body> 
+ 
+  <header> 
+  </header> 
+ 
+  <aside> 
+    <h1><a href="/"><img src="/img/qawe.png"class="img-circle" title="Qawelesizwe Mlilo (Que)" alt="Qawelesizwe Mlilo (Que)" /></a></h1> 
+   
+    <p class="description"> 
+      Hi, my name is Qawelesizwe Mlilo(Que), I write code and build stuff on the web. This is the official blog for Raging Flame Lab. 
+    </p> 
+   
+    <ul> 
+      <li><a href="/">Home</a></li> 
+      <li><a target="_blank" href="http://www.ragingflame.co.za">My Website</a></li> 
+      <li><a target="_blank" href="mailto:qawemlilo@gmail.com">Contact Me</a></li> 
+    </ul> 
+   
+    <p class="author"> 
+      <a target="_blank" href="#" title="Facebook" alt="Facebook" class="facebook"> </a>  
+      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" alt="Twitter" class="twitter"> </a>  
+      <a target="_blank" href="#" title="Google" alt="Google" class="google"> </a>  
+      <a target="_blank" href="#" title="RSS" alt="RSS" class="rss"> </a> 
+    </p> 
+  </aside> 
+   
+  <section id="content"> 
+    <div class="post"> 
+      <h2>$.Shout - Simple jQuery notifications</h2> 
+       
+      <div class="date">23 Nov 2012</div> 
+       
+      <p>I am in the process of building a web app for managing browser bookmarks and I would like to share some of the code.</p>
+
+<p>Every web app needs some kind of way to give users feedback on performed tasks and actions, so I wrote this little jQuery function(and a few lines of css for formatting).</p>
+
+<p>The reason why I wrote this as a jQuery function is because I needed it to be available from anywhere within the app and not mess with my MVC-like app architecture.</p>
+
+<h3>CSS</h3>
+
+<pre><code>#appMessage {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 25px;
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  border-bottom: 1px solid;
+}
+
+#appMessage.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+#appMessage.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+#appMessage.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+
+#appMessage.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}</code></pre>
+
+<h3>JavaScript</h3>
+
+<pre><code>/*
+************************************
+Author: Qawelesizwe Mlilo
+************************************
+*/
+
+(function ($) {
+    $.shout = function (message, seconds, msgType) {
+
+      /*
+       Check if there is a notice currently displayed
+       and remove it
+      */
+
+      if ($(&quot;#appMessage&quot;).length) {
+        $(&quot;#appMessage&quot;).remove();
+      }
+
+      /*
+         Create a div element
+         and default it as an info notice
+      */
+
+      var elem = $(&#39;&lt;div&gt;&#39;, {
+        &#39;id&#39;: &#39;appMessage&#39;,
+        &#39;class&#39;: msgType || &#39;info&#39;,
+        &#39;html&#39;: message
+      });
+
+      /*
+         Attach a click event to remove notice
+      */
+
+      elem.click(function () {
+        $(this).fadeOut(function () {
+            $(this).remove();
+        }.bind(this));
+      });
+
+      /*
+         Close the notice after
+         a specified number of seconds
+      */
+
+      if (seconds) {
+        setTimeout(function () {
+            elem.click();
+        }, seconds * 1000);
+      }
+
+      /*
+         Create a slide down effect
+      */
+
+      elem.hide().appendTo(&#39;body&#39;).slideDown();
+    };
+}(jQuery));</code></pre>
+
+<h3>How to use it</h3>
+
+<p>Simply call the function with 2 or 3 arguments</p>
+
+<pre><code>/*
+  Calling it with 2 arguments will default
+  to a simple info notice
+*/
+
+$.shout(&#39;Hello there, this is just a notice&#39;, 10);
+
+/*
+  Or give an error notice
+*/
+
+$.shout(&#39;Action failed&#39;, 10, &#39;error&#39;);
+
+/*
+  Or a success notice
+*/
+
+$.shout(&#39;Action successfully executed!&#39;, 10, &#39;success&#39;);
+
+/*
+  A warning notice
+*/
+
+$.shout(&#39;Are you sure you want to do that?&#39;, 10, &#39;warning&#39;);</code></pre> 
+    </div> 
+  </section> 
+ 
+ 
+<script type="text/javascript" src="/js/prettify.js"></script> 
+<script type="text/javascript" src="/js/script.js"></script> 
+</body> 
+</html> 

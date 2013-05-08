@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-<title>Raging Flame Blog</title> 
+<title>Raging Flame Blog - Creating unique array keys</title> 
 <meta charset="utf-8" /> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
@@ -41,10 +41,42 @@
    
   <section id="content"> 
     <div class="post"> 
-      <h2>Raging Flame Blog</h2> 
-      <br> 
-      <ul class="allposts"><li>08 Feb 2013 <a href="/2013/2/8/crushit">Crushit</a></li><li>23 Nov 2012 <a href="/2012/11/23/shout-simple-jquery-notifications">$.Shout - Simple jQuery notifications</a></li><li>16 Nov 2012 <a href="/2012/11/16/creating-unique-array-keys">Creating unique array keys</a></li><li>15 Nov 2012 <a href="/2012/11/15/joomla-using-jrequest">Joomla: Using JRequest</a></li><li>27 Sep 2012 <a href="/2012/9/27/the-secret-of-happiness">The Secret of Happiness</a></li><li>28 Jun 2012 <a href="/2012/6/28/simple-form-handling-with-express-and-nodemailer">Simple form handling with Express and Nodemailer</a></li><li>07 Jun 2012 <a href="/2012/6/7/running-nodejs-in-production-my-first-app">Running Node.js in production, my first app</a></li><li>26 Apr 2012 <a href="/2012/4/26/this-is-why-javascript-is-awesome">This is why JavaScript is awesome</a></li><li>08 Dec 2011 <a href="/2011/12/8/stone-age-tribe">Stone age tribe</a></li><li>15 Aug 2011 <a href="/2011/8/15/lets-build-an-html5-app">Lets build an HTML5 app</a></li><li>15 Aug 2011 <a href="/2011/8/15/content-slider">Content Slider</a></li></ul> 
+      <h2>Creating unique array keys</h2> 
+       
+      <div class="date">16 Nov 2012</div> 
+       
+      <p>I wrote the function below in a recent project, I needed to create unique keys for a small multidimensional array and store it in a session.</p>
+
+<pre><code>&lt;?php
+function createUniqueId($length = 6, array $db)
+{
+    $alph = array(&quot;a&quot;, &quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;m&quot;,&quot;n&quot;,&quot;p&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;v&quot;,&quot;w&quot;,&quot;x&quot;,&quot;y&quot;,&quot;z&quot;);
+    $nums = array(1,2,3,4,5,6,7,8,9);
+
+    $id = &quot;&quot;;
+    srand((double)microtime()*1000000);
+    $max = $length/2;
+
+    for($i = 1; $i     {
+        $id .= $alph[rand(0,20)];
+        $id .= $nums[rand(0,8)];
+    }
+
+    // check if the key already exists
+    if (!array_key_exists($id, $db)) {
+        return $id;
+    }
+    else {
+        // if it does,lets recurse the function
+        createUniqueId($length, $db);
+    }
+}
+?&gt;</code></pre> 
     </div> 
   </section> 
+ 
+ 
+<script type="text/javascript" src="/js/prettify.js"></script> 
+<script type="text/javascript" src="/js/script.js"></script> 
 </body> 
 </html> 

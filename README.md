@@ -1,6 +1,6 @@
 # Node Blogger
 
-Node Blogger is a small Node.js blogging engine that compiles your posts written in markdown to html static files.
+Node Blogger is a small Node.js blogging engine that compiles your posts written in markdown to static html files.
 
 ## Installation
 ```
@@ -47,10 +47,18 @@ Awesome! Now its time to share your blog with the would, let's fire up the serve
 node server.js
 ```
 
-That's all, happy blogging!    
+That's all, your blog in now upand running!
+
+
+## Customisation
+All files for the blog layout and styles are located in /template.
+
+## Contributing
+Pull requests are most welcome. 
         
   
-
+### Credits
+Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
 
 ## License
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Raging Flame Blog - Joomla: Using JRequest</title> 
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
+<meta name="description" content="Rants about code and stuff..." /> 
+<link href="/css/style.css" rel="stylesheet" /> 
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" /> 
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" /> 
+<!--[if lt IE 9]> 
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+<![endif]--> 
+</head> 
+<body> 
+ 
+  <header> 
+  </header> 
+ 
+  <aside> 
+    <h1><a href="/"><img src="/img/qawe.png"class="img-circle" title="Qawelesizwe Mlilo (Que)" alt="Qawelesizwe Mlilo (Que)" /></a></h1> 
+   
+    <p class="description"> 
+      Hi, my name is Qawelesizwe Mlilo(Que), I write code and build stuff on the web. This is the official blog for Raging Flame Lab. 
+    </p> 
+   
+    <ul> 
+      <li><a href="/">Home</a></li> 
+      <li><a target="_blank" href="http://www.ragingflame.co.za">My Website</a></li> 
+      <li><a target="_blank" href="mailto:qawemlilo@gmail.com">Contact Me</a></li> 
+    </ul> 
+   
+    <p class="author"> 
+      <a target="_blank" href="#" title="Facebook" alt="Facebook" class="facebook"> </a>  
+      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" alt="Twitter" class="twitter"> </a>  
+      <a target="_blank" href="#" title="Google" alt="Google" class="google"> </a>  
+      <a target="_blank" href="#" title="RSS" alt="RSS" class="rss"> </a> 
+    </p> 
+  </aside> 
+   
+  <section id="content"> 
+    <div class="post"> 
+      <h2>Joomla: Using JRequest</h2> 
+       
+      <div class="date">15 Nov 2012</div> 
+       
+      <p>Joomla! CMS is my weapon of choice when creating web apps, this means that I get to write a lot of Joomla! extensions. Along the way I have discovered a number of invaluable Classes and methods provided by the Joomla! framework, JRequest is one of them.</p>
+
+<p>When dealing with user input, one of the first and most import things to do is sanitizing it. The JRequest Class provides a number of flexible methods that you can use to clean up request variables, for this post I will use getVar � it accepts a number of options to configure how it behaves.</p>
+
+<h3>Examples</h3>
+
+<pre><code>&lt;?php
+/*
+  Fetching a variable from any request method
+  Will accept $_GET, $_POST, or $_REQUEST
+*/
+$name = JRequest::getVar(&#39;name&#39;);
+
+/*
+  Fetching a variable from a $_GET request method
+  Will accept only $_GET request variables
+*/
+$name = JRequest::getVar(&#39;name&#39;, &#39;&#39;, &#39;GET&#39;);
+
+/*
+  Fetching a variable from a $_POST request method
+  Will accept only $_POST request variables
+*/
+$name = JRequest::getVar(&#39;name&#39;, &#39;&#39;, &#39;POST&#39;);
+?&gt;</code></pre>
+
+<p>So far I have used 3 arguments when calling the getVar method. The first first argument is the name of the variable that you want to fetch, the second one is the value that you want to assign as a default and the third is the type of request.</p>
+
+<p>The above examples will simply capture any type of data contained in the variable, you can go further and filter the type of data that you expect fetched. They are several data types that getVar accepts:
+<code>INT, INTEGER, FLOAT, DOUBLE, BOOL, BOOLEAN, WORD, ALNUM, CMD, BASE64, STRING, ARRAY, PATH, USERNAME</code>.</p>
+
+<pre><code>&lt;?php
+/*
+  Filtering only a string data type or a single word from request variables
+*/
+$name = JRequest::getVar(&#39;name&#39;, &#39;&#39;, &#39;GET&#39;, &#39;WORD&#39;);
+$name = JRequest::getVar(&#39;name&#39;, &#39;&#39;, &#39;POST&#39;, &#39;STRING&#39;);
+
+/*
+  There is also an alternative method to achieving the above
+*/
+$name = JRequest::getWord(&#39;name&#39;, &#39;&#39;, &#39;GET&#39;);
+$name = JRequest::getString(&#39;name&#39;, &#39;&#39;, &#39;POST&#39;);
+
+/*
+  Filtering only numeric data types from request variables
+*/
+$age = JRequest::getVar(&#39;age&#39;, 0, &#39;GET&#39;, &#39;INT&#39;);
+$age = JRequest::getVar(&#39;age&#39;, 0, &#39;POST&#39;, &#39;INTEGER&#39;);
+$avarage = JRequest::getVar(&#39;age&#39;, 0, &#39;POST&#39;, &#39;DOUBLE&#39;);
+
+/*
+   Even with numbers you can use an alternative method
+*/
+$age = JRequest::getInt(&#39;age&#39;, 0, &#39;GET&#39;);
+?&gt;</code></pre>
+
+<p>The JRequest Class has really made handling user input less stressful and more secure. Happy coding!</p>
+
+<p><strong>Note:</strong> <em>JRequest methods are not SQL aware, please use the Joomla Database object to clean up your variables for possible SQL injections</em>.</p> 
+    </div> 
+  </section> 
+ 
+ 
+<script type="text/javascript" src="/js/prettify.js"></script> 
+<script type="text/javascript" src="/js/script.js"></script> 
+</body> 
+</html> 
