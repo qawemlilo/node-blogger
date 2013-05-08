@@ -41,10 +41,24 @@
   
   <section id="content">
     <div class="post">
-      <h2><%= blog.title %></h2>
-      <br>
+      <h2><%= post.title %></h2>
+      
+      <div class="date"><%= post.day %> <%= post.month %> <%= post.year %></div>
+      
       <%- post.content %>
     </div>
+    
+    <% if(pagination.prev) { %>
+      <a href="<%= pagination.prev %>" title="Previous Post" class="pagination-arrow older">Prev</a>
+    <% } %>
+    
+    <% if(pagination.next) { %>
+      <a href="<%= pagination.next %>" title="Next Post" class="pagination-arrow newer">Next</a>
+    <% } %>
   </section>
+
+
+<script type="text/javascript" src="/js/prettify.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

@@ -32,10 +32,10 @@
     </ul>
   
     <p class="author">
-      <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" alt="Facebook" class="facebook"> </a> 
-      <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" alt="Twitter" class="twitter"> </a> 
-      <a target="_blank" href="<%= author.googlePage %>" title="Google" alt="Google" class="google"> </a> 
-      <a target="_blank" href="<%= author.rss %>" title="RSS" alt="RSS" class="rss"> </a>
+      <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> </a> 
+      <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" class="twitter"> </a> 
+      <a target="_blank" href="<%= author.googlePage %>" title="Google" class="google"> </a> 
+      <a target="_blank" href="<%= author.rss %>" title="RSS" class="rss"> </a>
     </p>
   </aside>
   
@@ -47,6 +47,14 @@
       
       <%- post.content %>
     </div>
+    
+    <% if(pagination.prev) { %>
+      <a href="<%= pagination.prev %>" title="Previous Post" class="pagination-arrow newer">Prev</a>
+    <% } %>
+    
+    <% if(pagination.next) { %>
+      <a href="<%= pagination.next %>" title="Next Post" class="pagination-arrow older">Next</a>
+    <% } %>
   </section>
 
 

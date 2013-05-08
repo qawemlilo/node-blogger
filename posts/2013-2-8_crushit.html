@@ -32,10 +32,10 @@
     </ul> 
    
     <p class="author"> 
-      <a target="_blank" href="#" title="Facebook" alt="Facebook" class="facebook"> </a>  
-      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" alt="Twitter" class="twitter"> </a>  
-      <a target="_blank" href="#" title="Google" alt="Google" class="google"> </a>  
-      <a target="_blank" href="#" title="RSS" alt="RSS" class="rss"> </a> 
+      <a target="_blank" href="#" title="Facebook" class="facebook"> </a>  
+      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" class="twitter"> </a>  
+      <a target="_blank" href="#" title="Google" class="google"> </a>  
+      <a target="_blank" href="#" title="RSS" class="rss"> </a> 
     </p> 
   </aside> 
    
@@ -45,32 +45,27 @@
        
       <div class="date">8 Feb 2013</div> 
        
-      <p>A few weeks ago I wrote CrushIt, a Node CLI tool that crawls through a web page, concatinates all scripts and minifies them.
-Installation</p>
+      <p>A few weeks ago I wrote CrushIt, a Node CLI tool that crawls through a web page, concatinates all scripts and minifies them.</p>
 
-<p>Run the command below from your node terminal.</p>
+<h3>Installation</h3>
 
-<pre><code>npm install -g crushit</code></pre>
+<pre><code># Run the command below from your node terminal.
+npm install -g crushit</code></pre>
 
 <h3>CLI Example</h3>
 
-<p>Crushing scripts from on website.</p>
-
-<pre><code>crushit http://www.ragingflame.co.za</code></pre>
+<p>Crushing scripts from on website.
+    crushit http://www.ragingflame.co.za</p>
 
 <h3>Program Example</h3>
 
-<p>You can also include CrushIt in your Node programs.</p>
+<p>You can also include CrushIt in your Node programs.
+    var crushit = require(&quot;crushit&quot;);</p>
 
-<pre><code>var crushit = require(&quot;crushit&quot;);
-
-crushit.crushScripts(&quot;http://www.rflab.co.za&quot;, {
+<pre><code>crushit.crushScripts(&quot;http://www.rflab.co.za&quot;, {
     beautify: true,
-
     max: false,
-
     comments: true,
-
     onComplete: function (error, code) {
         if (error) {
             console.log(error.msg);
@@ -83,9 +78,14 @@ crushit.crushScripts(&quot;http://www.rflab.co.za&quot;, {
 
 <p>I have created a web interface for a quick demo.</p>
 
-<p><a href="http://crushit-compiler.herokuapp.com">DEMO</a>
-<a href="hhttps://github.com/qawemlilo/crushi">FORK</a></p> 
+<p><a href="http://crushit-compiler.herokuapp.com">DEMO</a>      <a href="https://github.com/qawemlilo/crushit">FORK it</a></p> 
     </div> 
+     
+     
+      <a href="/2012/11/23/shout-simple-jquery-notifications" title="Previous Post" class="pagination-arrow newer">Prev</a> 
+     
+     
+     
   </section> 
  
  

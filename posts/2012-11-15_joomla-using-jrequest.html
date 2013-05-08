@@ -32,10 +32,10 @@
     </ul> 
    
     <p class="author"> 
-      <a target="_blank" href="#" title="Facebook" alt="Facebook" class="facebook"> </a>  
-      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" alt="Twitter" class="twitter"> </a>  
-      <a target="_blank" href="#" title="Google" alt="Google" class="google"> </a>  
-      <a target="_blank" href="#" title="RSS" alt="RSS" class="rss"> </a> 
+      <a target="_blank" href="#" title="Facebook" class="facebook"> </a>  
+      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" class="twitter"> </a>  
+      <a target="_blank" href="#" title="Google" class="google"> </a>  
+      <a target="_blank" href="#" title="RSS" class="rss"> </a> 
     </p> 
   </aside> 
    
@@ -47,7 +47,7 @@
        
       <p>Joomla! CMS is my weapon of choice when creating web apps, this means that I get to write a lot of Joomla! extensions. Along the way I have discovered a number of invaluable Classes and methods provided by the Joomla! framework, JRequest is one of them.</p>
 
-<p>When dealing with user input, one of the first and most import things to do is sanitizing it. The JRequest Class provides a number of flexible methods that you can use to clean up request variables, for this post I will use getVar � it accepts a number of options to configure how it behaves.</p>
+<p>When dealing with user input, one of the first and most import things to do is sanitizing it. The JRequest Class provides a number of flexible methods that you can use to clean up request variables, for this post I will use getVar - it accepts a number of options to configure how it behaves.</p>
 
 <h3>Examples</h3>
 
@@ -73,7 +73,7 @@ $name = JRequest::getVar(&#39;name&#39;, &#39;&#39;, &#39;POST&#39;);
 
 <p>So far I have used 3 arguments when calling the getVar method. The first first argument is the name of the variable that you want to fetch, the second one is the value that you want to assign as a default and the third is the type of request.</p>
 
-<p>The above examples will simply capture any type of data contained in the variable, you can go further and filter the type of data that you expect fetched. They are several data types that getVar accepts:
+<p>The above examples will simply capture any type of data contained in the variable, you can go further and filter the type of data that you expect fetched. There are several data types that getVar accepts:
 <code>INT, INTEGER, FLOAT, DOUBLE, BOOL, BOOLEAN, WORD, ALNUM, CMD, BASE64, STRING, ARRAY, PATH, USERNAME</code>.</p>
 
 <pre><code>&lt;?php
@@ -104,8 +104,16 @@ $age = JRequest::getInt(&#39;age&#39;, 0, &#39;GET&#39;);
 
 <p>The JRequest Class has really made handling user input less stressful and more secure. Happy coding!</p>
 
-<p><strong>Note:</strong> <em>JRequest methods are not SQL aware, please use the Joomla Database object to clean up your variables for possible SQL injections</em>.</p> 
+<p><strong>NOTE:</strong> <em>JRequest methods are not SQL aware, please use the Joomla Database object to clean up your variables for possible SQL injections</em>.</p> 
     </div> 
+     
+     
+      <a href="/2012/9/27/the-secret-of-happiness" title="Previous Post" class="pagination-arrow newer">Prev</a> 
+     
+     
+     
+      <a href="/2012/11/16/creating-unique-array-keys" title="Next Post" class="pagination-arrow older">Next</a> 
+     
   </section> 
  
  
