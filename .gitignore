@@ -1,5 +1,9 @@
 *.zip
 *.psd
+*.js~
+*.md~
+*.json~
+*.html~
 node_modules/
 build/
 
@@ -10,7 +14,6 @@ build/
 *.pydevproject
 .project
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak

@@ -1,5 +1,7 @@
 /*
     This is the config file that contains the blog configuration data.
+    
+    Note: Please replace the data with your details.
 */
 module.exports = {
     blog: {
