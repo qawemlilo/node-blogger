@@ -31,7 +31,7 @@ Date:
  - Categories: categories for your post (optional - will be used in a future feature)
  - Date: publishing date (optional - I included this so that I could move posts from my old blog)
  
-A new markdown file is created with some placeholding text. You can find that file in the `/posts` directory, use it to write your post.
+A new markdown file is created with some placeholding text. You can find that file in the `posts` directory, use it to write your post.
 
 After you have finished writing your post in markdown format, create an html file by running the `compile` command.
 
@@ -48,13 +48,33 @@ node server.js
 
 That's all, your blog in now up and running!
 
-
+## Dependencies
+ - EJS -  for templating
+ - markdown-js - for parsing markdown files.
+ - connect - for serving static files for the template
+ - rss - blog rss feed
+ 
 ## Customisation
-You can customise your blog by editing files in the `/template` directory.
+You can customise your blog by editing files in the `template` directory. Node blogger uses EJS for templating, `template/index.ejs` holds the template for the home page and `template/post.ejs` holds the template for posts. 
+
+
+## Routing
+The `routes.js` file contains connect middleware for handling http requests.
+
+## Commands
+`newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also log the new post in `posts.json`, our pseudo-database.
+
+`compile` (bin/compile) - the compile command generates the html files that are served by our http server.
+
+## Server
+`server.js` contains our http server which makes our blog posts available via a browser.
+
 
 ## Contributing
 Fork and send pull request. Do not make changes on the master branch.
+
 For bugs and tweaks create new branch prefixed by `hitfix-`.
+
 For new features create a new branch prefixed by `feature-`.
 
         
