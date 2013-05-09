@@ -1,0 +1,161 @@
+#!/usr/bin/env node
+
+
+/*
+   This program is a modification of a gist credited below.
+   @credit: https://gist.github.com/jay3sh/1236634
+   bin
+*/
+
+
+var config, configquestions;
+
+
+configquestions = [
+  { id:'blogtitle', text:'Blog Title', answerType:'str' },
+  { id:'blogdescription', text:'Blog Description', answerType:'str' },
+  
+  { id:'authorname', text:'Author Name', answerType:'str' },
+  { id:'authorautobio', text:'Author Autobio', answerType:'str' },
+  { id:'authoremail', text:'Author Email', answerType:'str' },
+  { id:'authortwitter', text:'Author Twitter handle', answerType:'str' },
+  { id:'authorwebsite', text:'Author Website', answerType:'str' }
+];
+
+
+
+
+/*
+   This function prompts the user for input
+   
+   @param: (String) question - require input from the user.
+   @param: (Function) callback - function which accepts user data
+*/
+function prompt(question, callback) {
+  var stdin = process.stdin, stdout = process.stdout;
+
+  stdin.resume();
+  stdout.write(question + ": ");
+
+  stdin.once('data', function(data) {
+    data = data.toString().trim();
+    callback(stdin, data);
+  });
+}
+
+
+
+
+/*
+   This function saves our config settings
+   
+   @param: (Object) obj - config object.
+   @param: (Function) callback - function executed after saving the file 
+*/
+function saveConfig (obj, fn) {
+    var jsonString = JSON.stringify(obj, null, 4);
+        
+    fs.writeFile(config.blog.postsFile, jsonString, function (error) {
+        fn(error);        
+    });
+}
+
+
+
+
+config = {
+    blog: {
+        name: 'Blog',
+        description: 'Blog',
+        baseUrl: '/',
+        postsFolder: __dirname + '/posts',
+        postsFile: './posts.json',
+        url: 'http://localhost:3080',
+        rss: '/rss',
+        rssLimit: 10
+    },
+    
+    author: {
+        name: 'Author',
+        autobio: 'Author autobio here.',
+        email: 'none@none.com',
+        twitterHandle: '#',
+        website: '#',
+        facbookPage: '#',
+        googlePage: '#',
+        avatar: '/img/avatar.png'
+    },
+    
+    showDate: true,
+    
+    showPagination: true,
+    
+    showShareButtons: true
+};
+
+
+
+
+/*
+   Main program
+*/
+function main() {
+  var counter = 0, configquestionsLength = configquestions.length;
+
+  var process_val = function (stdin, val) {
+      var q = question.id;
+      
+      switch(q) {
+          case 'blogtitle':
+              val ? config.blog.title = val : null;
+          break;
+          
+          case 'blogdescription':
+              val ? config.blog.description = val : null;
+          break;
+          
+          case 'authorname':
+              val ? config.author.name = val : null;
+          break;
+          
+          case 'authorautobio':
+              val ? config.author.autobio = val : null;
+          break;
+          
+          case 'authoremail':
+             val ? config.author.email = val : null;
+          break;
+          
+          case 'authortwitter':
+             val ? config.author.twitterHandle = val : null;
+          break;
+          
+          case 'authorwebsite':
+              val ? config.author.website = val : null;
+          break;
+      }
+    
+      // if properties still available
+      if (counter < (configquestionsLength - 1)) {
+          question = configquestions[++counter];
+          prompt(question.text, process_val);
+      } 
+      else {
+          // create a new post
+          saveConfig(config, function (error) {
+              console.log("\n Node Blogger has been successifully set up! \n")
+          })
+          stdin.end();
+      }
+  };
+  
+  var question = configquestions[counter];
+  
+  prompt(question.text, process_val);
+}
+
+
+
+
+main();
+
