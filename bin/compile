@@ -280,9 +280,10 @@ function writeHtmlFile(filename, html) {
     
     if (fs.existsSync('./posts/' + filename + '.html')) {
         var htmlStats = fs.statSync('./posts/' + filename + '.html'),
-            mdStats = fs.statSync('./posts/' + filename + '.md');
+            mdStats = fs.statSync('./posts/' + filename + '.md'),
+            postEjsStats = fs.statSync('./template/post.ejs');
              
-        if (mdStats.mtime.getTime() < htmlStats.mtime.getTime()) {
+        if (mdStats.mtime.getTime() < htmlStats.mtime.getTime() && postEjsStats.mtime.getTime() < htmlStats.mtime.getTime()) {
             return;
         } 
     }
@@ -300,9 +301,22 @@ function compile() {
     "use strict";
     
     var i, html;
-
-    fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
-    console.log('Home page created!');
+    
+    if (fs.existsSync('./posts/index.html')) {
+        var indexHtmlStats = fs.statSync('./posts/index.html'),
+            indexEjsStats = fs.statSync('./template/index.ejs');
+        
+        // check if the index.ejs template has been modified
+        if (indexEjsStats.mtime.getTime() > indexHtmlStats.mtime.getTime()) {        
+            fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
+            console.log('Home page created!');
+        }
+    }
+    else {
+        fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
+        console.log('Home page created!');    
+    }
+    
 
     for (i = 0; i < postsArray.length; i++) {
         html = createPost(postsArray[i].filename, i);

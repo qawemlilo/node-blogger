@@ -189,5 +189,20 @@
             "node.js"
         ],
         "author": "Qawelesizwe Mlilo (Que)"
+    },
+    {
+        "id": 1368103380579,
+        "title": "Node Blogger",
+        "date": "2013-05-09T12:43:00.579Z",
+        "year": 2013,
+        "month": 5,
+        "day": 9,
+        "filename": "2013-5-9_node-blogger",
+        "url": "/2013/5/9/node-blogger",
+        "categories": [
+            "node.js",
+            " javascript"
+        ],
+        "author": "Qawelesizwe Mlilo"
     }
 ]

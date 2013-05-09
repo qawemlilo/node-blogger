@@ -1,30 +1,23 @@
-# Node Blogger
+This blog is powered by Node Blogger, a small Node.js blogging engine that compiles markdown to html. 
 
-Node Blogger is a small Node.js blogging engine that compiles markdown to html and does not use any database. 
+### Installation
+    git clone https://github.com/qawemlilo/node-blogger.git
+    cd node-blogger && npm install
+    npm link
+    # if you are using linux (I'm using ubuntu) you may need to use `sudo npm link`
 
-## Installation
-```
-git clone https://github.com/qawemlilo/node-blogger.git
+### How it works
 
-cd node-blogger && npm install
-
-npm link
-# if you are using linux (I'm using ubuntu) you may need to use `sudo npm link`
-```
-
-## How it works
 Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
 
 Create a new post from the commandline:
 
-```
-newpost
-
-# prompt
-Title: My NodeJS adventures
-Categories: node.js, javascript
-Date: 
-````
+    newpost
+    
+    # prompt
+    Title: My NodeJS adventures
+    Categories: node.js, javascript
+    Date: 
 
  - Title: (String) - title of your new post (required)
  - Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)
@@ -34,43 +27,45 @@ A new markdown file is created with some placeholding text. You can find that fi
 
 After you have finished writing your post in markdown format, compile it to html by running the `compile` command.
 
-```
-compile
-```
+    compile
 
 Awesome! Now its time to share your blog with the would, let's fire up the server.
 
-```
-node server.js
-```
+    node server.js
 
 That's all, your blog in now up and running!
 
 
 
-## Dependencies
+### Dependencies
+
  - EJS -  for templating
  - markdown-js - for parsing markdown files.
  - connect - for serving static files for the template
  - rss - blog rss feed
  
-## Customisation
+### Customisation
+
 You can customise your blog by editing files in the `template` directory. Node blogger uses EJS for templating, `template/index.ejs` holds the template for the home page and `template/post.ejs` holds the template for posts. 
 
 
-## Routing
+### Routing
+
 The `routes.js` file contains the connect middleware for handling http requests.
 
-## Commands
+### Commands
+
 `newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
 
-`compile` (bin/compile) - the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If modify any of the templates it will also know this and make changes accordingly.
+`compile` (bin/compile) - the compile command generates the html files that are served by our http server.
 
-## Server
+### Server
+
 `server.js` contains our http server which makes our blog posts available via a browser.
 
 
-## Contributing
+### Contributing
+
 Fork and send me a pull request. Do not develop on the master branch.
 
  - For bugs and tweaks create new branch prefixed by `hitfix-`.
@@ -78,12 +73,9 @@ Fork and send me a pull request. Do not develop on the master branch.
 
         
   
-## Credits
+### Credits
+
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
-
-
-
-
 
 
 
