@@ -15,10 +15,9 @@ npm link
 ## How it works
 Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
 
-Create a new post:
+Create a new post from the commandline:
 
 ```
-# simply type the newpost command
 newpost
 
 # prompt
@@ -28,12 +27,12 @@ Date:
 ````
 
  - Title: (String) - title of your new post (required)
- - Categories: (String <csv>) - categories for your post (optional, defaults to uncategorised)
- - Date: (Int <millisecs>) - published date (optional, defaults to current time)
+ - Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)
+ - Date: (Int - millisecs) - publishing date (optional, defaults to current time)
  
 A new markdown file is created with some placeholding text. You can find that file in the `posts` directory, use it to write your post.
 
-After you have finished writing your post in markdown format, compile it to html file by running the `compile` command.
+After you have finished writing your post in markdown format, compile it to html by running the `compile` command.
 
 ```
 compile
@@ -63,7 +62,7 @@ You can customise your blog by editing files in the `template` directory. Node b
 The `routes.js` file contains the connect middleware for handling http requests.
 
 ## Commands
-`newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also log the new post in `posts.json`, our pseudo-database.
+`newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
 
 `compile` (bin/compile) - the compile command generates the html files that are served by our http server.
 
@@ -72,14 +71,14 @@ The `routes.js` file contains the connect middleware for handling http requests.
 
 
 ## Contributing
-Fork and send pull request. Do not make changes on the master branch.
+Fork and send me a pull request. Do not develop on the master branch.
 
  - For bugs and tweaks create new branch prefixed by `hitfix-`.
  - For new features create a new branch prefixed by `feature-`.
 
         
   
-### Credits
+## Credits
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
 
 
