@@ -1,4 +1,4 @@
-This blog is powered by Node Blogger, a small Node.js blogging engine that compiles markdown to html. 
+This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small Node.js blogging engine that compiles markdown to html. 
 
 ### Installation
     git clone https://github.com/qawemlilo/node-blogger.git
