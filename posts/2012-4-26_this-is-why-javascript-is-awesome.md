@@ -1,4 +1,4 @@
-Loved this gist from [John W. Long](https://github.com/jlong).
+Loved this gist from [John W. Long](https://github.com/jlong). 
 
     var parser = document.createElement('a');
     parser.href = 'http://example.com:3000/pathname/?search=test#hash';

@@ -10,8 +10,6 @@ var http = require('http'),
     routes = require('./routes'), 
     app;
 
-
-
 app = connect()
   .use(connect.static('template'))
   .use(routes);

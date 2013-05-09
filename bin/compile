@@ -77,10 +77,41 @@ function getPostObject (filename) {
 
 
 /*
+    This function creates pagination for posts
+    
+    @param: (Int) counter - loop counter for current post
+*/
+function pagination (counter) {
+    "use strict";
+    
+    var next = postsArray[counter + 1], prev = postsArray[counter - 1], pages = {};   
+
+    if (next) {
+        pages.next = next.url;
+    }
+    else {
+        pages.next = false;
+    }
+    
+    if (prev) {
+        pages.prev = prev.url;
+    }
+    else {
+        pages.prev = false;
+    }
+    
+    return pages;
+}
+
+
+
+
+/*
     This function compiles an ejs template to html
     
-    @param: (String) filename - name of a post
-    @returns: (Object) Post or (Boolean) false
+    @param: (String) template - name an ejs template
+    @param: (Object) data - variables for the ejs template
+    @returns: (String) html
 */
 function compileTemplate(template, data) {
     "use strict";
@@ -103,7 +134,7 @@ function compileTemplate(template, data) {
     @param: (String) filename - name of a post
     @returns: html
 */
-function createPost(filename) {
+function createPost(filename, counter) {
     "use strict";
     
     var postObject, postHtmlContent, data, html;
@@ -145,7 +176,9 @@ function createPost(filename) {
             month: getMonth[postObject.month],
             day: postObject.day,
             content: postHtmlContent
-        }
+        },
+        
+        pagination: pagination(counter)
     };
     
     html = compileTemplate('post.ejs', data);
@@ -263,14 +296,16 @@ function writeHtmlFile(filename, html) {
 */
 function compile() {
     "use strict";
+    
+    var i, html;
 
     fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
     console.log('Home page created!');
-    
-    postsArray.forEach(function (file) {
-        var html = createPost(file.filename);
-        writeHtmlFile(file.filename, html);
-    });
+
+    for (i = 0; i < postsArray.length; i++) {
+        html = createPost(postsArray[i].filename, i);
+        writeHtmlFile(postsArray[i].filename, html);
+    } 
 }
 
 

@@ -1,4 +1,4 @@
-I am in the process of building a web app for managing browser bookmarks and I would like to share some of the code.
+I am in the process of building a web app for managing browser bookmarks and I would like to share some of the code. 
 
 Every web app needs some kind of way to give users feedback on performed tasks and actions, so I wrote this little jQuery function(and a few lines of css for formatting).
 

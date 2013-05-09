@@ -9,7 +9,7 @@
   "preferGlobal": "true",
   "bin": {
     "newpost": "bin/newpost",
-    "compile": "bin/compile" 
+    "compile": "bin/compile"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
   "dependencies": {
     "ejs": "~0.8.3",
     "markdown": "~0.4.0",
-    "connect": "~2.7.8"
+    "connect": "~2.7.8",
+    "rss": "0.0.4"
   },
   "engine": "node >= 0.8.9"
 }
