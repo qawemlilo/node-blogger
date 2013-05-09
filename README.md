@@ -53,11 +53,17 @@ That's all, your blog in now up and running!
 You can customise your blog by editing files in the `/template` directory.
 
 ## Contributing
-Pull requests are most welcome. 
+Fork and send pul request. Do not make changes on the master branch.
+For bugs and tweaks create new branch prefixed by `hitfix-`.
+For new features create a new branch prefixed by `feature-`.
+
         
   
-**Credits**
+## Credits
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
+
+
+
 
 ## License
 
