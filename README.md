@@ -27,9 +27,9 @@ Categories: node.js, javascript
 Date: 
 ````
 
- - Title: is the title of your new post (required)
- - Categories: categories for your post (optional - will be used in a future feature)
- - Date: publishing date (optional - I included this so that I could move posts from my old blog)
+ - Title: (String) - title of your new post (required)
+ - Categories: (String <csv>) - categories for your post (optional, defaults to uncategorised)
+ - Date: (Int <millisecs>) - published date (optional, defaults to current time)
  
 A new markdown file is created with some placeholding text. You can find that file in the `posts` directory, use it to write your post.
 
