@@ -33,10 +33,9 @@ Date:
  
 A new markdown file is created with some placeholding text. You can find that file in the `posts` directory, use it to write your post.
 
-After you have finished writing your post in markdown format, create an html file by running the `compile` command.
+After you have finished writing your post in markdown format, compile it to html file by running the `compile` command.
 
 ```
-# This command will compile all the new and modified markdown files to html
 compile
 ```
 
@@ -47,6 +46,8 @@ node server.js
 ```
 
 That's all, your blog in now up and running!
+
+
 
 ## Dependencies
  - EJS -  for templating
@@ -59,7 +60,7 @@ You can customise your blog by editing files in the `template` directory. Node b
 
 
 ## Routing
-The `routes.js` file contains connect middleware for handling http requests.
+The `routes.js` file contains the connect middleware for handling http requests.
 
 ## Commands
 `newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also log the new post in `posts.json`, our pseudo-database.
@@ -73,14 +74,16 @@ The `routes.js` file contains connect middleware for handling http requests.
 ## Contributing
 Fork and send pull request. Do not make changes on the master branch.
 
-For bugs and tweaks create new branch prefixed by `hitfix-`.
-
-For new features create a new branch prefixed by `feature-`.
+ - For bugs and tweaks create new branch prefixed by `hitfix-`.
+ - For new features create a new branch prefixed by `feature-`.
 
         
   
-## Credits
+### Credits
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
+
+
+
 
 
 
