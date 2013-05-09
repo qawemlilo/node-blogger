@@ -8,10 +8,9 @@
 */
 
 
-var Post = require('../lib/post');
+var Post = require('../lib/post'),
 
-
-var postProperties = [
+postProperties = [
   { id:'title', text:'Title', answerType:'str' },
   { id:'categories', text:'Categories', answerType:'array' },
   { id:'date', text:'Date(millisecs)', answerType:'date' },
@@ -27,15 +26,17 @@ var postProperties = [
    @param: (Function) callback - function which accepts user data
 */
 function prompt(question, callback) {
-  var stdin = process.stdin, stdout = process.stdout;
+    "use strict";
+    
+    var stdin = process.stdin, stdout = process.stdout;
 
-  stdin.resume();
-  stdout.write(question + ": ");
+    stdin.resume();
+    stdout.write(question + ": ");
 
-  stdin.once('data', function(data) {
-    data = data.toString().trim();
-    callback(stdin, data);
-  });
+    stdin.once('data', function(data) {
+        data = data.toString().trim();
+        callback(stdin, data);
+    });
 }
 
 
@@ -45,37 +46,42 @@ function prompt(question, callback) {
    Main program
 */
 function main() {
-  var counter = 0, propertiesLength = postProperties.length, options = {}, post;
-
-  var process_val = function (stdin, val) {
-    if (question.answerType == 'date') {
-        options[question.id] = val ? parseInt(val, 10) : Date.now();
-    } 
-    else if (question.answerType == 'array') {
-        options[question.id] = val ? val.split(',') : ['uncategorised'];
-    } 
-    else {
-        options[question.id] = val;
-    }
-    
-    // if properties still available
-    if (counter < (propertiesLength - 1)) {
-        question = postProperties[++counter];
-        prompt(question.text, process_val);
-    } 
-    else {
-        // create a new post
-        post = new Post(options);
-        stdin.end();
-    }
-  };
-
-  var question = postProperties[counter];
+    "use strict";
   
-  prompt(question.text, process_val);
+    var counter = 0, 
+        propertiesLength = postProperties.length, 
+        options = {}, 
+        post,  
+        question,
+        process_val;
+
+    process_val = function (stdin, val) {
+        if (question.answerType == 'date') {
+            options[question.id] = val ? parseInt(val, 10) : Date.now();
+        } 
+        else if (question.answerType == 'array') {
+            options[question.id] = val ? val.split(',') : ['uncategorised'];
+        } 
+        else {
+            options[question.id] = val;
+        }
+    
+        // if properties still available
+        if (counter < (propertiesLength - 1)) {
+            question = postProperties[++counter];
+            prompt(question.text, process_val);
+        } 
+        else {
+            // create a new post
+            post = new Post(options);
+            stdin.end();
+        }
+    };
+
+    question = postProperties[counter];
+  
+    prompt(question.text, process_val);
 }
-
-
 
 
 main();
