@@ -1,6 +1,6 @@
 # Node Blogger
 
-Node Blogger is a small Node.js blogging engine that compiles markdown to html and does not use any database. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
+Node Blogger is a small Node.js blogging engine that compiles markdown to html and does not use any database. 
 
 ## Installation
 ```
@@ -13,9 +13,9 @@ npm link
 ```
 
 ## How it works
-Node Blogger is super easy to use once you have installed it as shown above.
+Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
 
-Firstly you need to create a new post:
+Create a new post:
 
 ```
 # simply type the newpost command
