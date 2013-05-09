@@ -5,7 +5,7 @@
         "baseUrl": "/",
         "postsFolder": "/home/qawe/Desktop/node-blogger/bin/posts",
         "postsFile": "./posts.json",
-        "url": "http://ragingflameblog.herokuapp.com",
+        "url": "http://localhost:3080",
         "rss": "/rss",
         "rssLimit": 10
     },
