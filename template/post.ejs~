@@ -41,7 +41,7 @@
   </aside>
   
   <section id="content">
-    <div class="post"> 
+    <div class="post">
       <h2><%= post.title %></h2>
       
       <div class="date">

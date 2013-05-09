@@ -139,7 +139,8 @@ function createPost(filename, counter) {
             title: config.blog.name + ' - ' + postObject.title,
             baseUrl: config.blog.baseUrl,
             description: config.blog.description,
-            url: config.blog.url
+            url: config.blog.url,
+            rss: config.blog.rss
         },
         
         author: {
@@ -230,7 +231,7 @@ function createIndex() {
         author: {
             autobio: config.author.autobio,
             email: config.author.email,
-            website: config.author.website,
+            website: config.author.webgooglesite,
             name: config.author.name,
             googlePage: config.author.googlePage,
             facbookPage: config.author.facbookPage,

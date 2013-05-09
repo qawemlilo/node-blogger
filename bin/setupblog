@@ -8,11 +8,13 @@
 */
 
 
-var config, configquestions;
+var fs = require('fs'),
+    config, 
+    configquestions;
 
 
 configquestions = [
-  { id:'blogtitle', text:'Blog Title', answerType:'str' },
+  { id:'blogname', text:'Blog Name', answerType:'str' },
   { id:'blogdescription', text:'Blog Description', answerType:'str' },
   
   { id:'authorname', text:'Author Name', answerType:'str' },
@@ -55,7 +57,7 @@ function prompt(question, callback) {
 function saveConfig (obj, fn) {
     var jsonString = JSON.stringify(obj, null, 4);
         
-    fs.writeFile(config.blog.postsFile, jsonString, function (error) {
+    fs.writeFile('config.json', jsonString, function (error) {
         fn(error);        
     });
 }
@@ -106,8 +108,8 @@ function main() {
       var q = question.id;
       
       switch(q) {
-          case 'blogtitle':
-              val ? config.blog.title = val : null;
+          case 'blogname':
+              val ? config.blog.name = val : null;
           break;
           
           case 'blogdescription':

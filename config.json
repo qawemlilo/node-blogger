@@ -3,7 +3,7 @@
         "name": "Raging Flame Blog",
         "description": "Rants about code and stuff...",
         "baseUrl": "/",
-        "postsFolder": "/home/qawe/Desktop/node-blogger/posts",
+        "postsFolder": "/home/qawe/Desktop/node-blogger/bin/posts",
         "postsFile": "./posts.json",
         "url": "http://localhost:3080",
         "rss": "/rss",
