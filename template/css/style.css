@@ -142,7 +142,7 @@ aside ul{
 }
 
 .post{
-	padding: 50px 0 15px 0;
+	padding: 40px 0 15px 0;
 	border-bottom: 1px solid #dfdfdf;
 }
 
@@ -677,13 +677,13 @@ aside{
 	left: 50%;
 	bottom: 0;
 	margin-left: -460px;
-	padding-top: 65px;
+	padding-top: 45px;
 }
 
 aside p.description{
 	font-size: 13px;
 	line-height: 1.8;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 	color:#787878;
 }
 

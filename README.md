@@ -64,16 +64,16 @@ The `routes.js` file contains the connect middleware for handling http requests.
 ## Commands
 `newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
 
-`compile` (bin/compile) - the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If modify any of the templates it will also know this and make changes accordingly.
+`compile` (bin/compile) - the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
 
 ## Server
-`server.js` contains our http server which makes our blog posts available via a browser.
+`server.js` contains our http server which makes our blog posts available and accessible via a browser.
 
 
 ## Contributing
 Fork and send me a pull request. Do not develop on the master branch.
 
- - For bugs and tweaks create new branch prefixed by `hitfix-`.
+ - For bugs and tweaks create new branch prefixed by `hotfix-`.
  - For new features create a new branch prefixed by `feature-`.
 
         
