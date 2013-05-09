@@ -160,5 +160,34 @@
             " javascript"
         ],
         "author": "Qawelesizwe Mlilo (Que)"
+    },
+    {
+        "id": 1368084131500,
+        "title": "Roll out your own uptime monitor with Node.js",
+        "date": "2013-02-14T05:00:00.000Z",
+        "year": 2013,
+        "month": 2,
+        "day": 14,
+        "filename": "2013-2-14_roll-out-your-own-uptime-monitor-with-nodejs",
+        "url": "/2013/2/14/roll-out-your-own-uptime-monitor-with-nodejs",
+        "categories": [
+            "node.js",
+            " javascript"
+        ],
+        "author": "Qawelesizwe Mlilo (Que)"
+    },
+    {
+        "id": 1368088610062,
+        "title": "Advocating for native modules",
+        "date": "2013-03-24T04:00:00.000Z",
+        "year": 2013,
+        "month": 3,
+        "day": 24,
+        "filename": "2013-3-24_advocating-for-native-modules",
+        "url": "/2013/3/24/advocating-for-native-modules",
+        "categories": [
+            "node.js"
+        ],
+        "author": "Qawelesizwe Mlilo (Que)"
     }
 ]

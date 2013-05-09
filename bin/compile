@@ -19,9 +19,9 @@ var config = require('../config'),
 
 
 /*
-   This function reads ./posts.json (which contains all post entries) and returns the contents in JSON format
+   Fetches and reads ./posts.json (which contains all post entries)
    
-   @returns: JSON
+   @returns: JSON Array
 */
 function getPostsArray() {
     var postsTxt, posts;
@@ -36,7 +36,7 @@ function getPostsArray() {
 
     
 /*
-    This function converts the contents of a Markdown file to html
+    Converts the contents of a Markdown file to html
     
     @param: (String) filename - name of a markdown file
     @returns: html
@@ -77,7 +77,7 @@ function getPostObject (filename) {
 
 
 /*
-    This function creates pagination for posts
+    Creates pagination for posts
     
     @param: (Int) counter - loop counter for current post
 */
@@ -107,7 +107,7 @@ function pagination (counter) {
 
 
 /*
-    This function compiles an ejs template to html
+    Compiles an ejs template to html
     
     @param: (String) template - name an ejs template
     @param: (Object) data - variables for the ejs template
@@ -129,7 +129,7 @@ function compileTemplate(template, data) {
 
 
 /*
-    This function generates the html of a single post
+    Generates the html of a single post
     
     @param: (String) filename - name of a post
     @returns: html
@@ -155,7 +155,8 @@ function createPost(filename, counter) {
         blog: {
             title: config.blog.name + ' - ' + postObject.title,
             baseUrl: config.blog.baseUrl,
-            description: config.blog.description
+            description: config.blog.description,
+            url: config.blog.url
         },
         
         author: {
@@ -175,7 +176,8 @@ function createPost(filename, counter) {
             year: postObject.year,
             month: getMonth[postObject.month],
             day: postObject.day,
-            content: postHtmlContent
+            content: postHtmlContent,
+            url: postObject.url
         },
         
         pagination: pagination(counter)
@@ -190,7 +192,7 @@ function createPost(filename, counter) {
 
 
 /*
-    This function generates html links for all posts and return them in an unordered list
+    Generates html links for all posts and return them in an unordered list
     
     @returns: <ul> html
 */
@@ -220,7 +222,7 @@ function createLinks() {
 
 
 /*
-    This function generates the html for the home page
+    Generates the html for the home page
 
     @returns: html
 */
@@ -239,14 +241,14 @@ function createIndex() {
         blog: {
             title: config.blog.name,
             baseUrl: config.blog.baseUrl,
-            description: config.blog.description
+            description: config.blog.description,
+            rss: config.blog.rss,
         },
         author: {
             autobio: config.author.autobio,
             email: config.author.email,
             website: config.author.website,
             name: config.author.name,
-            rss: config.author.rss,
             googlePage: config.author.googlePage,
             facbookPage: config.author.facbookPage,
             twitterHandle: config.author.twitterHandle,
@@ -266,7 +268,7 @@ function createIndex() {
 
 
 /*
-    This function first checks if the html file doesn't exist, 
+    First checks if the html file doesn't exist, 
     then checks if the md file has been modified, 
     then writes the file to disk if one of the conditions is true.
     

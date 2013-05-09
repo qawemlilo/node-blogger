@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-<title>Raging Flame Blog - Creating unique array keys</title> 
+<title>Raging Flame Blog - Advocating for native modules</title> 
 <meta charset="utf-8" /> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
@@ -41,24 +41,24 @@
    
   <section id="content"> 
     <div class="post"> 
-      <h2>Creating unique array keys</h2> 
+      <h2>Advocating for native modules</h2> 
        
       <div class="date"> 
         <div class="dt"> 
-          16 Nov 2012 
+          24 Mar 2013 
         </div> 
          
         <div class="sharep"> 
-            <a target="_blank" href="http://www.facebook.com/share.php?u=http://localhost:3080/2012/11/16/creating-unique-array-keys" class="share-fb" title="Share on Facebook">  
+            <a target="_blank" href="http://www.facebook.com/share.php?u=http://localhost:3080/2013/3/24/advocating-for-native-modules" class="share-fb" title="Share on Facebook">  
               <img src="/img/fb-small.png" />  
             </a> 
-            <a target="_blank" href="http://twitter.com/home?status=http://localhost:3080/2012/11/16/creating-unique-array-keys" class="share-twitter" title="Share on Twitter"> 
+            <a target="_blank" href="http://twitter.com/home?status=http://localhost:3080/2013/3/24/advocating-for-native-modules" class="share-twitter" title="Share on Twitter"> 
               <img src="/img/twitter-small.png" /> 
             </a> 
-            <a target="_blank" href="http://reddit.com/submit?url=http://localhost:3080/2012/11/16/creating-unique-array-keys" class="share-reddit" title="Share on Reddit"> 
+            <a target="_blank" href="http://reddit.com/submit?url=http://localhost:3080/2013/3/24/advocating-for-native-modules" class="share-reddit" title="Share on Reddit"> 
               <img src="/img/reddit-small.png" /> 
             </a> 
-            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:3080/2012/11/16/creating-unique-array-keys" class="share-linkedin" title="Share on LinkedIn"> 
+            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:3080/2013/3/24/advocating-for-native-modules" class="share-linkedin" title="Share on LinkedIn"> 
               <img src="/img/linkedin-small.png" /> 
             </a> 
         </div> 
@@ -66,41 +66,17 @@
        
       <p style="clear:both"></p> 
        
-      <p>I wrote the function below in a recent project, I needed to create unique keys for a small multidimensional array and store it in a session.</p>
+      <p>Node.JS 0.10 was recently released moving one step closer to the 1.0 release. Node has come a long way since the 0.4.x versions when I first started using it, most of its API is now stable and unlikely to undergo any major changes.</p>
 
-<pre><code>&lt;?php
-function createUniqueId($length = 6, array $db)
-{
-    $alph = array(&quot;a&quot;, &quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;m&quot;,&quot;n&quot;,&quot;p&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;v&quot;,&quot;w&quot;,&quot;x&quot;,&quot;y&quot;,&quot;z&quot;);
-    $nums = array(1,2,3,4,5,6,7,8,9);
+<p>As my learning journey continues, I am discovering that some of the functionality that I have been implementing using 3rd party modules can, with a little bit of effort, be achieved using native Node modules. While 3rd party modules certainly make life easier for you, they hide some of Node&#39;s core API that would be useful to learn.</p>
 
-    $id = &quot;&quot;;
-    srand((double)microtime()*1000000);
-    $max = $length/2;
-
-    for($i = 1; $i     {
-        $id .= $alph[rand(0,20)];
-        $id .= $nums[rand(0,8)];
-    }
-
-    // check if the key already exists
-    if (!array_key_exists($id, $db)) {
-        return $id;
-    }
-    else {
-        // if it does,lets recurse the function
-        createUniqueId($length, $db);
-    }
-}
-?&gt;</code></pre> 
+<p>Going forward I intend to fight the edge to run the addictive <code>npm install</code> command and seek a native solution first instead.</p> 
     </div> 
      
      
-      <a href="/2012/11/15/joomla-using-jrequest" title="Previous Post" class="pagination-arrow newer">Prev</a> 
+      <a href="/2013/2/14/roll-out-your-own-uptime-monitor-with-nodejs" title="Previous Post" class="pagination-arrow newer">Prev</a> 
      
      
-     
-      <a href="/2012/11/23/shout-simple-jquery-notifications" title="Next Post" class="pagination-arrow older">Next</a> 
      
   </section> 
  

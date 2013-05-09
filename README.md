@@ -53,7 +53,7 @@ That's all, your blog in now up and running!
 You can customise your blog by editing files in the `/template` directory.
 
 ## Contributing
-Fork and send pul request. Do not make changes on the master branch.
+Fork and send pull request. Do not make changes on the master branch.
 For bugs and tweaks create new branch prefixed by `hitfix-`.
 For new features create a new branch prefixed by `feature-`.
 

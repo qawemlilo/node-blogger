@@ -1,6 +1,6 @@
 {
   "name": "node-blogger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny Node.js blogging engine",
   "main": "app.js",
   "scripts": {
@@ -17,10 +17,10 @@
   },
   "keywords": [
     "Node",
-    "blogging",
-    "engine",
-    "static",
-    "blogs"
+    "blogging engine",
+    "blogging platform",
+    "static sites",
+    "markdown blog"
   ],
   "author": "Qawelesizwe Mlilo",
   "license": "MIT",
@@ -31,5 +31,8 @@
     "connect": "~2.7.8",
     "rss": "0.0.4"
   },
-  "engine": "node >= 0.8.9"
+  "engines": {
+    "node": ">= 0.8.9",
+    "npm": ">= 1.1.0"
+  }
 }

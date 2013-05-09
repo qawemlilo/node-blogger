@@ -9,15 +9,17 @@ var url = require('url'),
     Posts = require('./posts'), 
     RSS = require('./rss'),
     rss, 
-    myposts;
+    myblog;
 
+    
 rss = new RSS();
-myposts = new Posts();
+myblog = new Posts();
+
 
 
 
 /*
-    This function parses a url path to a format that matches our filenames
+    Parses a url path to a format that matches our filenames
     
     @param: (String) path - url pathl
 */
@@ -38,17 +40,16 @@ function parseFilename (path) {
 
 
 /*
-    This function loads/fetches a page containing a post and passes it to a response method 
+    Fetches and loads a page containing a post and passes it to a response method 
     
     @param: (String) filename - name of a file containing a postHtmlContent
     @param: (Object) res - http response object
 */
 function loadPage (filename, res) {
-    var page = myposts.fetchPost(filename);
+    var page = myblog.fetchPost(filename);
     
     if (!page) {
         res.writeHead(404);
-        
         res.end('Page not found :(');
     }
     else {
@@ -62,6 +63,23 @@ function loadPage (filename, res) {
 
 
 
+
+/*
+    Loads the rss feed
+
+    @param: (Object) res - http response object    
+*/
+function loadRSS (res) {
+    res.writeHead(200, {
+        'Content-Type': 'application/xml; charset=utf-8'
+    });
+    
+    res.end(rss.getFeed());
+}
+
+
+
+
 /*
    Expose our routes to the Global module object
 */
@@ -72,10 +90,7 @@ module.exports = function (req, res) {
         loadPage('index', res);
     }
     else if (path === '/rss') {
-        res.writeHead(200, {
-            'Content-Type': 'application/xml; charset=utf-8'
-        });
-        res.end(rss.xml);
+        loadRSS(res);
     }
     else {
         filename = parseFilename(path);

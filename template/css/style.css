@@ -85,6 +85,10 @@ h1 a, h2 a{
   margin-bottom:25px;
 }
 
+#content p img {
+  width: 100%;
+}
+
 #content ul{
   padding-left:20px;
 }
@@ -148,6 +152,18 @@ aside ul{
 	color: #a7a7a7;
 	margin: 24px 0 30px 20px;
 	position: relative;
+}
+
+.post .date .dt {
+	float: left;
+}
+
+.post .date .sharep {
+	float: right;
+}
+
+.post .sharep a {
+    margin-right: 5px;
 }
 
 .post .date:before{
@@ -692,34 +708,34 @@ aside ul li a:hover{
 aside p.author{
 	position: absolute;
 	bottom: 20px;
-	height: 60px;
+	height: 50px;
 	font-size: 12px;
 	color: #888;
     text-align: center
 }
 
 aside p.author a { 
-   width: 52px;
+   width: 48px;
    display: block;
    float: left;   
-   height: 52px;
-   margin-right: 5px;
+   height: 48px;
+   margin-right: 10px;
 }
 
 aside p.author a.twitter { 
-   background: url(../img/Twitter.png) no-repeat;
+   background: url(../img/twitter.png) no-repeat;
 }
 
 aside p.author a.google { 
-   background: url(../img/Google.png) no-repeat;
+   background: url(../img/plus.png) no-repeat;
 }
 
 aside p.author a.facebook { 
-   background: url(../img/FaceBook.png) no-repeat;
+   background: url(../img/fb.png) no-repeat;
 }
 
 aside p.author a.rss { 
-   background: url(../img/RSS.png) no-repeat;
+   background: url(../img/rss.png) no-repeat;
 }
 
 aside .img-circle {

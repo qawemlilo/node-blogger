@@ -1,0 +1,516 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Raging Flame Blog - Roll out your own uptime monitor with Node.js</title> 
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
+<meta name="description" content="Rants about code and stuff..." /> 
+<link href="/css/style.css" rel="stylesheet" /> 
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" /> 
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" /> 
+<!--[if lt IE 9]> 
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+<![endif]--> 
+</head> 
+<body> 
+ 
+  <header> 
+  </header> 
+ 
+  <aside> 
+    <h1><a href="/"><img src="/img/qawe.png"class="img-circle" title="Qawelesizwe Mlilo (Que)" alt="Qawelesizwe Mlilo (Que)" /></a></h1> 
+   
+    <p class="description"> 
+      Hi, my name is Qawelesizwe Mlilo(Que), I write code and build stuff on the web. I'm at my happiest when programming in JavaScript but writing custom Joomla! extensions in PHP pays my bills. 
+    </p> 
+   
+    <ul> 
+      <li><a href="/">Home</a></li> 
+      <li><a target="_blank" href="http://www.ragingflame.co.za">My Website</a></li> 
+      <li><a target="_blank" href="mailto:qawemlilo@gmail.com">Contact Me</a></li> 
+    </ul> 
+   
+    <p class="author"> 
+      <a target="_blank" href="#" title="Facebook" class="facebook"> &nbsp; </a>  
+      <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" class="twitter"> &nbsp; </a>  
+      <a target="_blank" href="https://plus.google.com/111595084798587457827/posts?hl=en&amp;partnerid=gplp0" title="Google" class="google"> &nbsp; </a>  
+      <a target="_blank" href="undefined" title="RSS" class="rss"> &nbsp; </a> 
+    </p> 
+  </aside> 
+   
+  <section id="content"> 
+    <div class="post"> 
+      <h2>Roll out your own uptime monitor with Node.js</h2> 
+       
+      <div class="date"> 
+        <div class="dt"> 
+          14 Feb 2013 
+        </div> 
+         
+        <div class="sharep"> 
+            <a target="_blank" href="http://www.facebook.com/share.php?u=http://localhost:3080/2013/2/14/roll-out-your-own-uptime-monitor-with-nodejs" class="share-fb" title="Share on Facebook">  
+              <img src="/img/fb-small.png" />  
+            </a> 
+            <a target="_blank" href="http://twitter.com/home?status=http://localhost:3080/2013/2/14/roll-out-your-own-uptime-monitor-with-nodejs" class="share-twitter" title="Share on Twitter"> 
+              <img src="/img/twitter-small.png" /> 
+            </a> 
+            <a target="_blank" href="http://reddit.com/submit?url=http://localhost:3080/2013/2/14/roll-out-your-own-uptime-monitor-with-nodejs" class="share-reddit" title="Share on Reddit"> 
+              <img src="/img/reddit-small.png" /> 
+            </a> 
+            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:3080/2013/2/14/roll-out-your-own-uptime-monitor-with-nodejs" class="share-linkedin" title="Share on LinkedIn"> 
+              <img src="/img/linkedin-small.png" /> 
+            </a> 
+        </div> 
+      </div> 
+       
+      <p style="clear:both"></p> 
+       
+      <p><em>&quot;The Node bug has bitten me.&quot;</em></p>
+
+<p>While going through a friend&#39;s blog recently, I bumped into a post titled <a href="http://www.edmoremoyo.com/blog/yo-dawg-your-site-is-down">&#39;Yo Dawg!, your site is down?&#39;</a> in which he talks about writing a CLI script for checking the availability of his websites. I love home grown solutions that solve our day to day problems and this post left me inspired to write my own uptime monitor.</p>
+
+<p>Today I will take you through a step by step process of creating a NodeJS app/bot for monitoring my websites. The app/bot will send me an email whenever a site is down. The app repo will be hosted on github and once it is complete we&#39;ll deploy it to Heroku.</p>
+
+<h3>The Set Up</h3>
+
+<p>Create a directory for the app, I named mine <code>ping</code>. Inside the directory create another directory named <code>lib</code> and 3 files: <code>README.md</code>, <code>package.json</code>, and <code>app.js</code>.</p>
+
+<p>The <code>package.json</code> file will be used by npm (a package manger used by Node) for metadata purposes as well as to install all dependencies. The <code>lib</code> directory is where we&#39;ll place most of the app code.</p>
+
+<p>Inside the <code>ping/lib</code> directory create a file named <code>ping.js</code>, this is where we&#39;ll write the main code that drives the app.</p>
+
+<p>Now our repo looks something like this:</p>
+
+<pre><code>/ping
+    README.md
+    app.js
+    package.json
+    /lib
+        ping.js </code></pre>
+
+<h3>Package.json</h3>
+
+<p>This is how our package.json file looks like.</p>
+
+<pre><code>{
+   &quot;name&quot;:&quot;Ping&quot;,
+   &quot;version&quot;:&quot;0.0.1&quot;,
+   &quot;description&quot;:&quot;Node uptime monitor&quot;,
+   &quot;main&quot;:&quot;app.js&quot;,
+   &quot;repository&quot;:{
+      &quot;type&quot;:&quot;git&quot;,
+      &quot;url&quot;:&quot;https://github.com/qawemlilo/ping.git&quot;
+   },
+   &quot;keywords&quot;:[
+      &quot;uptime&quot;,
+      &quot;monitor&quot;
+   ],
+   &quot;dependencies&quot;:{
+      &quot;request&quot;:&quot;~2.12.0&quot;,
+      &quot;nodemailer&quot;:&quot;0.3.x&quot;
+   },
+   &quot;author&quot;:&quot;Qawelesizwe Mlilo&quot;,
+   &quot;license&quot;:&quot;MIT&quot;,
+   &quot;engines&quot;:{
+      &quot;node&quot;:&quot;0.8.x&quot;,
+      &quot;npm&quot;:&quot;1.1.x&quot;
+   }
+}</code></pre>
+
+<p>The important thing to note from <code>package.json</code> is that our app is going to use 2 dependencies:</p>
+
+<ol><li>Request: - a very good and popular HTTP request client. It will be used to make GET http requests to load my websites.</li><li>Node Mailer: - a Node module for sending emails.</li></ol>
+
+<p>The <code>README.md</code> file is for documentation purposes, for this project just write the app name and save it.</p>
+
+<p>Let&#39;s get cracking by initializing git on our project - open your git terminal and navigate to the root of the repo.</p>
+
+<pre><code>cd /path/to/ping &amp;&amp; git init
+git add .
+commit -m &#39;First commit - let us get pinging&#39;</code></pre>
+
+<p>Next up we need to install dependencies.</p>
+
+<pre><code>npm install</code></pre>
+
+<h3>Ping.js</h3>
+
+<p>An instance of Ping will send GET http requests at regular intervals and log the results. If the request fails an email will be sent out to you.</p>
+
+<p>First let&#39;s load some modules and create a basic Constructor function.</p>
+
+<pre><code>var request = require(&#39;request&#39;),
+    statusCodes = require(&#39;http&#39;).STATUS_CODES;
+
+/*
+    Ping Constructor
+*/
+function Ping (opts) {
+    // holds website to be monitored
+    this.website = &#39;&#39;;
+
+    // ping intervals in minutes
+    this.timeout = 15;
+
+    // interval handler
+    this.handle = null;
+
+    // initialize the app
+    this.init(opts)
+}</code></pre>
+
+<p>We start with 3 properties whose purpose is explained in comments. The options that are passed when an instance is created are used by the <code>Ping.init</code> method to assign the website and timeout values.</p>
+
+<pre><code>/*
+    Methods
+*/
+Ping.prototype = {
+    init: function (opts) {
+        var self = this;
+
+        self.website = opts.website;
+
+        self.timeout = (opts.timeout * (60 * 1000));
+
+        // start monitoring
+        self.start();
+    },</code></pre>
+
+<p>Once the <code>Ping.init</code> method has assigned website and timeout values according the app is ready to start sending requests and promptly calls the <code>Ping.start</code> method.</p>
+
+<pre><code>start: function () {
+    var self = this,
+        time = Date.now();
+
+    console.log(&quot;\nLoading... &quot; + self.website + &quot;\nTime: &quot; + time + &quot;\n&quot;);
+
+    // create an interval for pings
+    self.handle = setInterval(function () {
+        self.ping();
+    }, self.timeout);
+},</code></pre>
+
+<p>The <code>Ping.start</code> method is pretty straight forward, it logs the loading message and creates intervals that call the method <code>Ping.ping</code>.</p>
+
+<p><code>Ping.ping</code> uses <code>request</code> to load a website, if the request is successful <code>Ping.isOk</code> is called otherwise <code>Ping.isNotOk</code> is called.</p>
+
+<pre><code>    ping: function () {
+        var self = this, currentTime = Date.now();
+
+        try {
+            // send request
+            request(self.website, function (error, res, body) {
+                // Website is up
+                if (!error &amp;&amp; res.statusCode === 200) {
+                    self.isOk();
+                }
+
+                // No error but website not ok
+                else if (!error) {
+                    self.isNotOk(res.statusCode);
+                }
+
+                // Loading error
+                else {
+                    self.isNotOk();
+                }
+            });
+        }
+        catch (err) {
+            self.isNotOk();
+        }
+    },
+
+
+    isOk: function () {
+        this.log(&#39;UP&#39;, &#39;OK&#39;);
+    },
+
+
+    isNotOk: function (statusCode) {
+        var time =  Date.now(),
+            self = this,
+            time = self.getFormatedDate(time),
+            msg = statusCodes[statusCode + &#39;&#39;],
+
+            htmlMsg = &#39;&lt;p&gt;Time: &#39; + time;
+            htmlMsg +=&#39;&lt;/p&gt;&lt;p&gt;Website: &#39; + self.website;
+            htmlMsg += &#39;&lt;/p&gt;&lt;p&gt;Message: &#39; + msg + &#39;&lt;/p&gt;&#39;;
+
+        this.log(&#39;DOWN&#39;, msg);
+
+        // Send admin and email
+        mailer({
+            from: &#39;uptime-robot@rflab.co.za&#39;,
+            to: &#39;qawemlilo@gmail.com&#39;,
+            subject: self.website + &#39; is down&#39;,
+            body: htmlMsg
+        }, function (error, res) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log(res.message || &#39;Failed to send email&#39;);
+            }
+        });
+    },
+
+
+    log: function (status, msg) {
+        var self = this,
+            time = Date.now(),
+            output = &#39;&#39;;
+
+        output += &quot;\nWebsite: &quot; + self.website;
+        output += &quot;\nTime: &quot; + time;
+        output += &quot;\nStatus: &quot; + status;
+        output += &quot;\nMessage:&quot; + msg  + &quot;\n&quot;;
+
+        console.log(output);
+    },
+
+
+    getFormatedDate: function (time) {
+        var currentDate = new Date(time);
+
+        currentDate = currentDate.toISOString();
+        currentDate = currentDate.replace(/T/, &#39; &#39;);
+        currentDate = currentDate.replace(/\..+/, &#39;&#39;);
+
+        return currentDate;
+    }
+}
+
+module.exports = Ping;</code></pre>
+
+<p><code>Ping.isNotOk</code> calls a mailer module that I have created - inside the <code>lib</code> directory create a file named <code>mailer.js</code> and open it up in your text editor.</p>
+
+<p>This module uses nodemailer to send emails and I have chosen to use Gmail SMTP. Please read more about how nodemailer works on <a href="http://blog.nodeknockout.com/post/34641712180/sending-email-from-node-js">this page</a>. The config file contains my Gmail email and application password.</p>
+
+<h3>lib/mailer.js</h3>
+
+<pre><code>var nodemailer = require(&#39;nodemailer&#39;),
+    config = require(&#39;../config&#39;),
+    mailer;
+
+mailer = function (opts, fn) {
+
+    var mailOpts, smtpTrans;
+
+    // nodemailer configuration
+    try {
+        smtpTrans = nodemailer.createTransport(&#39;SMTP&#39;, {
+            service: &#39;Gmail&#39;,
+            auth: {
+                user: config.email,
+                pass: config.password
+            }
+        });
+    }
+    catch (err) {
+        fn(&#39;Nodemailer could not create Transport&#39;, &#39;&#39;);
+        return;
+    }
+
+    // mailing options
+    mailOpts = {
+        from: opts.from,
+        replyTo: opts.from,
+        to: opts.to,
+        subject: opts.subject,
+        html: opts.body
+    };
+
+    // Send maail
+    try {
+        smtpTrans.sendMail(mailOpts, function (error, response) {
+            //if sending fails
+            if (error) {
+            fn(true, error);
+            }
+            //Yay!! message sent
+            else {
+                fn(false, response.message);
+            }
+        });
+    }
+    catch (err) {
+        fn(&#39;Nodemailer could not send Mail&#39;, &#39;&#39;);
+    }
+};
+
+module.exports = mailer;</code></pre>
+
+<p>Create a file named <code>config.js</code> in the root directory of the app.</p>
+
+<pre><code>module.exports = {
+    email: &#39;your-handle@gmail.com&#39;,
+    password: &#39;xxxxxxxx&#39;
+};</code></pre>
+
+<p>Back to <code>lib/ping.js</code>, let us include the mailer module at the top of the file.</p>
+
+<pre><code>var request = require(&#39;request&#39;),
+    statusCodes = require(&#39;http&#39;).STATUS_CODES,
+    mailer = require(&#39;./mailer&#39;);    // this line loads mailer.js</code></pre>
+
+<p>So far so good, our application can now load a website at regular intervals and if the request fails send out an email.</p>
+
+<h4>App.js</h4>
+
+<p>At the beginning of this post we created a file named <code>app.js</code>, this is the file that Node will execute to get our app started. The app uses the forEach method to iterate over the list of websites, create a Ping instance for each website and store it in the monitors array.</p>
+
+<pre><code>var Ping = require(&#39;./lib/ping&#39;),
+    websites = [
+        {
+            url: &#39;http://www.bookmarkmanager.co.za&#39;,
+            timeout: 5
+        },
+        {
+            url: &#39;http://crushit-compiler.herokuapp.com&#39;,
+            timeout: 1
+        }
+    ],
+    monitors = [];
+
+websites.forEach(function (website) {
+    var monitor = new Ping ({
+        website: website.url,
+        timeout: website.timeout
+    });
+
+    monitors.push(monitor);
+});</code></pre>
+
+<p>The proof is in the pudding - from your terminal let&#39;s start the app with node.</p>
+
+<pre><code>node app.js</code></pre>
+
+<h4>Improving the app</h4>
+
+<p>Our app is now fully functional but there are a few issues. The app is not accessible via the browser and the websites array will clutter my code once I start adding more websites.
+The solution is to create an http server and move my websites list to an external file.</p>
+
+<pre><code>var Ping = require(&#39;./lib/ping&#39;),
+    websites = require(&#39;./websites&#39;),
+    http = require(&#39;http&#39;),
+    server,
+    port = process.env.PORT || 3008,
+    monitors = [];
+
+websites.forEach(function (website) {
+    var monitor = new Ping ({
+        website: website.url,
+        timeout: website.timeout
+    });
+
+    monitors.push(monitor);
+});
+
+server = http.createServer(function (req, res) {
+    var data = &quot;Monitoring the following websites: \n \n&quot; + websites.join(&quot;\n&quot;);
+
+    res.end(data);
+}); 
+
+server.listen(port);
+console.log(&#39;Listening to port %s&#39;, port);</code></pre>
+
+<h3>websites.js</h3>
+
+<pre><code>/*
+    List of websites to be monitored
+*/
+module.exports = [
+    {
+        url: &#39;http://www.rflab.co.za&#39;,
+        timeout: 15
+    },
+
+    {
+        url: &#39;http://www.bookmarkmanager.co.za&#39;,
+        timeout: 15
+    },
+
+    {
+        url: &#39;http://crushit-compiler.herokuapp.com&#39;,
+        timeout: 15
+    },
+
+    {
+        url: &#39;http://node-ping.herokuapp.com&#39;,
+        timeout: 5
+    },
+    {
+        url: &#39;http://www.sanatural.co.za/home/&#39;,
+        timeout: 15
+    }
+];</code></pre>
+
+<p>Now when you access the app from a browser you get a list of all monitored websites.</p>
+
+<p>Another option that you might like to have is the ability to stop a running monitor, let us get back to <code>lib/pings.js</code> and add a method to do just that.</p>
+
+<pre><code>stop: function () {
+    clearInterval(this.handle);
+    this.handle = null;       
+}</code></pre>
+
+<p>We also need to modify the Constructor so that it returns its object.</p>
+
+<pre><code>/*
+    Ping Constructor
+*/
+function Ping (opts) {
+    // holds website to be monitored
+    this.website = &#39;&#39;;
+
+    // ping intervals in minutes
+    this.timeout = 15;
+
+    // interval handler
+    this.handle = null;
+
+    // initialize the app
+    this.init(opts);
+
+    return this;
+}</code></pre>
+
+<p>That&#39;s it - an instance of Ping can now be stopped by calling <code>Ping.stop</code>.</p>
+
+<h3>Deploying the app</h3>
+
+<p>Heroku is an awesome cloud platform for hosting apps and they offer a free package for small apps that run on a single dyno. There is a detailed guide on their website on how to deploy your Node projects: <a href="https://devcenter.heroku.com/articles/nodejs">https://devcenter.heroku.com/articles/nodejs</a>.</p>
+
+<p>Once you have set up heroku on your computer you can now deploy the app.</p>
+
+<pre><code>heroku create
+git push heroku master</code></pre>
+
+<p><strong>Pro Tip:</strong> If your application is inactive for about an hour, heroku puts it offline. Add your application address to the list of monitored websites to ensure that it doesn&#39;t stop working.</p>
+
+<h3>Challenge</h3>
+
+<p>Here is a challenge for you to get your hands dirty with Node - create a web interface for adding and removing websites to the monitored list.</p>
+
+<p>I hope this article has demonstrated how easy and fun it is to create apps with Node.js, now I don&#39;t need to pay a third party service to monitor my websites.</p>
+
+<p><a href="https://github.com/qawemlilo/node-ping/tree/v0.1.4">Fork on Github</a></p> 
+    </div> 
+     
+     
+      <a href="/2013/2/8/crushit" title="Previous Post" class="pagination-arrow newer">Prev</a> 
+     
+     
+     
+      <a href="/2013/3/24/advocating-for-native-modules" title="Next Post" class="pagination-arrow older">Next</a> 
+     
+  </section> 
+ 
+ 
+<script type="text/javascript" src="/js/prettify.js"></script> 
+<script type="text/javascript" src="/js/script.js"></script> 
+</body> 
+</html> 
