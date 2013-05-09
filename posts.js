@@ -15,7 +15,7 @@ var fs = require('fs');
 function Posts () {
     var self = this, postsTxt, postsArray;
     
-    postsArray = self.getPostsArray();  
+    postsArray = require('./posts.json');  
     self.cache = Object.create({});
     
     // add the index page
@@ -27,23 +27,6 @@ function Posts () {
         self.cache[file.filename] = data;
     });
 };
-
-
-
-
-/*
-   This method reads ./posts.json (which contains all posts entries) and returns the contents in JSON format
-   
-   @returns: JSON
-*/
-Posts.prototype.getPostsArray = function () {
-    var postsTxt, posts;
-    
-    postsTxt = fs.readFileSync('./posts.json', 'utf8');
-    posts = JSON.parse(postsTxt);
-    
-    return posts;
-} 
 
 
 

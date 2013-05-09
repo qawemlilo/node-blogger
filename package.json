@@ -9,7 +9,8 @@
   "preferGlobal": "true",
   "bin": {
     "newpost": "bin/newpost",
-    "compile": "bin/compile"
+    "compile": "bin/compile",
+    "setupblog": "bin/setupblog"
   },
   "repository": {
     "type": "git",

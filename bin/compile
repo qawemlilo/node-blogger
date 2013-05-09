@@ -8,29 +8,12 @@
 
 
 
-var config = require('../config'),
+var config = require('../config.json'),
     markdown = require('markdown').markdown,
     ejs = require('ejs'),
     fs = require('fs'),
-    postsArray = getPostsArray(),
+    postsArray = require('../posts.json'),
     getMonth = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];   
-
-
-
-
-/*
-   Fetches and reads ./posts.json (which contains all post entries)
-   
-   @returns: JSON Array
-*/
-function getPostsArray() {
-    var postsTxt, posts;
-    
-    postsTxt = fs.readFileSync('./posts.json', 'utf8');
-    posts = JSON.parse(postsTxt);
-    
-    return posts;
-}   
 
 
 
@@ -300,8 +283,8 @@ function writeHtmlFile(filename, html) {
 function compile() {
     "use strict";
     
-    var i, html;
-    
+    var i, html; 
+       
     if (fs.existsSync('./posts/index.html')) {
         var indexHtmlStats = fs.statSync('./posts/index.html'),
             indexEjsStats = fs.statSync('./template/index.ejs');
@@ -323,6 +306,8 @@ function compile() {
         writeHtmlFile(postsArray[i].filename, html);
     } 
 }
+
+
 
 
 /*

@@ -18,6 +18,8 @@ var postProperties = [
 ];
 
 
+
+
 /*
    This function prompts the user for input
    
@@ -35,6 +37,8 @@ function prompt(question, callback) {
     callback(stdin, data);
   });
 }
+
+
 
 
 /*
@@ -71,4 +75,8 @@ function main() {
   prompt(question.text, process_val);
 }
 
+
+
+
 main();
+

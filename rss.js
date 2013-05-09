@@ -6,7 +6,7 @@
 
 var Feed = require('rss'),
     fs = require('fs'),
-    config = require('./config'),
+    config = require('./config.json'),
     feed;
 
 
@@ -34,23 +34,6 @@ function RSS() {
 
 
 /*
-    Fetches and reads ./posts.json (which contains all post entries)
-    
-    @returns: JSON Array
-*/
-RSS.prototype.getPosts = function () {
-    var postsTxt, posts;
-    
-    postsTxt = fs.readFileSync('./posts.json', 'utf8');
-    posts = JSON.parse(postsTxt);
-    
-    return posts;
-};
-
-
-
-
-/*
     Creates rss feed
 */
 RSS.prototype.getFeed = function () {
@@ -58,7 +41,7 @@ RSS.prototype.getFeed = function () {
         return this.xml;
     }
     
-    var posts = this.getPosts(), xml, i;
+    var posts = require('./posts.json'), xml, i;
     
     // latest posts first
     posts.reverse();
