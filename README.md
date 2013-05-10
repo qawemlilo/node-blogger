@@ -57,13 +57,13 @@ compile
 ```
 **Note:** If this command doesn't work run the script directly: `node bin/compile`.
 
-Awesome! Now its time to share your blog with the would, let's fire up the server.
+Awesome! Now let's fire up the server.
 
 ```
 node server.js
 ```
 
-That's all, your blog in now up and running!
+That's it, your blog in now up and running!
 
 
 
