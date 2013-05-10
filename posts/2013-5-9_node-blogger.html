@@ -51,16 +51,16 @@
         </div> 
          
         <div class="sharep"> 
-            <a target="_blank" href="http://www.facebook.com/share.php?u=http://localhost:3080/2013/5/9/node-blogger" class="share-fb" title="Share on Facebook">  
+            <a target="_blank" href="http://www.facebook.com/share.php?u=http://ragingflameblog.herokuapp.com/2013/5/9/node-blogger" class="share-fb" title="Share on Facebook">  
               <img src="/img/fb-small.png" />  
             </a> 
-            <a target="_blank" href="http://twitter.com/home?status=http://localhost:3080/2013/5/9/node-blogger" class="share-twitter" title="Share on Twitter"> 
+            <a target="_blank" href="http://twitter.com/home?status=http://ragingflameblog.herokuapp.com/2013/5/9/node-blogger" class="share-twitter" title="Share on Twitter"> 
               <img src="/img/twitter-small.png" /> 
             </a> 
-            <a target="_blank" href="http://reddit.com/submit?url=http://localhost:3080/2013/5/9/node-blogger" class="share-reddit" title="Share on Reddit"> 
+            <a target="_blank" href="http://reddit.com/submit?url=http://ragingflameblog.herokuapp.com/2013/5/9/node-blogger" class="share-reddit" title="Share on Reddit"> 
               <img src="/img/reddit-small.png" /> 
             </a> 
-            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:3080/2013/5/9/node-blogger" class="share-linkedin" title="Share on LinkedIn"> 
+            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=http://ragingflameblog.herokuapp.com/2013/5/9/node-blogger" class="share-linkedin" title="Share on LinkedIn"> 
               <img src="/img/linkedin-small.png" /> 
             </a> 
         </div> 
@@ -68,27 +68,47 @@
        
       <p style="clear:both"></p> 
        
-      <p>This blog is powered by <a href="https://github.com/qawemlilo/node-blogger">Node Blogger</a>, a small Node.js blogging engine that compiles markdown to html. </p>
+      <p>This blog is powered by <a href="https://github.com/qawemlilo/node-blogger">Node Blogger</a>, a small NoDatabase blogging platform for Node.js </p>
 
-<h3>Installation</h3>
+<h2>Installation</h2>
 
-<pre><code>git clone https://github.com/qawemlilo/node-blogger.git
+<p>First you need to download the repo
+<code>
+git clone https://github.com/qawemlilo/node-blogger.git
+</code></p>
+
+<p>Then install dependencies
+<code>`
 cd node-blogger &amp;&amp; npm install
-npm link
-# if you are using linux (I&#39;m using ubuntu) you may need to use `sudo npm link`</code></pre>
+</code></p>
 
-<h3>How it works</h3>
+<p>After installing dependencies, link the <code>bin</code> scripts to access them via the commandline
+<code>
+npm link
+</code></p>
+
+<p>Now you need to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.
+<code>
+setupblog 
+</code>
+<strong>Note:</strong> If this command doesn&#39;t work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
+
+<h2>How it works</h2>
 
 <p>Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in <code>posts.json</code>, which is our pseudo-database.</p>
 
 <p>Create a new post from the commandline:</p>
 
-<pre><code>newpost
+<p><code></code>`
+newpost</p>
 
-# prompt
-Title: My NodeJS adventures
+<h1>prompt</h1>
+
+<p>Title: My NodeJS adventures
 Categories: node.js, javascript
-Date: </code></pre>
+Date: 
+<code></code>
+<strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/newpost</code>.</p>
 
 <ul><li>Title: (String) - title of your new post (required)</li><li>Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)</li><li>Date: (Int - millisecs) - publishing date (optional, defaults to current time)</li></ul>
 
@@ -96,43 +116,46 @@ Date: </code></pre>
 
 <p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.</p>
 
-<pre><code>compile</code></pre>
+<p><code>
+compile
+</code>
+<strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/compile</code>.</p>
 
-<p>Awesome! Now its time to share your blog with the would, let&#39;s fire up the server.</p>
+<p>Awesome! Now let&#39;s fire up the server.</p>
 
-<pre><code>node server.js</code></pre>
+<p><code>
+node server.js
+</code></p>
 
-<p>That&#39;s all, your blog in now up and running!</p>
+<p>That&#39;s it, your blog in now up and running!</p>
 
-<h3>Dependencies</h3>
+<h2>Dependencies</h2>
 
 <ul><li>EJS -  for templating</li><li>markdown-js - for parsing markdown files.</li><li>connect - for serving static files for the template</li><li>rss - blog rss feed</li></ul>
 
-<h3>Customisation</h3>
+<h2>Customisation</h2>
 
 <p>You can customise your blog by editing files in the <code>template</code> directory. Node blogger uses EJS for templating, <code>template/index.ejs</code> holds the template for the home page and <code>template/post.ejs</code> holds the template for posts. </p>
 
-<h3>Routing</h3>
+<h2>Routing</h2>
 
 <p>The <code>routes.js</code> file contains the connect middleware for handling http requests.</p>
 
-<h3>Commands</h3>
+<h2>Commands</h2>
 
-<p><code>newpost</code> (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also logs the new post in <code>posts.json</code>, our pseudo-database.</p>
+<ul><li><code>setupblog</code> - (bin/setupblog) the setupblog command sets up configuration for a new blog </li><li><code>newpost</code> - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in <code>posts.json</code>, our pseudo-database.</li><li><code>compile</code> - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.</li></ul>
 
-<p><code>compile</code> (bin/compile) - the compile command generates the html files that are served by our http server.</p>
+<h2>Server</h2>
 
-<h3>Server</h3>
+<p><code>server.js</code> contains our http server which makes our blog posts available and accessible via a browser.</p>
 
-<p><code>server.js</code> contains our http server which makes our blog posts available via a browser.</p>
-
-<h3>Contributing</h3>
+<h2>Contributing</h2>
 
 <p>Fork and send me a pull request. Do not develop on the master branch.</p>
 
-<ul><li>For bugs and tweaks create new branch prefixed by <code>hitfix-</code>.</li><li>For new features create a new branch prefixed by <code>feature-</code>.</li></ul>
+<ul><li>For bugs and tweaks create new branch prefixed by <code>hotfix-</code>.</li><li>For new features create a new branch prefixed by <code>feature-</code>.</li></ul>
 
-<h3>Credits</h3>
+<h2>Credits</h2>
 
 <p>Node blogger was inspired by <a href="http://tutorialzine.com/2013/03/simple-php-blogging-system">this post</a> on http://tutorialzine.com.</p>
 
