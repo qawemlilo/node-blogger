@@ -53,7 +53,7 @@ function loadPage (filename, res) {
         res.end('Page not found :(');
     }
     else {
-        res.writeHead(404, {
+        res.writeHead(200, {
             'Content-Type': 'text/html; charset=utf-8'
         }); 
         

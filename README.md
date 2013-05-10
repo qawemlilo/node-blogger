@@ -14,7 +14,7 @@ Then install dependencies
 cd node-blogger && npm install
 ```
 
-After installing dependencies, link the `bin` scripts to access then via the commandline
+After installing dependencies, link the `bin` scripts to access them via the commandline
 ```
 npm link
 ```

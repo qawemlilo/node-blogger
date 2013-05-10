@@ -83,6 +83,12 @@ function removeDemoPosts() {
                 fs.unlinkSync(filePath);
             }
         }
+
+        try { 
+            fs.writeFileSync('./posts.json', '[]', 'utf8');
+        } catch(e) { 
+            return; 
+        }
     };
 }
 
@@ -93,7 +99,7 @@ config = {
         name: 'Blog',
         description: 'Blog',
         baseUrl: '/',
-        postsFolder: __dirname + '/posts',
+        postsFolder: './posts',
         postsFile: './posts.json',
         url: 'http://localhost:3080',
         rss: '/rss',
@@ -169,7 +175,7 @@ function main() {
             removeDemoPosts();
             
             saveConfig(config, function (error) {
-              console.log("\n Node Blogger has been successifully set up! \n")
+              console.log("\nYour blog has been successfully set up!")
             });
             
             stdin.end();

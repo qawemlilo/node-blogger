@@ -284,7 +284,11 @@ function writeHtmlFile(filename, html) {
 function compile() {
     "use strict";
     
-    var i, html; 
+    var i, html;
+
+    if (!postsArray) {
+        return;
+    }    
        
     if (fs.existsSync('./posts/index.html')) {
         var indexHtmlStats = fs.statSync('./posts/index.html'),
