@@ -17,6 +17,11 @@ function Posts () {
     
     postsArray = require('./posts.json');  
     self.cache = Object.create({});
+
+    if (!postsArray || postsArray.length < 1) {
+        console.log('No posts were found');
+        process.exit();
+    }
     
     // add the index page
     self.cache['index'] = fs.readFileSync('./posts/index.html', 'utf8');

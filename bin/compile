@@ -27,10 +27,15 @@ var config = require('../config.json'),
 function mdToHtml (filename) {
     "use strict";
     
-    var contents = fs.readFileSync(filename, 'utf8'),
-        html = markdown.toHTML(contents);
+    try {
+        var contents = fs.readFileSync(filename, 'utf8'),
+            html = markdown.toHTML(contents);
     
-    return html; 
+        return html;
+    }
+    catch (error) {
+        return '';
+    }    
 }
 
 
@@ -101,10 +106,15 @@ function compileTemplate(template, data) {
     
     var ejsTemplate, compiledHtml;
     
-    ejsTemplate = fs.readFileSync('./template/' + template, 'utf8');
-    compiledHtml = ejs.render(ejsTemplate, data);
+    try {
+        ejsTemplate = fs.readFileSync('./template/' + template, 'utf8');
+        compiledHtml = ejs.render(ejsTemplate, data);
     
-    return compiledHtml;
+        return compiledHtml;
+    }
+    catch (error) {
+        return '';
+    }
 }
 
 
@@ -272,8 +282,11 @@ function writeHtmlFile(filename, html) {
         } 
     }
     
-    fs.writeFileSync('./posts/' + filename + '.html', html, 'utf8');
-    console.log(filename + '.html' + ' created!');
+    try {
+        fs.writeFileSync('./posts/' + filename + '.html', html, 'utf8');
+        console.log(filename + '.html' + ' created!');
+    }
+    catch (error) {}
 }
 
 
@@ -290,20 +303,11 @@ function compile() {
         return;
     }    
        
-    if (fs.existsSync('./posts/index.html')) {
-        var indexHtmlStats = fs.statSync('./posts/index.html'),
-            indexEjsStats = fs.statSync('./template/index.ejs');
-        
-        // check if the index.ejs template has been modified
-        if (indexEjsStats.mtime.getTime() > indexHtmlStats.mtime.getTime()) {        
-            fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
-            console.log('Home page created!');
-        }
-    }
-    else {
+    try {
         fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
         console.log('Home page created!');    
     }
+    catch (error) {}
     
 
     for (i = 0; i < postsArray.length; i++) {
@@ -319,4 +323,3 @@ function compile() {
   Start compiling
 */
 compile();
-

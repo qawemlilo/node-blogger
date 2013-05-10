@@ -1,6 +1,6 @@
 # Node Blogger
 
-Node Blogger is a small Node.js blogging engine that compiles markdown to html and does not use any database. 
+Node Blogger is a small Node.js blogging platform that compiles markdown to html and does not use any database. 
 
 ## Installation
 
