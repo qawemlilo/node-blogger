@@ -81,9 +81,9 @@ You can customise your blog by editing files in the `template` directory. Node b
 The `routes.js` file contains the connect middleware for handling http requests.
 
 ## Commands
-`newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
-
-`compile` (bin/compile) - the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
+ - `setupblog` - (bin/setupblog) the setupblog command sets up configuration for a new blog 
+ - `newpost` - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
+ - `compile` - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
 
 ## Server
 `server.js` contains our http server which makes our blog posts available and accessible via a browser.
