@@ -4,6 +4,8 @@
 *.md~
 *.json~
 *.html~
+*.ejs~
+*.css~
 node_modules/
 build/
 

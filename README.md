@@ -3,14 +3,31 @@
 Node Blogger is a small Node.js blogging engine that compiles markdown to html and does not use any database. 
 
 ## Installation
+
+First you need to download the repo
 ```
 git clone https://github.com/qawemlilo/node-blogger.git
-
-cd node-blogger && npm install
-
-npm link
-# if you are using linux (I'm using ubuntu) you may need to use `sudo npm link`
 ```
+
+Then install dependencies
+````
+cd node-blogger && npm install
+```
+
+After installing dependencies, link the `bin` scripts to access then via the commandline
+```
+npm link
+```
+
+Now you need to set up the basic configs for your blog. This process will update `config.json` with your data.
+```
+setupblog 
+```
+**Note:** If this command doesn't work it means that npm linking did not work. Run the script directly: `node bin/setupblog`.
+
+
+
+
 
 ## How it works
 Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
@@ -25,6 +42,7 @@ Title: My NodeJS adventures
 Categories: node.js, javascript
 Date: 
 ````
+**Note:** If this command doesn't work run the script directly: `node bin/newpost`.
 
  - Title: (String) - title of your new post (required)
  - Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)
@@ -37,6 +55,7 @@ After you have finished writing your post in markdown format, compile it to html
 ```
 compile
 ```
+**Note:** If this command doesn't work run the script directly: `node bin/compile`.
 
 Awesome! Now its time to share your blog with the would, let's fire up the server.
 

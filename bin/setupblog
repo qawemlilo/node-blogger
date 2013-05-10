@@ -49,7 +49,7 @@ function prompt(question, callback) {
 
 
 /*
-   This function saves our config settings
+   Saves our config settings
    
    @param: (Object) obj - config object.
    @param: (Function) callback - function executed after saving the file 
@@ -62,6 +62,29 @@ function saveConfig (obj, fn) {
     });
 }
 
+
+
+
+/*
+   Removes all the demo posts
+*/
+function removeDemoPosts() {
+    try { 
+        var postsDir = './posts', filePath, files = fs.readdirSync(postsDir), i; 
+    } catch(e) { 
+        return; 
+    }
+    
+    if (files.length > 0) {
+        for (i = 0; i < files.length; i++) {
+            filePath = postsDir + '/' + files[i];
+            
+            if (fs.statSync(filePath).isFile()) {
+                fs.unlinkSync(filePath);
+            }
+        }
+    };
+}
 
 
 
@@ -102,58 +125,60 @@ config = {
    Main program
 */
 function main() {
-  var counter = 0, configquestionsLength = configquestions.length;
+    var counter = 0, configquestionsLength = configquestions.length, question;
 
-  var process_val = function (stdin, val) {
-      var q = question.id;
+    function processVal (stdin, val) {
+        var id = question.id;
       
-      switch(q) {
-          case 'blogname':
-              val ? config.blog.name = val : null;
-          break;
+        switch(id) {
+            case 'blogname':
+                val ? config.blog.name = val : null;
+            break;
           
-          case 'blogdescription':
-              val ? config.blog.description = val : null;
-          break;
+            case 'blogdescription':
+                val ? config.blog.description = val : null;
+            break;
           
-          case 'authorname':
-              val ? config.author.name = val : null;
-          break;
+            case 'authorname':
+                val ? config.author.name = val : null;
+            break;
           
-          case 'authorautobio':
-              val ? config.author.autobio = val : null;
-          break;
+            case 'authorautobio':
+                val ? config.author.autobio = val : null;
+            break;
           
-          case 'authoremail':
-             val ? config.author.email = val : null;
-          break;
+            case 'authoremail':
+               val ? config.author.email = val : null;
+            break;
           
-          case 'authortwitter':
-             val ? config.author.twitterHandle = val : null;
-          break;
+            case 'authortwitter':
+               val ? config.author.twitterHandle = val : null;
+            break;
           
-          case 'authorwebsite':
-              val ? config.author.website = val : null;
-          break;
-      }
+            case 'authorwebsite':
+                val ? config.author.website = val : null;
+            break;
+        }
     
-      // if properties still available
-      if (counter < (configquestionsLength - 1)) {
-          question = configquestions[++counter];
-          prompt(question.text, process_val);
-      } 
-      else {
-          // create a new post
-          saveConfig(config, function (error) {
+        // if properties still available
+        if (counter < (configquestionsLength - 1)) {
+            question = configquestions[++counter];
+            prompt(question.text, processVal);
+        } 
+        else {
+            removeDemoPosts();
+            
+            saveConfig(config, function (error) {
               console.log("\n Node Blogger has been successifully set up! \n")
-          })
-          stdin.end();
-      }
-  };
+            });
+            
+            stdin.end();
+        }
+    };
   
-  var question = configquestions[counter];
+    question = configquestions[counter];
   
-  prompt(question.text, process_val);
+    prompt(question.text, processVal);
 }
 
 
