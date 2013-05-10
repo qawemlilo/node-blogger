@@ -1,23 +1,47 @@
-This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small Node.js blogging engine that compiles markdown to html. 
+This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small NoDatabase blogging platform for Node.js 
 
-### Installation
-    git clone https://github.com/qawemlilo/node-blogger.git
-    cd node-blogger && npm install
-    npm link
-    # if you are using linux (I'm using ubuntu) you may need to use `sudo npm link`
 
-### How it works
+## Installation
 
+First you need to download the repo
+```
+git clone https://github.com/qawemlilo/node-blogger.git
+```
+
+Then install dependencies
+````
+cd node-blogger && npm install
+```
+
+After installing dependencies, link the `bin` scripts to access them via the commandline
+```
+npm link
+```
+
+Now you need to set up the basic configs for your blog. This process will update `config.json` with your data.
+```
+setupblog 
+```
+**Note:** If this command doesn't work it means that npm linking did not work. Run the script directly: `node bin/setupblog`.
+
+
+
+
+
+## How it works
 Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
 
 Create a new post from the commandline:
 
-    newpost
-    
-    # prompt
-    Title: My NodeJS adventures
-    Categories: node.js, javascript
-    Date: 
+```
+newpost
+
+# prompt
+Title: My NodeJS adventures
+Categories: node.js, javascript
+Date: 
+````
+**Note:** If this command doesn't work run the script directly: `node bin/newpost`.
 
  - Title: (String) - title of your new post (required)
  - Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)
@@ -27,55 +51,57 @@ A new markdown file is created with some placeholding text. You can find that fi
 
 After you have finished writing your post in markdown format, compile it to html by running the `compile` command.
 
-    compile
+```
+compile
+```
+**Note:** If this command doesn't work run the script directly: `node bin/compile`.
 
-Awesome! Now its time to share your blog with the would, let's fire up the server.
+Awesome! Now let's fire up the server.
 
-    node server.js
+```
+node server.js
+```
 
-That's all, your blog in now up and running!
+That's it, your blog in now up and running!
 
 
 
-### Dependencies
-
+## Dependencies
  - EJS -  for templating
  - markdown-js - for parsing markdown files.
  - connect - for serving static files for the template
  - rss - blog rss feed
  
-### Customisation
-
+## Customisation
 You can customise your blog by editing files in the `template` directory. Node blogger uses EJS for templating, `template/index.ejs` holds the template for the home page and `template/post.ejs` holds the template for posts. 
 
 
-### Routing
-
+## Routing
 The `routes.js` file contains the connect middleware for handling http requests.
 
-### Commands
+## Commands
+ - `setupblog` - (bin/setupblog) the setupblog command sets up configuration for a new blog 
+ - `newpost` - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
+ - `compile` - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
 
-`newpost` (bin/newpost) - the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
-
-`compile` (bin/compile) - the compile command generates the html files that are served by our http server.
-
-### Server
-
-`server.js` contains our http server which makes our blog posts available via a browser.
+## Server
+`server.js` contains our http server which makes our blog posts available and accessible via a browser.
 
 
-### Contributing
-
+## Contributing
 Fork and send me a pull request. Do not develop on the master branch.
 
- - For bugs and tweaks create new branch prefixed by `hitfix-`.
+ - For bugs and tweaks create new branch prefixed by `hotfix-`.
  - For new features create a new branch prefixed by `feature-`.
 
         
   
-### Credits
-
+## Credits
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
+
+
+
+
 
 
 
