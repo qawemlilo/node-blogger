@@ -73,59 +73,43 @@
 <h2>Installation</h2>
 
 <p>First you need to download the repo
-<code>
-git clone https://github.com/qawemlilo/node-blogger.git
-</code></p>
+    git clone https://github.com/qawemlilo/node-blogger.git</p>
 
 <p>Then install dependencies
-<code>`
-cd node-blogger &amp;&amp; npm install
-</code></p>
+    cd node-blogger &amp;&amp; npm install</p>
 
 <p>After installing dependencies, link the <code>bin</code> scripts to access them via the commandline
-<code>
-npm link
-</code></p>
+    npm link</p>
 
 <p>Now you need to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.
-<code>
-setupblog 
-</code>
-<strong>Note:</strong> If this command doesn&#39;t work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
+    setupblog </p>
+
+<p><strong>Note:</strong> If this command doesn&#39;t work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
 
 <h2>How it works</h2>
 
 <p>Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in <code>posts.json</code>, which is our pseudo-database.</p>
 
-<p>Create a new post from the commandline:</p>
+<p>Create a new post from the commandline:
+    newpost</p>
 
-<p><code></code>`
-newpost</p>
-
-<h1>prompt</h1>
-
-<p>Title: My NodeJS adventures
+<pre><code># prompt
+Title: My NodeJS adventures
 Categories: node.js, javascript
-Date: 
-<code></code>
-<strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/newpost</code>.</p>
+Date: </code></pre>
+
+<p><strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/newpost</code>.</p>
 
 <ul><li>Title: (String) - title of your new post (required)</li><li>Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)</li><li>Date: (Int - millisecs) - publishing date (optional, defaults to current time)</li></ul>
 
 <p>A new markdown file is created with some placeholding text. You can find that file in the <code>posts</code> directory, use it to write your post.</p>
 
-<p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.</p>
-
-<p><code>
-compile
-</code>
+<p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.
+    compile
 <strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/compile</code>.</p>
 
-<p>Awesome! Now let&#39;s fire up the server.</p>
-
-<p><code>
-node server.js
-</code></p>
+<p>Awesome! Now let&#39;s fire up the server.
+    node server.js</p>
 
 <p>That&#39;s it, your blog in now up and running!</p>
 
