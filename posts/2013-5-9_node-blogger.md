@@ -1,18 +1,21 @@
 This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small NoDatabase blogging platform for Node.js 
 
-
 ## Installation
 
 First you need to download the repo
+
     git clone https://github.com/qawemlilo/node-blogger.git
 
 Then install dependencies
+
     cd node-blogger && npm install
 
 After installing dependencies, link the `bin` scripts to access them via the commandline
+
     npm link
 
 Now you need to set up the basic configs for your blog. This process will update `config.json` with your data.
+
     setupblog 
     
 **Note:** If this command doesn't work it means that npm linking did not work. Run the script directly: `node bin/setupblog`.
@@ -24,7 +27,8 @@ Now you need to set up the basic configs for your blog. This process will update
 ## How it works
 Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
 
-Create a new post from the commandline:
+Create a new post from the commandline: 
+
     newpost
 
     # prompt
@@ -44,6 +48,7 @@ After you have finished writing your post in markdown format, compile it to html
 **Note:** If this command doesn't work run the script directly: `node bin/compile`.
 
 Awesome! Now let's fire up the server.
+
     node server.js
 
 That's it, your blog in now up and running!

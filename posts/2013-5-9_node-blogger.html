@@ -72,17 +72,21 @@
 
 <h2>Installation</h2>
 
-<p>First you need to download the repo
-    git clone https://github.com/qawemlilo/node-blogger.git</p>
+<p>First you need to download the repo</p>
 
-<p>Then install dependencies
-    cd node-blogger &amp;&amp; npm install</p>
+<pre><code>git clone https://github.com/qawemlilo/node-blogger.git</code></pre>
 
-<p>After installing dependencies, link the <code>bin</code> scripts to access them via the commandline
-    npm link</p>
+<p>Then install dependencies</p>
 
-<p>Now you need to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.
-    setupblog </p>
+<pre><code>cd node-blogger &amp;&amp; npm install</code></pre>
+
+<p>After installing dependencies, link the <code>bin</code> scripts to access them via the commandline</p>
+
+<pre><code>npm link</code></pre>
+
+<p>Now you need to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.</p>
+
+<pre><code>setupblog </code></pre>
 
 <p><strong>Note:</strong> If this command doesn&#39;t work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
 
@@ -90,10 +94,11 @@
 
 <p>Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in <code>posts.json</code>, which is our pseudo-database.</p>
 
-<p>Create a new post from the commandline:
-    newpost</p>
+<p>Create a new post from the commandline: </p>
 
-<pre><code># prompt
+<pre><code>newpost
+
+# prompt
 Title: My NodeJS adventures
 Categories: node.js, javascript
 Date: </code></pre>
@@ -108,8 +113,9 @@ Date: </code></pre>
     compile
 <strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/compile</code>.</p>
 
-<p>Awesome! Now let&#39;s fire up the server.
-    node server.js</p>
+<p>Awesome! Now let&#39;s fire up the server.</p>
+
+<pre><code>node server.js</code></pre>
 
 <p>That&#39;s it, your blog in now up and running!</p>
 
