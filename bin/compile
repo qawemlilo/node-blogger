@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 /*
    This file contains the program that compiles all markdown files to html files
    bin

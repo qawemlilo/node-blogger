@@ -70,7 +70,7 @@
        
       <p>This blog is powered by <a href="https://github.com/qawemlilo/node-blogger">Node Blogger</a>, a small NoDatabase blogging platform for Node.js </p>
 
-<h2>Installation</h2>
+<h3>Installation</h3>
 
 <p>First you need to download the repo</p>
 
@@ -90,7 +90,7 @@
 
 <p><strong>Note:</strong> If this command doesn&#39;t work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
 
-<h2>How it works</h2>
+<h3>How it works</h3>
 
 <p>Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in <code>posts.json</code>, which is our pseudo-database.</p>
 
@@ -109,9 +109,11 @@ Date: </code></pre>
 
 <p>A new markdown file is created with some placeholding text. You can find that file in the <code>posts</code> directory, use it to write your post.</p>
 
-<p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.
-    compile
-<strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/compile</code>.</p>
+<p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.</p>
+
+<pre><code>compile</code></pre>
+
+<p><strong>Note:</strong> If this command doesn&#39;t work run the script directly: <code>node bin/compile</code>.</p>
 
 <p>Awesome! Now let&#39;s fire up the server.</p>
 
@@ -119,23 +121,23 @@ Date: </code></pre>
 
 <p>That&#39;s it, your blog in now up and running!</p>
 
-<h2>Dependencies</h2>
+<h3>Dependencies</h3>
 
 <ul><li>EJS -  for templating</li><li>markdown-js - for parsing markdown files.</li><li>connect - for serving static files for the template</li><li>rss - blog rss feed</li></ul>
 
-<h2>Customisation</h2>
+<h3>Customisation</h3>
 
 <p>You can customise your blog by editing files in the <code>template</code> directory. Node blogger uses EJS for templating, <code>template/index.ejs</code> holds the template for the home page and <code>template/post.ejs</code> holds the template for posts. </p>
 
-<h2>Routing</h2>
+<h3>Routing</h3>
 
 <p>The <code>routes.js</code> file contains the connect middleware for handling http requests.</p>
 
-<h2>Commands</h2>
+<h3>Commands</h3>
 
 <ul><li><code>setupblog</code> - (bin/setupblog) the setupblog command sets up configuration for a new blog </li><li><code>newpost</code> - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in <code>posts.json</code>, our pseudo-database.</li><li><code>compile</code> - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.</li></ul>
 
-<h2>Server</h2>
+<h3>Server</h3>
 
 <p><code>server.js</code> contains our http server which makes our blog posts available and accessible via a browser.</p>
 
@@ -145,7 +147,7 @@ Date: </code></pre>
 
 <ul><li>For bugs and tweaks create new branch prefixed by <code>hotfix-</code>.</li><li>For new features create a new branch prefixed by <code>feature-</code>.</li></ul>
 
-<h2>Credits</h2>
+<h3>Credits</h3>
 
 <p>Node blogger was inspired by <a href="http://tutorialzine.com/2013/03/simple-php-blogging-system">this post</a> on http://tutorialzine.com.</p>
 

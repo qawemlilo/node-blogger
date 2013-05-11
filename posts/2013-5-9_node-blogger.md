@@ -1,6 +1,6 @@
 This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small NoDatabase blogging platform for Node.js 
 
-## Installation
+### Installation
 
 First you need to download the repo
 
@@ -24,7 +24,7 @@ Now you need to set up the basic configs for your blog. This process will update
 
 
 
-## How it works
+### How it works
 Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in `posts.json`, which is our pseudo-database.
 
 Create a new post from the commandline: 
@@ -44,7 +44,9 @@ Create a new post from the commandline:
 A new markdown file is created with some placeholding text. You can find that file in the `posts` directory, use it to write your post.
 
 After you have finished writing your post in markdown format, compile it to html by running the `compile` command.
+
     compile
+    
 **Note:** If this command doesn't work run the script directly: `node bin/compile`.
 
 Awesome! Now let's fire up the server.
@@ -53,25 +55,25 @@ Awesome! Now let's fire up the server.
 
 That's it, your blog in now up and running!
 
-## Dependencies
+### Dependencies
  - EJS -  for templating
  - markdown-js - for parsing markdown files.
  - connect - for serving static files for the template
  - rss - blog rss feed
  
-## Customisation
+### Customisation
 You can customise your blog by editing files in the `template` directory. Node blogger uses EJS for templating, `template/index.ejs` holds the template for the home page and `template/post.ejs` holds the template for posts. 
 
 
-## Routing
+### Routing
 The `routes.js` file contains the connect middleware for handling http requests.
 
-## Commands
+### Commands
  - `setupblog` - (bin/setupblog) the setupblog command sets up configuration for a new blog 
  - `newpost` - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
  - `compile` - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
 
-## Server
+### Server
 `server.js` contains our http server which makes our blog posts available and accessible via a browser.
 
 
@@ -83,7 +85,7 @@ Fork and send me a pull request. Do not develop on the master branch.
 
         
   
-## Credits
+### Credits
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
 
 

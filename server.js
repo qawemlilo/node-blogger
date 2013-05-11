@@ -3,7 +3,6 @@
    Blog http server
 */
 
-
 var http = require('http'),
     connect = require('connect'),
     port = process.env.PORT || 3080,
