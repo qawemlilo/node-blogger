@@ -338,7 +338,6 @@ aside .img-circle {
 }
 
 .pagination-arrow.older{
- margin-top: 20px!important;
  padding-right: 20px;
  float:right;
 }
@@ -440,8 +439,8 @@ aside .author{
 display: none;
 }
 
-aside ul li a{
- margin-right:10px;
+aside ul li a {
+ margin-right:15px;
 }
 
 #content{
@@ -451,7 +450,20 @@ aside ul li a{
  width: 90%;
 }
 
-#content a {
+#content a,#content a img {
  text-decoration:none !important;
+ border:0px !important;
+}
+
+#content .pagination-arrow.newer{
+ float:left; 
+ padding-left: 20px;
+ margin-top: 20px!important;
+}
+
+.pagination-arrow.older{
+ float:right;
+ padding-right: 20px;
+ margin-top: 20px!important;
 }
 }
