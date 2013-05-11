@@ -110,6 +110,7 @@ h1 a, h2 a{
 #content ul.allposts li a {
   margin-left: 10px;
 }
+ 
 
 aside ul{
   margin-left: 0px;
@@ -163,7 +164,27 @@ aside ul{
 }
 
 .post .sharep a {
-    margin-right: 5px;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: right;
+}
+
+.post .sharep a.share-fb {
+  background:url('../img/fb-small.png') no-repeat;
+}
+
+.post .sharep a.share-twitter {
+  background:url('../img/twitter-small.png') no-repeat;
+}
+
+.post .sharep a.share-linkedin {
+  background:url('../img/linkedin-small.png') no-repeat;
+}
+
+.post .sharep a.share-reddit {
+  background:url('../img/reddit-small.png') no-repeat;
 }
 
 .post .date:before{
@@ -292,21 +313,23 @@ aside p.author a {
    margin-right: 10px;
 }
 
-aside p.author a.twitter { 
-   background: url(../img/twitter.png) no-repeat;
+aside p.author a.facebook {
+  background-image: url("../img/icons.png");
+  background-position: -10px -10px;
+}
+aside p.author a.twitter {
+  background-image: url("../img/icons.png");
+  background-position: -10px -76px;
+}
+aside p.author a.google {
+  background-image: url("../img/icons.png");
+  background-position: -10px -142px;
+}
+aside p.author a.rss {
+  background-image: url("../img/icons.png");
+  background-position: -10px -208px;
 }
 
-aside p.author a.google { 
-   background: url(../img/plus.png) no-repeat;
-}
-
-aside p.author a.facebook { 
-   background: url(../img/fb.png) no-repeat;
-}
-
-aside p.author a.rss { 
-   background: url(../img/rss.png) no-repeat;
-}
 
 aside .img-circle {
   -webkit-border-radius: 500px;
@@ -450,7 +473,7 @@ aside ul li a {
  width: 90%;
 }
 
-#content a,#content a img {
+#content a, #content a img {
  text-decoration:none !important;
  border:0px !important;
 }
