@@ -455,15 +455,15 @@ aside ul li a {
  border:0px !important;
 }
 
+
+
 #content .pagination-arrow.newer{
  float:left; 
- padding-left: 20px;
  margin-top: 20px!important;
 }
 
-.pagination-arrow.older{
+#content .pagination-arrow.older{
  float:right;
- padding-right: 20px;
  margin-top: 20px!important;
 }
 }
