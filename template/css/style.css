@@ -172,20 +172,22 @@ aside ul{
 }
 
 .post .sharep a.share-fb {
-  background:url('../img/fb-small.png') no-repeat;
+  background-image: url("../img/share-icons.png");
+  background-position: -10px -10px;
 }
-
 .post .sharep a.share-twitter {
-  background:url('../img/twitter-small.png') no-repeat;
+  background-image: url("../img/share-icons.png");
+  background-position: -10px -46px;
 }
-
-.post .sharep a.share-linkedin {
-  background:url('../img/linkedin-small.png') no-repeat;
-}
-
 .post .sharep a.share-reddit {
-  background:url('../img/reddit-small.png') no-repeat;
+  background-image: url("../img/share-icons.png");
+  background-position: -10px -82px;
 }
+.post .sharep a.share-linkedin {
+  background-image: url("../img/share-icons.png");
+  background-position: -10px -118px;
+}
+
 
 .post .date:before{
 	width:18px;
