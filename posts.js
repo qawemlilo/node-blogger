@@ -24,12 +24,20 @@ function Posts () {
     }
     
     // add the index page
-    self.cache['index'] = fs.readFileSync('./posts/index.html', 'utf8');
+    try {
+        self.cache['index'] = fs.readFileSync('./posts/index.html', 'utf8');
+    }catch (e) {
+        console.log('index.html not found - please run the `compile` command first.');
+    }
    
     postsArray.forEach(function (file) {
-        var data = fs.readFileSync('./posts/' + file.filename + '.html', 'utf8');
-        
-        self.cache[file.filename] = data;
+        try {
+            var data = fs.readFileSync('./posts/' + file.filename + '.html', 'utf8');
+            
+            self.cache[file.filename] = data;
+        } catch (e) {
+            console.log(file.filename + '.html not found - please run the `compile` command first.');
+        }
     });
 };
 
