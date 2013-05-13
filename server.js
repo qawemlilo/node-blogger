@@ -10,7 +10,8 @@ var http = require('http'),
     app;
 
 app = connect()
-  .use(connect.static('template'))
+  .use(connect.compress())
+  .use(connect.static('template'), { maxAge: (1000 * 60 * 60 * 24) })
   .use(routes);
 
 

@@ -47,7 +47,7 @@ RSS.prototype.getFeed = function () {
     // latest posts first
     posts.reverse();
 
-    for (i = 0; i < config.blog.rssLimit; i++) {
+    for (i = 0; i < limit; i++) {
         feed.item({
             title: posts[i].title, 
             description: posts[i].title ,
