@@ -10,44 +10,31 @@
     }
     
     
-    function isMyLink(href, link) {
-        var hrefParser = document.createElement('a'),
-            linkParser = document.createElement('a');
-        
-        hrefParser.href = href;
-        linkParser.href = link;
-        
-        return hrefParser.hostname === linkParser.hostname;
-    }
-    
-    
     function inspectLinks() {
-        var links = document.getElementsByTagName('a'), i, href, mysite = window.location.href;
+        var links = document.getElementsByTagName('a'), 
+            i, href, isInternalLink,
+            mysite = window.location.href;
+        
+        isInternalLink = function (href, link) {
+            var hrefParser = document.createElement('a'),
+                linkParser = document.createElement('a');
+        
+            hrefParser.href = href;
+            linkParser.href = link;
+        
+            return hrefParser.hostname === linkParser.hostname;
+        };
     
         for (i = 0; i < links.length; i++) {
             href = links[i].href;
             
-            if (!isMyLink(mysite, href)) {
+            if (!isInternalLink(mysite, href)) {
                 links[i].target = '_blank';
             }
         }
     }
 
-    var oldonload = window.onload;
-    
-    if (typeof oldonload === 'function') {
-        window.onload = function() {
-            oldonload();
-            addClassNames();
-            prettyPrint();
-            inspectLinks();
-        };     
-    }
-    else {
-        window.onload = function() {
-            addClassNames();
-            prettyPrint();
-            inspectLinks();
-        };    
-    }
+    addClassNames();
+    prettyPrint();
+    inspectLinks();
 }(window));
