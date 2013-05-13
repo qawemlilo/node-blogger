@@ -3,9 +3,9 @@
         "name": "Raging Flame Blog",
         "description": "Rants about code and stuff...",
         "baseUrl": "/",
-        "postsFolder": "/home/qawe/Desktop/node-blogger/bin/posts",
+        "postsFolder": "/posts",
         "postsFile": "./posts.json",
-        "url": "http://ragingflameblog.herokuapp.com",
+        "url": "http://blog.ragingflame.co.za",
         "rss": "/rss",
         "rssLimit": 10
     },

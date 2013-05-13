@@ -240,7 +240,7 @@ function createIndex() {
         author: {
             autobio: config.author.autobio,
             email: config.author.email,
-            website: config.author.webgooglesite,
+            website: config.author.website,
             name: config.author.name,
             googlePage: config.author.googlePage,
             facbookPage: config.author.facbookPage,

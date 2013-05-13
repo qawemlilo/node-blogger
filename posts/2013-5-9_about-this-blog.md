@@ -1,4 +1,4 @@
-This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small NoDatabase blogging platform for Node.js 
+This blog is powered by [Node Blogger](https://github.com/qawemlilo/node-blogger), a small NoDatabase blogging platform for Node.js. I created  [Node Blogger](https://github.com/qawemlilo/node-blogger) out of my frustrations with WordPress's bloatedness and never-ending updates. Below is a detailed documantion on how to create your own blog using [Node Blogger](https://github.com/qawemlilo/node-blogger).
 
 ### Installation
 
