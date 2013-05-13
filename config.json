@@ -7,7 +7,7 @@
         "postsFile": "./posts.json",
         "url": "http://blog.ragingflame.co.za",
         "rss": "/rss",
-        "rssLimit": 10
+        "rssLimit": 20
     },
     "author": {
         "name": "Qawelesizwe Mlilo",
