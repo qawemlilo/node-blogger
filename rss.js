@@ -41,7 +41,8 @@ RSS.prototype.getFeed = function () {
         return this.xml;
     }
     
-    var posts = require('./posts.json'), xml, i;
+    var posts = require('./posts.json'), xml, i, 
+        limit = config.blog.rssLimit > posts.length ? posts.length : config.blog.rssLimit;
     
     // latest posts first
     posts.reverse();
