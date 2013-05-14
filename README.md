@@ -1,6 +1,6 @@
 # Node Blogger
 
-Node Blogger is a small NoDatabase blogging platform for Node.js. 
+Node Blogger is a small NoDatabase blogging platform for Node.js that I created becasuse of my frustrations with WordPress's bloatedness and never-ending updates. 
 
 ## Features
  - Super fast, loads only 5 resources and fetches posts from cache
