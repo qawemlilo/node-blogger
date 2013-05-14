@@ -8,12 +8,12 @@ var http = require('http'),
     port = process.env.PORT || 3080,
     routes = require('./routes'), 
     app,
-    OneDay = 86400000;
+    OneDay = (1000 * 60 * 60 * 24);
 
+    
 app = connect()
+  .use(connect.static(__dirname + '/template'), {maxAge: OneDay})
   .use(connect.compress())
-  .use(connect.static(__dirname + '/template'))
-  .use(connect.static(__dirname + '/template'), { maxAge: OneDay })
   .use(routes);
 
 

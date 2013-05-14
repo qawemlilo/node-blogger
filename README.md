@@ -2,6 +2,15 @@
 
 Node Blogger is a small NoDatabase blogging platform for Node.js. 
 
+## Features
+ - Super fast, loads only 5 resources and fetches posts from cache
+ - Mobile Responsive
+ - Easily customisable by editing files in the `template` directory
+ - Does not require a database
+ - Easy to deploy (I'm hosting my blog on heroku for free)
+ - Syntax Highlighting
+ - Search engine friendly urls
+
 DEMO: [http://ragingflameblog.herokuapp.com](http://ragingflameblog.herokuapp.com/)
 
 ## Installation
@@ -66,7 +75,6 @@ node server.js
 ```
 
 That's it, your blog in now up and running!
-
 
 
 ## Dependencies
