@@ -19,7 +19,12 @@
   </header>
 
   <aside>
-    <h1><a href="<%= blog.baseUrl %>"><img src="<%= author.avatar %>"class="img-circle" title="<%= author.name %>" alt="<%= author.name %>" /></a></h1>
+    <h1 style="text-align: center">
+      <a href="<%= blog.baseUrl %>">
+        <img src="<%= author.avatar %>" class="img-circle desktop" title="<%= author.name %>" alt="<%= author.name %>" />
+        <img src="/img/qawe-mobile.png" class="img-circle mobile" title="<%= author.name %>" alt="<%= author.name %>" />
+      </a>
+    </h1>
   
     <p class="description">
       <%= author.autobio %>

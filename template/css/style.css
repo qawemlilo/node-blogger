@@ -10,6 +10,14 @@
 	padding:0;
 }
 
+img.desktop {
+  display: block!important;
+}
+
+img.mobile {
+  display: none!important;
+}
+
 
 /*-------------------------
 	General Styles
@@ -454,6 +462,13 @@ ol.linenums li {
 
 
 @media all and (max-width: 1024px) {
+img.desktop {
+  display: none!important;
+}
+
+img.mobile {
+  display: block!important;
+}
 	aside{
 		left: 5%;
 		margin-left: 0;
@@ -475,6 +490,14 @@ ol.linenums li {
 }
 
 @media all and (max-width: 840px) {
+img.desktop {
+  display: none!important;
+}
+
+img.mobile {
+  display: block!important;
+}
+
 h2 {
   font-size:36px;
  }
