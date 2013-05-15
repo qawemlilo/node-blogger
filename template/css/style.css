@@ -462,13 +462,6 @@ ol.linenums li {
 
 
 @media all and (max-width: 1024px) {
-img.desktop {
-  display: none!important;
-}
-
-img.mobile {
-  display: block!important;
-}
 	aside{
 		left: 5%;
 		margin-left: 0;
