@@ -71,13 +71,13 @@
        
       <p style="clear:both"></p> 
        
-      <p>Love it or hate, you just cannot ignore JavaScript, there are countless tools and languages that compile to JavaScript popping up everywhere. Being a JavaScript lover it was only natural that I got really excited when Node.js was released. If you are unfamiliar with Node.js (have you been living under a rock? lol) please head over to <a href="http://nodejs.org">http://nodejs.org</a> to find what it&#39;s all about.</p>
+      <p>Love it or hate, you just cannot ignore JavaScript, there are countless tools and languages that compile to JavaScript popping up everywhere. Being a JavaScript lover it was only natural that I got really excited when Node.js was released. If you are not familiar with Node.js head over to <a href="http://nodejs.org">http://nodejs.org</a> and find what it&#39;s all about.</p>
 
 <p>This article is not a fan-boy rant but rather a documentation of how I&#39;m using Node.js to make real world apps.</p>
 
 <h3>My Environment</h3>
 
-<p>My first taste of Node was on a Windows XP machine, when the Node Windows installer became available I downloaded it and started experimenting and writing small programs. Everything worked out fine but running everything locally became a bit of a bore,  so earlier this year I signed up for a VPS with my web hosting company so that I could start using Node in production.</p>
+<p>My first taste of Node was on a Windows XP machine, when the Node Windows installer became available I downloaded it and started experimenting and writing small programs. Everything worked out fine but running everything locally became a bit of a bore so earlier this year I signed up for a VPS with my web hosting company so that I could start using Node in production.</p>
 
 <h3>Server Specs</h3>
 
@@ -87,7 +87,7 @@
 
 <p>This is my first time managing and running a dedicated server so I have been doing a lot of  &#39;googling&#39; to get things done.</p>
 
-<p>I found a useful gist posted by the current Node.js gatekeeper Isaac Schlueter, the first method of installation worked for me. My work station has a windows installation so I usually use the Windows Command line to make a SSH connection to my server.</p>
+<p>I found a useful gist posted by the current Node.js gatekeeper, Isaac Schlueter, the first method of installation worked for me. My work station runs on windows so I used the Windows Commandline to make a SSH connection to my server.</p>
 
 <pre><code>echo &#39;export PATH=$HOME/local/bin:$PATH&#39; &gt;&gt; ~/.bashrc
 . ~/.bashrc 
@@ -99,11 +99,11 @@ curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
 make install # ok, fine, this step probably takes more than 30 seconds...
 curl http://npmjs.org/install.sh | sh</code></pre>
 
-<p>With these few lines of code Node.js was installed without any hiccups, what is awesome about Node.js is that it comes bungled with NPM, a Node package manager, which is a handy tool when installing modules for your projects.</p>
+<p>With these few lines of code Node.js was installed without any hiccups. What is awesome about Node.js is that it comes bungled with NPM, a Node package manager, which is a handy tool when installing modules for your projects.</p>
 
 <h3>The App</h3>
 
-<p>My first Node.js app is the official website for my projects, I didn&#39;t want to get too fancy on uncharted territory so I kept it simple.  To get started I needed a mature and robust framework, fortunately I have had a bit of experience with Express on my local server and I&#39;m a big fan of the author&#39;s work, <a href="https://github.com/visionmedia">TJ Holowaychuk</a>. Navigate to your projects directory from the command line and install Express.</p>
+<p>My first Node.js app is the official website for my projects. I didn&#39;t want to get too fancy on uncharted territory so I kept it simple,  to get started I needed a mature and robust framework. I chose Express because I have had a bit of experience using it on my local server and I&#39;m a big fan of the author&#39;s work, <a href="https://github.com/visionmedia">TJ Holowaychuk</a>. Navigate to your projects directory from the command line and install Express.</p>
 
 <pre><code>#use npm to install express
 npm install -g express
