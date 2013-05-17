@@ -76,6 +76,13 @@ node server.js
 
 That's it, your blog in now up and running!
 
+ ## Testing
+ ```
+ npm test
+ 
+ npm run-script jshint
+ ```
+
 
 ## Dependencies
  - EJS -  for templating
@@ -104,6 +111,7 @@ Fork and send me a pull request. Do not develop on the master branch.
 
  - For bugs and tweaks create new branch prefixed by `hotfix-`.
  - For new features create a new branch prefixed by `feature-`.
+ 
 
         
   
