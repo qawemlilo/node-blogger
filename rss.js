@@ -25,6 +25,8 @@ feed = new Feed({
     rss constructor function
 */
 function RSS() {
+    "use strict";
+    
     this.xml = false;
     
     return this; 
@@ -37,6 +39,8 @@ function RSS() {
     Creates rss feed
 */
 RSS.prototype.getFeed = function () {
+    "use strict";
+    
     if (this.xml) {
         return this.xml;
     }
@@ -56,7 +60,7 @@ RSS.prototype.getFeed = function () {
             author: posts[i].author,
             date: posts[i].date
         });    
-    };
+    }
     
     this.xml = feed.xml();
     

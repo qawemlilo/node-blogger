@@ -3,7 +3,7 @@
         "name": "Raging Flame Blog",
         "description": "Rants about code and stuff...",
         "baseUrl": "/",
-        "postsFolder": "/posts",
+        "postsFolder": "./posts",
         "postsFile": "./posts.json",
         "url": "http://blog.ragingflame.co.za",
         "rss": "/rss",
