@@ -13,6 +13,7 @@
         "name": "Qawelesizwe Mlilo",
         "autobio": "Hi, my name is Qawelesizwe Mlilo(or Que), I write code and build stuff on the web. I'm at my happiest when programming in JavaScript but writing custom Joomla! extensions in PHP pays my bills.",
         "email": "qawemlilo@gmail.com",
+        "githubPage": "https://github.com/qawemlilo",
         "twitterHandle": "ragingflameblog",
         "website": "http://www.ragingflame.co.za",
         "facbookPage": "#",
@@ -22,7 +23,8 @@
     "showDate": true,
     "showPagination": true,
     "showShareButtons": true,
-    "showFacebookButton": true,
+    "showGithubButton": true,
+    "showFacebookButton": false,
     "showTwitterButton": true,
     "showGoogleButton": true,
     "showRssButton": true

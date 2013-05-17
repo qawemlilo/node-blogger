@@ -38,7 +38,8 @@
     </ul>
   
     <p class="author">
-      <% if (blog.showFacebookButton) { %> <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> </a> <% } %> 
+      <% if (blog.showGithubButton) { %> <a target="_blank" href="<%= author.githubPage %>" title="Github" class="github"> </a> <% } %>
+      <% if (blog.showFacebookButton) { %> <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> </a> <% } %>      
       <% if (blog.showTwitterButton) { %> <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" class="twitter"> </a> <% } %>  
       <% if (blog.showGoogleButton) { %> <a target="_blank" href="<%= author.googlePage %>" title="Google" class="google"> </a> <% } %>  
       <% if (blog.showRssButton) { %> <a href="<%= blog.rss %>" title="RSS" class="rss"> </a> <% } %> 
