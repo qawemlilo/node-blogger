@@ -12,6 +12,13 @@
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<% if (!post.showDate) { %>
+<style type="text/css">
+.post .date:before {
+  background: none;
+}
+</style>
+<% } %>
 </head>
 <body>
 
@@ -38,10 +45,10 @@
     </ul>
   
     <p class="author">
-      <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> &nbsp; </a> 
-      <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" class="twitter"> &nbsp; </a> 
-      <a target="_blank" href="<%= author.googlePage %>" title="Google" class="google"> &nbsp; </a> 
-      <a href="<%= blog.rss %>" title="RSS" class="rss"> &nbsp; </a>
+      <% if (blog.showFacebookButton) { %> <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> </a> <% } %> 
+      <% if (blog.showTwitterButton) { %> <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" class="twitter"> </a> <% } %>  
+      <% if (blog.showGoogleButton) { %> <a target="_blank" href="<%= author.googlePage %>" title="Google" class="google"> </a> <% } %>  
+      <% if (blog.showRssButton) { %> <a href="<%= blog.rss %>" title="RSS" class="rss"> </a> <% } %> 
     </p>
   </aside>
   
@@ -49,11 +56,15 @@
     <div class="post"> 
       <h2><%= post.title %></h2>
       
+      
       <div class="date">
+        <% if (post.showDate) { %>
         <div class="dt">
-          <%= post.day %> <%= post.month %> <%= post.year %>
+           <%= post.day %> <%= post.month %> <%= post.year %>
         </div>
+         <% } %>
         
+        <% if (post.showShareButtons) { %>  
         <div class="sharep">
             <a target="_blank" href="http://www.facebook.com/share.php?u=<%= blog.url + post.url %>" class="share-fb" title="Share on Facebook"> 
                &nbsp;
@@ -66,8 +77,10 @@
             </a>
             <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<%= blog.url + post.url %>" class="share-linkedin" title="Share on LinkedIn">
                &nbsp;
-            </a>
+            </a> 
         </div>
+        <% } %>
+        
       </div>
       
       <p style="clear:both"></p>
@@ -75,11 +88,11 @@
       <%- post.content %>
     </div>
     
-    <% if(pagination.prev) { %>
+    <% if(pagination.prev && post.showPagination) { %>
       <a href="<%= pagination.prev %>" title="Previous Post" class="pagination-arrow newer">Prev</a>
     <% } %>
     
-    <% if(pagination.next) { %>
+    <% if(pagination.next && post.showPagination) { %>
       <a href="<%= pagination.next %>" title="Next Post" class="pagination-arrow older">Next</a>
     <% } %>
   </section>

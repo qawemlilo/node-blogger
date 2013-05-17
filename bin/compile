@@ -149,7 +149,12 @@ function createPost(filename, counter) {
             baseUrl: config.blog.baseUrl,
             description: config.blog.description,
             url: config.blog.url,
-            rss: config.blog.rss
+            rss: config.blog.rss,
+            showFacebookButton: config.showFacebookButton,
+            showTwitterButton: config.showTwitterButton,
+            showGoogleButton: config.showGoogleButton,
+            showRssButton: config.showRssButton
+            
         },
         
         author: {
@@ -170,7 +175,10 @@ function createPost(filename, counter) {
             month: getMonth[postObject.month],
             day: postObject.day,
             content: postHtmlContent,
-            url: postObject.url
+            url: postObject.url,
+            showDate: config.showDate,
+            showPagination: config.showPagination,
+            showShareButtons: config.showShareButtons
         },
         
         pagination: pagination(counter)
@@ -236,6 +244,10 @@ function createIndex() {
             baseUrl: config.blog.baseUrl,
             description: config.blog.description,
             rss: config.blog.rss,
+            showFacebookButton: config.showFacebookButton,
+            showTwitterButton: config.showTwitterButton,
+            showGoogleButton: config.showGoogleButton,
+            showRssButton: config.showRssButton
         },
         author: {
             autobio: config.author.autobio,

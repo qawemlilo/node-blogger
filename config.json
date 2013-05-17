@@ -21,5 +21,9 @@
     },
     "showDate": true,
     "showPagination": true,
-    "showShareButtons": true
+    "showShareButtons": true,
+    "showFacebookButton": true,
+    "showTwitterButton": true,
+    "showGoogleButton": true,
+    "showRssButton": true
 }
