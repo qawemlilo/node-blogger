@@ -76,7 +76,8 @@ node server.js
 
 That's it, your blog in now up and running!
 
- ## Testing
+
+## Testing
  ```
  npm test
  
