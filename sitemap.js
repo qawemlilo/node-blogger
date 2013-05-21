@@ -17,19 +17,19 @@ function Sitemap () {
 }
 
 
+
+
 Sitemap.prototype.add = function (post) {
-    try {
-        this.json[0].urlset.push({
-            url: [
-                {loc: post.url}, 
-                {lastmod: new Date(post.lastmod).toISOString().substring(0, 10)}, 
-                {changefreq: 'weekly'}  
-            ]
-        });
-    } catch (error) {
-        throw error;
-    }
+    this.json[0].urlset.push({
+        url: [
+            {loc: post.url}, 
+            {lastmod: new Date(post.lastmod).toISOString().substring(0, 10)}, 
+            {changefreq: 'weekly'}  
+        ]
+    });
 }
+
+
 
 
 Sitemap.prototype.create = function () {
