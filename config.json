@@ -1,9 +1,9 @@
 {
     "blog": {
         "name": "Raging Flame Blog",
-        "description": "Rants about code and stuff...",
+        "description": "A blog about Web and Software development using Node.js, JavaScript, and PHP!",
         "baseUrl": "/",
-        "postsFolder": "/posts",
+        "postsFolder": "./posts",
         "postsFile": "./posts.json",
         "url": "http://blog.ragingflame.co.za",
         "rss": "/rss",
@@ -13,6 +13,7 @@
         "name": "Qawelesizwe Mlilo",
         "autobio": "Hi, my name is Qawelesizwe Mlilo(or Que), I write code and build stuff on the web. I'm at my happiest when programming in JavaScript but writing custom Joomla! extensions in PHP pays my bills.",
         "email": "qawemlilo@gmail.com",
+        "githubPage": "https://github.com/qawemlilo",
         "twitterHandle": "ragingflameblog",
         "website": "http://www.ragingflame.co.za",
         "facbookPage": "#",
@@ -21,5 +22,10 @@
     },
     "showDate": true,
     "showPagination": true,
-    "showShareButtons": true
+    "showShareButtons": true,
+    "showGithubButton": true,
+    "showFacebookButton": false,
+    "showTwitterButton": true,
+    "showGoogleButton": true,
+    "showRssButton": true
 }

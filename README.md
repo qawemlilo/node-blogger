@@ -1,6 +1,6 @@
 # Node Blogger
 
-Node Blogger is a small NoDatabase blogging platform for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. 
+Node Blogger is a small blogging platform for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. 
 
 ## Features
  - Super fast, loads only 5 resources and fetches posts from cache
@@ -50,12 +50,14 @@ newpost
 
 # prompt
 Title: My NodeJS adventures
+Description: This is a brief description about the new post.
 Categories: node.js, javascript
 Date: 
 ````
 **Note:** If this command doesn't work run the script directly: `node bin/newpost`.
 
  - Title: (String) - title of your new post (required)
+ - Description: (String) - a brief description for your new post (optional, helps with SEO)
  - Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)
  - Date: (Int - millisecs) - publishing date (optional, defaults to current time)
  
@@ -75,6 +77,14 @@ node server.js
 ```
 
 That's it, your blog in now up and running!
+
+
+## Testing
+ ```
+ npm test
+ 
+ npm run-script jshint
+ ```
 
 
 ## Dependencies
@@ -104,6 +114,7 @@ Fork and send me a pull request. Do not develop on the master branch.
 
  - For bugs and tweaks create new branch prefixed by `hotfix-`.
  - For new features create a new branch prefixed by `feature-`.
+ 
 
         
   

@@ -12,6 +12,7 @@ var config = require('../config.json'),
     ejs = require('ejs'),
     fs = require('fs'),
     postsArray = require('../posts.json'),
+    sitemap = require('../sitemap'),
     getMonth = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];   
 
 
@@ -145,11 +146,16 @@ function createPost(filename, counter) {
     
     data = {
         blog: {
-            title: config.blog.name + ' - ' + postObject.title,
             baseUrl: config.blog.baseUrl,
             description: config.blog.description,
             url: config.blog.url,
-            rss: config.blog.rss
+            rss: config.blog.rss,
+            showGithubButton: config.showGithubButton,
+            showFacebookButton: config.showFacebookButton,
+            showTwitterButton: config.showTwitterButton,
+            showGoogleButton: config.showGoogleButton,
+            showRssButton: config.showRssButton
+            
         },
         
         author: {
@@ -158,6 +164,7 @@ function createPost(filename, counter) {
             website: config.author.website,
             name: config.author.name,
             rss: config.author.rss,
+            githubPage: config.author.githubPage,
             googlePage: config.author.googlePage,
             facbookPage: config.author.facbookPage,
             twitterHandle: config.author.twitterHandle,
@@ -166,11 +173,15 @@ function createPost(filename, counter) {
         
         post: {
             title:  postObject.title,
+            description:  postObject.description,
             year: postObject.year,
             month: getMonth[postObject.month],
             day: postObject.day,
             content: postHtmlContent,
-            url: postObject.url
+            url: postObject.url,
+            showDate: config.showDate,
+            showPagination: config.showPagination,
+            showShareButtons: config.showShareButtons
         },
         
         pagination: pagination(counter)
@@ -236,12 +247,18 @@ function createIndex() {
             baseUrl: config.blog.baseUrl,
             description: config.blog.description,
             rss: config.blog.rss,
+            showGithubButton: config.showGithubButton,
+            showFacebookButton: config.showFacebookButton,
+            showTwitterButton: config.showTwitterButton,
+            showGoogleButton: config.showGoogleButton,
+            showRssButton: config.showRssButton
         },
         author: {
             autobio: config.author.autobio,
             email: config.author.email,
             website: config.author.website,
             name: config.author.name,
+            githubPage: config.author.githubPage,
             googlePage: config.author.googlePage,
             facbookPage: config.author.facbookPage,
             twitterHandle: config.author.twitterHandle,
@@ -268,7 +285,7 @@ function createIndex() {
     @param: (String) filename - name html file to be created
     @param: (HTML String) html - contents of the file
 */
-function writeHtmlFile(filename, html) {
+function writeHtmlFile(filename, url, html) {
     "use strict";
     
     if (fs.existsSync('./posts/' + filename + '.html')) {
@@ -277,15 +294,25 @@ function writeHtmlFile(filename, html) {
             postEjsStats = fs.statSync('./template/post.ejs');
              
         if (mdStats.mtime.getTime() < htmlStats.mtime.getTime() && postEjsStats.mtime.getTime() < htmlStats.mtime.getTime()) {
+            sitemap.add({
+                url: config.blog.url + url,
+                lastmod: htmlStats.mtime.getTime()
+            });
             return;
         } 
     }
     
     try {
         fs.writeFileSync('./posts/' + filename + '.html', html, 'utf8');
+        sitemap.add({
+            url: config.blog.url + url,
+            lastmod: htmlStats.mtime.getTime()
+        });
         console.log(filename + '.html' + ' created!');
     }
-    catch (error) {}
+    catch (error) {
+        throw error;
+    }
 }
 
 
@@ -304,15 +331,23 @@ function compile() {
        
     try {
         fs.writeFileSync('./posts/index.html', createIndex(), 'utf8');
+        sitemap.add({
+            url: config.blog.url,
+            lastmod: Date.now()
+        });
         console.log('Home page created!');    
     }
-    catch (error) {}
+    catch (error) {
+        throw error;
+    }
     
 
     for (i = 0; i < postsArray.length; i++) {
         html = createPost(postsArray[i].filename, i);
-        writeHtmlFile(postsArray[i].filename, html);
-    } 
+        writeHtmlFile(postsArray[i].filename, postsArray[i].url, html);
+    }
+
+    sitemap.create();    
 }
 
 

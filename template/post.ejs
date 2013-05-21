@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><%= blog.title %></title>
+<title><%= post.title %></title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" />
-<meta name="description" content="<%= blog.description %>" />
+<meta name="description" content="<%= post.description %>" />
 <meta name="generator" content="Node Blogger" />
 <link href="/css/style.css" rel="stylesheet" />
 <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" />
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<% if (!post.showDate) { %>
+<style type="text/css">
+.post .date:before {
+  background: none;
+}
+</style>
+<% } %>
 </head>
 <body>
 
@@ -37,22 +44,27 @@
     </ul>
   
     <p class="author">
-      <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> &nbsp; </a> 
-      <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" class="twitter"> &nbsp; </a> 
-      <a target="_blank" href="<%= author.googlePage %>" title="Google" class="google"> &nbsp; </a> 
-      <a href="<%= blog.rss %>" title="RSS" class="rss"> &nbsp; </a>
+      <% if (blog.showGithubButton) { %> <a target="_blank" href="<%= author.githubPage %>" title="Github" class="github"> </a> <% } %>
+      <% if (blog.showFacebookButton) { %> <a target="_blank" href="<%= author.facbookPage %>" title="Facebook" class="facebook"> </a> <% } %> 
+      <% if (blog.showTwitterButton) { %> <a target="_blank" href="http://twitter.com/<%= author.twitterHandle %>" title="Twitter" class="twitter"> </a> <% } %>  
+      <% if (blog.showGoogleButton) { %> <a target="_blank" href="<%= author.googlePage %>" title="Google" class="google"> </a> <% } %>  
+      <% if (blog.showRssButton) { %> <a href="<%= blog.rss %>" title="RSS" class="rss"> </a> <% } %> 
     </p>
   </aside>
   
   <section id="content">
     <div class="post"> 
-      <h2><%= post.title %></h2>
+      <h1><%= post.title %></h1>
+      
       
       <div class="date">
+        <% if (post.showDate) { %>
         <div class="dt">
-          <%= post.day %> <%= post.month %> <%= post.year %>
+           <%= post.day %> <%= post.month %> <%= post.year %>
         </div>
+         <% } %>
         
+        <% if (post.showShareButtons) { %>  
         <div class="sharep">
             <a target="_blank" href="http://www.facebook.com/share.php?u=<%= blog.url + post.url %>" class="share-fb" title="Share on Facebook"> 
                &nbsp;
@@ -65,8 +77,10 @@
             </a>
             <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<%= blog.url + post.url %>" class="share-linkedin" title="Share on LinkedIn">
                &nbsp;
-            </a>
+            </a> 
         </div>
+        <% } %>
+        
       </div>
       
       <p style="clear:both"></p>
@@ -74,11 +88,11 @@
       <%- post.content %>
     </div>
     
-    <% if(pagination.prev) { %>
+    <% if(pagination.prev && post.showPagination) { %>
       <a href="<%= pagination.prev %>" title="Previous Post" class="pagination-arrow newer">Prev</a>
     <% } %>
     
-    <% if(pagination.next) { %>
+    <% if(pagination.next && post.showPagination) { %>
       <a href="<%= pagination.next %>" title="Next Post" class="pagination-arrow older">Next</a>
     <% } %>
   </section>

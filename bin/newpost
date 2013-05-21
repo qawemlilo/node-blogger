@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 
 /*
@@ -12,8 +11,9 @@ var Post = require('../lib/post'),
 
 postProperties = [
   { id:'title', text:'Title', answerType:'str' },
+  { id:'description', text:'Description', answerType:'str' },
   { id:'categories', text:'Categories', answerType:'array' },
-  { id:'date', text:'Date(millisecs)', answerType:'date' },
+  { id:'date', text:'Date(millisecs)', answerType:'date' }
 ];
 
 
@@ -55,10 +55,10 @@ function main() {
         question;
 
     function processVal(stdin, val) {
-        if (question.answerType == 'date') {
+        if (question.answerType === 'date') {
             options[question.id] = val ? parseInt(val, 10) : Date.now();
         } 
-        else if (question.answerType == 'array') {
+        else if (question.answerType === 'array') {
             options[question.id] = val ? val.split(',') : ['uncategorised'];
         } 
         else {
@@ -75,7 +75,7 @@ function main() {
             post = new Post(options);
             stdin.end();
         }
-    };
+    }
 
     question = postProperties[counter];
   

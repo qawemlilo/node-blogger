@@ -25,7 +25,7 @@ function Posts () {
     
     // add the index page
     try {
-        self.cache['index'] = fs.readFileSync('./posts/index.html', 'utf8');
+        self.cache.index = fs.readFileSync('./posts/index.html', 'utf8');
     }catch (e) {
         console.log('index.html not found - please run the `compile` command first.');
     }
@@ -39,7 +39,7 @@ function Posts () {
             console.log(file.filename + '.html not found - please run the `compile` command first.');
         }
     });
-};
+}
 
 
 

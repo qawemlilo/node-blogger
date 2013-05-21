@@ -1,12 +1,12 @@
 {
   "name": "node-blogger",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A tiny Node.js blogging engine",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/index",
+    "jshint": "jshint posts.js rss.js server.js routes.js lib/post.js"
   },
-  "preferGlobal": "true",
   "bin": {
     "newpost": "bin/newpost",
     "compile": "bin/compile",
@@ -30,7 +30,9 @@
     "ejs": "~0.8.3",
     "markdown": "~0.4.0",
     "connect": "~2.7.8",
-    "rss": "0.0.4"
+    "rss": "0.0.4",
+    "should": "~1.2.2",
+    "xml": "0.0.7"
   },
   "engines": {
     "node": ">= 0.8.9",

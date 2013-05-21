@@ -61,13 +61,7 @@ header {
 -----------------------------*/
 
 
-h1{
-  font: 14px 'Open Sans Condensed', sans-serif;
-  text-transform:uppercase;
-  margin-bottom: 24px;
-}
-
-h2{
+h1, #content h1, h2{
   font: 48px 'Open Sans Condensed', sans-serif;
 }
 
@@ -322,17 +316,21 @@ aside p.author a {
    background-image: url('../img/icons.png');
 }
 
+aside p.author a.github {
+  background-position: -8px -7px;
+}
+
 aside p.author a.facebook {
-  background-position: -10px -10px;
+  background-position: -8px -67px;
 }
 aside p.author a.twitter {
-  background-position: -10px -76px;
+  background-position: -8px -134px;
 }
 aside p.author a.google {
-  background-position: -10px -142px;
+  background-position: -8px -200px;
 }
 aside p.author a.rss {
-  background-position: -10px -208px;
+  background-position: -8px -266px;
 }
 
 

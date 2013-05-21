@@ -121,7 +121,15 @@ config = {
     
     showPagination: true,
     
-    showShareButtons: true
+    showShareButtons: true,
+    
+    showFacebookButton: false,
+    
+    showTwitterButton: true,
+    
+    showGoogleButton: true,
+    
+    showRssButton: true
 };
 
 
@@ -175,7 +183,11 @@ function main() {
             removeDemoPosts();
             
             saveConfig(config, function (error) {
-              console.log("\nYour blog has been successfully set up!")
+                if (error) {
+                    throw error;
+                }
+                
+                console.log("\nYour blog has been successfully set up!")
             });
             
             stdin.end();
