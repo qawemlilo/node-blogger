@@ -11,6 +11,7 @@ var Post = require('../lib/post'),
 
 postProperties = [
   { id:'title', text:'Title', answerType:'str' },
+  { id:'description', text:'Description', answerType:'str' },
   { id:'categories', text:'Categories', answerType:'array' },
   { id:'date', text:'Date(millisecs)', answerType:'date' }
 ];

@@ -1,13 +1,12 @@
 {
   "name": "node-blogger",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A tiny Node.js blogging engine",
   "main": "app.js",
   "scripts": {
     "test": "mocha test/index",
     "jshint": "jshint posts.js rss.js server.js routes.js lib/post.js"
   },
-  "preferGlobal": "true",
   "bin": {
     "newpost": "bin/newpost",
     "compile": "bin/compile",

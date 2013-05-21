@@ -61,13 +61,7 @@ header {
 -----------------------------*/
 
 
-h1{
-  font: 14px 'Open Sans Condensed', sans-serif;
-  text-transform:uppercase;
-  margin-bottom: 24px;
-}
-
-h2{
+h1, #content h1, h2{
   font: 48px 'Open Sans Condensed', sans-serif;
 }
 

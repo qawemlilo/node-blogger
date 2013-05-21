@@ -172,7 +172,7 @@ function createPost(filename, counter) {
         
         post: {
             title:  postObject.title,
-            description:  postObject.title,
+            description:  postObject.description,
             year: postObject.year,
             month: getMonth[postObject.month],
             day: postObject.day,

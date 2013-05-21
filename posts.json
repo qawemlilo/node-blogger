@@ -2,6 +2,7 @@
     {
         "id": 1367933709833,
         "title": "Content Slider",
+        "description": "A jQuery plugin for displaying sliding html content.",
         "date": "2011-08-15T10:20:00.000Z",
         "year": 2011,
         "month": 8,
@@ -17,6 +18,7 @@
     {
         "id": 1367934265530,
         "title": "Lets build an HTML5 app",
+        "description": "A tutorial for building a simple JavaScript and HTML5 canvas application for converting colour images to black and white",
         "date": "2011-08-20T10:20:00.000Z",
         "year": 2011,
         "month": 8,
@@ -33,6 +35,7 @@
         "id": 1367996865187,
         "title": "Stone age tribe",
         "date": "2011-12-08T05:00:00.000Z",
+        "description": "Some humour",
         "year": 2011,
         "month": 12,
         "day": 8,
@@ -46,6 +49,7 @@
     {
         "id": 1367999370984,
         "title": "This is why JavaScript is awesome",
+        "description": "A JavaScript trick for parsing urls",
         "date": "2012-04-26T04:00:00.000Z",
         "year": 2012,
         "month": 4,
@@ -60,6 +64,7 @@
     {
         "id": 1368006930234,
         "title": "Running Node.js in production, my first app",
+        "description": "How to build a website with Node.js",
         "date": "2012-06-07T04:00:00.000Z",
         "year": 2012,
         "month": 6,
@@ -75,6 +80,7 @@
     {
         "id": 1368019247593,
         "title": "Simple form handling with Express and Nodemailer",
+        "description": "Handling forms and emails with Node.js",
         "date": "2012-06-28T04:00:00.000Z",
         "year": 2012,
         "month": 6,
@@ -91,6 +97,7 @@
     {
         "id": 1368020304593,
         "title": "The Secret of Happiness",
+        "description": "Some thought from a programmer about happiness",
         "date": "2012-09-27T04:00:00.000Z",
         "year": 2012,
         "month": 9,
@@ -105,6 +112,7 @@
     {
         "id": 1368020646750,
         "title": "Joomla: Using JRequest",
+        "description": "Using the Joomla! framework for extension development",
         "date": "2012-11-15T05:00:00.000Z",
         "year": 2012,
         "month": 11,
@@ -120,6 +128,7 @@
     {
         "id": 1368020940687,
         "title": "Creating unique array keys",
+        "description": "A php function for creating unique array keys",
         "date": "2012-11-16T05:00:00.000Z",
         "year": 2012,
         "month": 11,
@@ -134,6 +143,7 @@
     {
         "id": 1368021175203,
         "title": "$.Shout - Simple jQuery notifications",
+        "description": "Creating notification messages with jQuery",
         "date": "2012-11-23T05:00:00.000Z",
         "year": 2012,
         "month": 11,
@@ -149,6 +159,7 @@
     {
         "id": 1368021698114,
         "title": "Crushit",
+        "description": "A Node.js commandline tool for compiling and minifying scripts",
         "date": "2013-02-08T05:00:00.000Z",
         "year": 2013,
         "month": 2,
@@ -163,7 +174,7 @@
     },
     {
         "id": 1368084131500,
-        "title": "Roll out your own uptime monitor with Node.js",
+        "title": "A step by step tutorial on building an uptime monitor with Node.js",
         "date": "2013-02-14T05:00:00.000Z",
         "year": 2013,
         "month": 2,
@@ -179,6 +190,7 @@
     {
         "id": 1368088610062,
         "title": "Advocating for native modules",
+        "description": "My thoughts on using third party modules in Node.js",
         "date": "2013-03-24T04:00:00.000Z",
         "year": 2013,
         "month": 3,
@@ -193,6 +205,7 @@
     {
         "id": 1368103380579,
         "title": "About this Blog",
+        "description": "Documantion for creating your own static blog using Node.js",
         "date": "2013-05-09T12:43:00.579Z",
         "year": 2013,
         "month": 5,
