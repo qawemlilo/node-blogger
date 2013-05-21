@@ -273,10 +273,14 @@ aside{
 	padding-top: 45px;
 }
 
+aside h1 {
+  margin-bottom: 20px;
+}
+
 aside p.description{
 	font-size: 13px;
 	line-height: 1.8;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	color:#787878;
 }
 
