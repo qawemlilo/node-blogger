@@ -12,11 +12,11 @@ var http = require('http'),
 
     
 app = connect()
-  .use(connect.static(__dirname + '/template'), {maxAge: OneDay})
   .use(connect.compress())
+  .use(connect.static(__dirname + '/template'), {'maxAge': OneDay})
   .use(routes);
 
 
 http.createServer(app).listen(port, function() {
-  console.log('Blog server running at port %s', port);
+    console.log('Blog server running at port %s', port);
 });

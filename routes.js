@@ -8,6 +8,7 @@
 var url = require('url'),
     Posts = require('./posts'), 
     RSS = require('./rss'),
+    OneDay = (1000 * 60 * 60 * 24 * 365),
     rss, 
     myblog;
 
@@ -46,7 +47,8 @@ function parseFilename (path) {
     @param: (Object) res - http response object
 */
 function loadPage (filename, res) {
-    var page = myblog.fetchPost(filename);
+    var page = myblog.fetchPost(filename),
+        expires = new Date().getTime() + OneDay;
     
     if (!page) {
         res.writeHead(404);
@@ -54,7 +56,8 @@ function loadPage (filename, res) {
     }
     else {
         res.writeHead(200, {
-            'Content-Type': 'text/html; charset=utf-8'
+            'Content-Type': 'text/html; charset=utf-8',
+            'Expires': new Date(expires).toUTCString()
         }); 
         
         res.end(page);   

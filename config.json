@@ -1,7 +1,7 @@
 {
     "blog": {
         "name": "Raging Flame Blog",
-        "description": "Rants about code and stuff...",
+        "description": "A blog about Web and Software development using Node.js, JavaScript, and PHP!",
         "baseUrl": "/",
         "postsFolder": "./posts",
         "postsFile": "./posts.json",

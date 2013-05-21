@@ -145,7 +145,6 @@ function createPost(filename, counter) {
     
     data = {
         blog: {
-            title: config.blog.name + ' - ' + postObject.title,
             baseUrl: config.blog.baseUrl,
             description: config.blog.description,
             url: config.blog.url,
@@ -173,6 +172,7 @@ function createPost(filename, counter) {
         
         post: {
             title:  postObject.title,
+            description:  postObject.title,
             year: postObject.year,
             month: getMonth[postObject.month],
             day: postObject.day,
