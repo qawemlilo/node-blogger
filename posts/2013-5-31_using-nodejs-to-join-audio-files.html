@@ -1,0 +1,200 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Using Node.js to join audio files</title> 
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" /> 
+<meta name="description" content="A node.js program for manipulating audio files" /> 
+<meta name="generator" content="Node Blogger" /> 
+<link href="/css/style.css" rel="stylesheet" /> 
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,cyrillic-ext" rel="stylesheet" /> 
+<!--[if lt IE 9]> 
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+<![endif]--> 
+ 
+</head> 
+<body> 
+ 
+  <header> 
+  </header> 
+ 
+  <aside> 
+    <h1> 
+      <a href="/"> 
+        <img src="/img/qawe.png" class="img-circle desktop" title="Qawelesizwe Mlilo" alt="Qawelesizwe Mlilo" /> 
+      </a> 
+    </h1> 
+   
+    <p class="description"> 
+      Hi, my name is Qawelesizwe Mlilo(or Que), I write code and build stuff on the web. I'm at my happiest when programming in JavaScript but writing custom Joomla! extensions in PHP pays my bills. 
+    </p> 
+   
+    <ul> 
+      <li><a href="/">Home</a></li> 
+      <li><a href="/2013/5/9/about-this-blog">About</a></li> 
+      <li><a href="http://www.ragingflame.co.za">My Website</a></li> 
+      <li><a href="mailto:qawemlilo@gmail.com">Contact Me</a></li> 
+    </ul> 
+   
+    <p class="author"> 
+       <a target="_blank" href="https://github.com/qawemlilo" title="Github" class="github"> </a>  
+        
+       <a target="_blank" href="http://twitter.com/ragingflameblog" title="Twitter" class="twitter"> </a>    
+       <a target="_blank" href="https://plus.google.com/111595084798587457827/posts?hl=en&amp;partnerid=gplp0" title="Google" class="google"> </a>    
+       <a href="/rss" title="RSS" class="rss"> </a>   
+    </p> 
+  </aside> 
+   
+  <section id="content"> 
+    <div class="post">  
+      <h1>Using Node.js to join audio files</h1> 
+       
+       
+      <div class="date"> 
+         
+        <div class="dt"> 
+           31 May 2013 
+        </div> 
+          
+         
+           
+        <div class="sharep"> 
+            <a target="_blank" href="http://www.facebook.com/share.php?u=http://blog.ragingflame.co.za/2013/5/31/using-nodejs-to-join-audio-files" class="share-fb" title="Share on Facebook">  
+               &nbsp; 
+            </a> 
+            <a target="_blank" href="http://twitter.com/home?status=http://blog.ragingflame.co.za/2013/5/31/using-nodejs-to-join-audio-files" class="share-twitter" title="Share on Twitter"> 
+               &nbsp; 
+            </a> 
+            <a target="_blank" href="http://reddit.com/submit?url=http://blog.ragingflame.co.za/2013/5/31/using-nodejs-to-join-audio-files" class="share-reddit" title="Share on Reddit"> 
+               &nbsp; 
+            </a> 
+            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=http://blog.ragingflame.co.za/2013/5/31/using-nodejs-to-join-audio-files" class="share-linkedin" title="Share on LinkedIn"> 
+               &nbsp; 
+            </a>  
+        </div> 
+         
+         
+      </div> 
+       
+      <p style="clear:both"></p> 
+       
+      <p>Today I decided to clean up and organise files on my windows machine at work. This process involved deleting files I no longer have use for and grouping the rest in folders.  So I ended up with folders for audio, video, projects, ebooks, e.t.c.</p>
+
+<p>One of the folders that I opened contained about 50 small mp3 files. Before deleting the files I had to play them just to make sure they didn&#39;t contain anything important. What do I know, turns out they are clips of a DHH(the RoR creator) interview - please don&#39;t ask me how they got to my computer.  He&#39;s quite an opinionated guy and I decided I wanted to keep the files. But 50 files? Wouldn&#39;t it be nice if I could glue them together into a single file? Well, being the hacker that I am I popped open my terminal and started writing a program.</p>
+
+<p>I broke down the task to two main parts.</p>
+
+<ol><li>Read and sort the files according to their sequence</li><li>Some how combine the files and write them to a single file</li></ol>
+
+<p>The first part turned out to be quite easy because the files were named with a date/time stamp in the following format: <code>Mon Jan 03 10;02;07 2011.mp3</code>. This meant that I could extract the time from the file names and sort them accordingly. To simplify this further I decided to rename the files with an easier format for sorting - for this I created the <code>rename.js</code> file:</p>
+
+<pre><code>/*
+   I placed all the audio files in ./files directory
+*/
+var fs = require(&#39;fs&#39;),
+    files = fs.readdirSync(&#39;./files&#39;);
+
+files.forEach(function (file) {
+    var currentname = &#39;./files/&#39; + file, 
+        date = parseDate(file),
+        newname = &#39;./files/&#39; + date.split(&#39;;&#39;).join(&#39;&#39;) + &#39;.mp3&#39;;
+
+    renameFile(currentname, newname); 
+    console.log(&#39;Renamed &#39; + currentname + &#39; to &#39; + newname);    
+}); 
+
+/*
+    This function renames a file
+
+    @param: (String) currentname - current file name
+    @param: (String) newname - new file name     
+*/
+function renameFile(currentname, newname) {
+    fs.renameSync(currentname, newname);
+}
+
+/*
+    Extracts date/time from file name string
+
+    @param: (String) filename - file name 
+*/
+function parseDate(name) {
+    var date = name.substring(11, 19);
+
+    return date;
+}
+
+console.log(&#39;Done&#39;);</code></pre>
+
+<p>Up next I had to create the main program that combines the files and writes them to a single file. Streams to the rescue! </p>
+
+<h3>What are streams?</h3>
+
+<p>Streams are a powerful feature in Node.js, they create a transportation system that moves your data in chunks. The source of the data is a readable stream and the destination a writable stream. The file system module has 2 methods that you can use to take advantage of Node streams, <code>fs.createReadStream</code> and <code>fs.createWriteStream</code>. I created a new file for the main program,  <code>stream.js</code> </p>
+
+<pre><code>var fs = require(&#39;fs&#39;),
+    files = fs.readdirSync(&#39;./files&#39;),
+    clips = [],
+    stream,
+    currentfile,
+    dhh = fs.createWriteStream(&#39;./dhh-interview.mp3&#39;);
+
+// create an array with filenames (time)
+files.forEach(function (file) {
+    clips.push(file.substring(0, 6));  
+});
+
+// Sort
+clips.sort(function (a, b) {
+    return a - b;
+});
+
+// recursive function
+function main() {
+    if (!clips.length) {
+        dhh.end(&quot;Done&quot;);
+        return;
+    }
+
+    currentfile = &#39;./files/&#39; + clips.shift() + &#39;.mp3&#39;;
+    stream = fs.createReadStream(currentfile);
+
+    stream.pipe(dhh, {end: false});
+
+    stream.on(&quot;end&quot;, function() {
+        console.log(currentfile + &#39; appended&#39;);
+        main();        
+    });
+}
+
+
+main();</code></pre>
+
+<p>That&#39;s it. Lastly I needed to run my programs.</p>
+
+<pre><code>node rename.js &amp;&amp; node stream.js</code></pre>
+
+<p><strong>Note:</strong> I have included a few files in <a href="https://github.com/qawemlilo/node-streams">my repo</a> so that you can be able to try this out.</p> 
+    </div> 
+     
+     
+      <a href="/2013/5/9/about-this-blog" title="Previous Post" class="pagination-arrow newer">Prev</a> 
+     
+     
+     
+  </section> 
+ 
+<script type="text/javascript" src="/js/script-min.js"></script> 
+<script> 
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ 
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), 
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) 
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); 
+ 
+  ga('create', 'UA-41105756-1', 'ragingflame.co.za'); 
+  ga('send', 'pageview'); 
+ 
+</script> 
+</body> 
+</html> 
