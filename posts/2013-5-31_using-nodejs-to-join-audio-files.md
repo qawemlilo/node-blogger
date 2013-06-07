@@ -1,11 +1,12 @@
 Today I decided to clean up and organise files on my windows machine at work. This process involved deleting files I no longer have use for and grouping the rest in folders.  So I ended up with folders for audio, video, projects, ebooks, e.t.c.
 
-One of the folders that I opened contained about 50 small mp3 files. Before deleting the files I had to play them just to make sure they didn't contain anything important. What do I know, turns out they are clips of a DHH(the RoR creator) interview - please don't ask me how they got to my computer.  He's quite an opinionated guy and I decided I wanted to keep the files. But 50 files? Wouldn't it be nice if I could glue them together into a single file? Well, being the hacker that I am I popped open my terminal and started writing a program.
+One of the folders that I opened contained about 50 small mp3 files. Before deleting the files I had to play them just to make sure they didn't contain anything important. What do I know, turns out they are clips of a DHH(the RoR creator) interview - please don't ask me how they got to my computer.  He's quite an opinionated guy so I decided to keep the files. But 50 files? Wouldn't it be nice if I could glue them together into a single file? Well, being the hacker that I am I popped open my terminal and started writing a program.
 
 I broke down the task to two main parts.
 
  1. Read and sort the files according to their sequence
  2. Some how combine the files and write them to a single file
+ 
  
 The first part turned out to be quite easy because the files were named with a date/time stamp in the following format: `Mon Jan 03 10;02;07 2011.mp3`. This meant that I could extract the time from the file names and sort them accordingly. To simplify this further I decided to rename the files with an easier format for sorting - for this I created the `rename.js` file:
 
