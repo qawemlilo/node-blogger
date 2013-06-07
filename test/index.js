@@ -16,8 +16,10 @@ describe('Post', function() {
     
     var post = new Post(options);
     
-    describe('#new Post', function() {
-        it('should create an instance of Post', function() {
+    describe('#createPost()', function() {
+        it('should create a Post', function() {
+            post.createPost();
+            
             post.title.should.be.eql(options.title);
             post.date.should.be.eql(new Date(options.date));
             post.categories.length.should.be.eql(options.categories.length);
@@ -32,7 +34,7 @@ describe('Post', function() {
             }
             done();
         });  
-    });    
+    });   
 });
 
 

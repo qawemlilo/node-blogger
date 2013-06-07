@@ -54,7 +54,7 @@ RSS.prototype.getFeed = function () {
     for (i = 0; i < limit; i++) {
         feed.item({
             title: posts[i].title, 
-            description: posts[i].title ,
+            description: posts[i].description ,
             url: config.blog.url + posts[i].url, 
             guid: posts[i].id,
             author: posts[i].author,
