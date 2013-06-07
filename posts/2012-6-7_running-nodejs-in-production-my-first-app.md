@@ -1,9 +1,9 @@
-Love it or hate, you just cannot ignore JavaScript, there are countless tools and languages that compile to JavaScript popping up everywhere. Being a JavaScript lover it was only natural that I got really excited when Node.js was released. If you are unfamiliar with Node.js (have you been living under a rock? lol) please head over to [http://nodejs.org](http://nodejs.org) to find what it's all about.
+Love it or hate, you just cannot ignore JavaScript, there are countless tools and languages that compile to JavaScript popping up everywhere. Being a JavaScript lover it was only natural that I got really excited when Node.js was released. If you are not familiar with Node.js head over to [http://nodejs.org](http://nodejs.org) and find what it's all about.
 
 This article is not a fan-boy rant but rather a documentation of how I'm using Node.js to make real world apps.
 
 ### My Environment
-My first taste of Node was on a Windows XP machine, when the Node Windows installer became available I downloaded it and started experimenting and writing small programs. Everything worked out fine but running everything locally became a bit of a bore,  so earlier this year I signed up for a VPS with my web hosting company so that I could start using Node in production.
+My first taste of Node was on a Windows XP machine, when the Node Windows installer became available I downloaded it and started experimenting and writing small programs. Everything worked out fine but running everything locally became a bit of a bore so earlier this year I signed up for a VPS with my web hosting company so that I could start using Node in production.
 
 ### Server Specs
  - CentOS
@@ -15,7 +15,7 @@ My first taste of Node was on a Windows XP machine, when the Node Windows instal
 
 This is my first time managing and running a dedicated server so I have been doing a lot of  'googling' to get things done.
 
-I found a useful gist posted by the current Node.js gatekeeper Isaac Schlueter, the first method of installation worked for me. My work station has a windows installation so I usually use the Windows Command line to make a SSH connection to my server.
+I found a useful gist posted by the current Node.js gatekeeper, Isaac Schlueter, the first method of installation worked for me. My work station runs on windows so I used the Windows Commandline to make a SSH connection to my server.
 
     echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
     . ~/.bashrc 
@@ -27,10 +27,10 @@ I found a useful gist posted by the current Node.js gatekeeper Isaac Schlueter, 
     make install # ok, fine, this step probably takes more than 30 seconds...
     curl http://npmjs.org/install.sh | sh
 
-With these few lines of code Node.js was installed without any hiccups, what is awesome about Node.js is that it comes bungled with NPM, a Node package manager, which is a handy tool when installing modules for your projects.
+With these few lines of code Node.js was installed without any hiccups. What is awesome about Node.js is that it comes bungled with NPM, a Node package manager, which is a handy tool when installing modules for your projects.
 
 ### The App
-My first Node.js app is the official website for my projects, I didn't want to get too fancy on uncharted territory so I kept it simple.  To get started I needed a mature and robust framework, fortunately I have had a bit of experience with Express on my local server and I'm a big fan of the author's work, [TJ Holowaychuk](https://github.com/visionmedia). Navigate to your projects directory from the command line and install Express.
+My first Node.js app is the official website for my projects. I didn't want to get too fancy on uncharted territory so I kept it simple,  to get started I needed a mature and robust framework. I chose Express because I have had a bit of experience using it on my local server and I'm a big fan of the author's work, [TJ Holowaychuk](https://github.com/visionmedia). Navigate to your projects directory from the command line and install Express.
 
     #use npm to install express
     npm install -g express

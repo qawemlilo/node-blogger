@@ -6,6 +6,7 @@
 *.html~
 *.ejs~
 *.css~
+Procfile
 node_modules/
 build/
 

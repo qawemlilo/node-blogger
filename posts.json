@@ -217,5 +217,21 @@
             " javascript"
         ],
         "author": "Qawelesizwe Mlilo"
+    },
+    {
+        "id": 1370014455715,
+        "title": "Using Node.js to join audio files",
+        "description": "A node.js program for manipulating audio files",
+        "date": "2013-05-31T15:34:15.715Z",
+        "year": 2013,
+        "month": 5,
+        "day": 31,
+        "filename": "2013-5-31_using-nodejs-to-join-audio-files",
+        "url": "/2013/5/31/using-nodejs-to-join-audio-files",
+        "categories": [
+            "node.js",
+            " javascript"
+        ],
+        "author": "Qawelesizwe Mlilo"
     }
 ]
