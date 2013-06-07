@@ -6,6 +6,8 @@
 *.html~
 *.ejs~
 *.css~
+Procfile~
+*.gitignore~
 node_modules/
 build/
 
