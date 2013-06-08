@@ -8,6 +8,7 @@
 
 
 var Post = require('../lib/post'),
+    
 
 postProperties = [
   { id:'title', text:'Title', answerType:'str' },
@@ -73,6 +74,7 @@ function main() {
         else {
             // create a new post
             post = new Post(options);
+            post.createPost();
             stdin.end();
         }
     }

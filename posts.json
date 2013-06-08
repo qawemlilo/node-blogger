@@ -233,5 +233,21 @@
             " javascript"
         ],
         "author": "Qawelesizwe Mlilo"
+    },
+    {
+        "id": 1370682909311,
+        "title": "The state of Node",
+        "description": "The state of Node.js",
+        "date": "2013-06-08T09:15:09.310Z",
+        "year": 2013,
+        "month": 6,
+        "day": 8,
+        "filename": "2013-6-8_the-state-of-node",
+        "url": "/2013/6/8/the-state-of-node",
+        "categories": [
+            "node.js",
+            " javascript"
+        ],
+        "author": "Qawelesizwe Mlilo"
     }
 ]

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://blog.ragingflame.co.za</loc>
-        <lastmod>2013-06-07</lastmod>
+        <lastmod>2013-06-08</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     <url>
@@ -77,7 +77,12 @@
     </url>
     <url>
         <loc>http://blog.ragingflame.co.za/2013/5/31/using-nodejs-to-join-audio-files</loc>
-        <lastmod>2013-06-07</lastmod>
+        <lastmod>2013-06-08</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://blog.ragingflame.co.za/2013/6/8/the-state-of-node</loc>
+        <lastmod>2013-06-08</lastmod>
         <changefreq>weekly</changefreq>
     </url>
 </urlset>
