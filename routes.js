@@ -6,16 +6,15 @@
 
 
 var url = require('url'),
+    exec = require('child_process').exec,
     Posts = require('./posts'), 
     RSS = require('./rss'),
     OneDay = (1000 * 60 * 60 * 24 * 365),
     rss, 
     myblog;
-
     
 rss = new RSS();
 myblog = new Posts();
-
 
 
 
@@ -25,6 +24,8 @@ myblog = new Posts();
     @param: (String) path - url pathl
 */
 function parseFilename (path) {
+    "use strict";
+    
     if (path === '/') {
         return path;
     }
@@ -47,6 +48,8 @@ function parseFilename (path) {
     @param: (Object) res - http response object
 */
 function loadPage (filename, res) {
+    "use strict";
+    
     var page = myblog.fetchPost(filename),
         expires = new Date().getTime() + OneDay;
     
@@ -73,6 +76,8 @@ function loadPage (filename, res) {
     @param: (Object) res - http response object    
 */
 function loadRSS (res) {
+    "use strict";
+    
     res.writeHead(200, {
         'Content-Type': 'application/xml; charset=utf-8'
     });
@@ -82,22 +87,59 @@ function loadRSS (res) {
 
 
 
+/*
+    Post receive hook handler for updating heroku repo  
+
+    @param: (Object) res - http response object    
+*/
+function gitPull (res) {
+    "use strict";
+    
+    exec('git pull origin master', function (error, stdout, stderr) {
+        if (error) {
+            throw error;
+        } 
+        
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+    });
+    
+    res.writeHead(200);
+    res.end('Done');
+}
+
+
+
 
 /*
    Expose our routes to the Global module object
 */
 module.exports = function (req, res) {
+    "use strict";
+    
     var path = url.parse(req.url).path, filename; 
     
-    if (path === '/') {
-        loadPage('index', res);
-    }
-    else if (path === '/rss') {
-        loadRSS(res);
-    }
-    else {
-        filename = parseFilename(path);
-        loadPage(filename, res);
+    switch (path) {
+    
+        case '/':
+            loadPage('index', res);
+        break;
+        
+        case '/rss':
+            loadRSS(res);
+        break;
+        
+        case '/about':
+            filename = parseFilename('/2013/5/9/about-this-blog');
+            loadPage(filename, res);
+        break;
+
+        case '/pull':
+            gitPull(res);
+        break;
+        
+        default:
+            filename = parseFilename(path);
+            loadPage(filename, res);
     }
 };
-

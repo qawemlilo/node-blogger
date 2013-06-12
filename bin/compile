@@ -34,7 +34,7 @@ function mdToHtml (filename) {
         return html;
     }
     catch (error) {
-        return '';
+        throw error;
     }    
 }
 
@@ -113,7 +113,7 @@ function compileTemplate(template, data) {
         return compiledHtml;
     }
     catch (error) {
-        return '';
+        throw error;
     }
 }
 
