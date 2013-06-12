@@ -6,6 +6,7 @@
 
 
 var url = require('url'),
+    exec = require('child_process').exec,
     Posts = require('./posts'), 
     RSS = require('./rss'),
     OneDay = (1000 * 60 * 60 * 24 * 365),
@@ -82,6 +83,27 @@ function loadRSS (res) {
 
 
 
+/*
+    Loads the rss feed
+
+    @param: (Object) res - http response object    
+*/
+function gitPull (res) {
+    var child = exec('git pull origin master', function (error, stdout, stderr) {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        
+        if (error !== null) {
+          console.log('exec error: ' + error);
+        } 
+    });
+    
+    res.writeHead(200);
+    res.end('Done');
+}
+
+
+
 
 /*
    Expose our routes to the Global module object
@@ -94,6 +116,9 @@ module.exports = function (req, res) {
     }
     else if (path === '/rss') {
         loadRSS(res);
+    }
+    else if (path === '/pull') {
+        gitPull(res);
     }
     else {
         filename = parseFilename(path);
