@@ -12,11 +12,9 @@ var url = require('url'),
     OneDay = (1000 * 60 * 60 * 24 * 365),
     rss, 
     myblog;
-
     
 rss = new RSS();
 myblog = new Posts();
-
 
 
 
@@ -84,18 +82,18 @@ function loadRSS (res) {
 
 
 /*
-    Loads the rss feed
+    Post receive hook handler for updating heroku repo  
 
     @param: (Object) res - http response object    
 */
 function gitPull (res) {
     var child = exec('git pull origin master', function (error, stdout, stderr) {
+        if (error) {
+            throw error;
+        } 
+        
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
-        
-        if (error !== null) {
-          console.log('exec error: ' + error);
-        } 
     });
     
     res.writeHead(200);
@@ -117,6 +115,10 @@ module.exports = function (req, res) {
     else if (path === '/rss') {
         loadRSS(res);
     }
+    else if (path === '/about') {
+        filename = parseFilename('/2013/5/9/about-this-blog');
+        loadPage(filename, res);
+    }
     else if (path === '/pull') {
         gitPull(res);
     }
@@ -124,5 +126,4 @@ module.exports = function (req, res) {
         filename = parseFilename(path);
         loadPage(filename, res);
     }
-};
-
+}
