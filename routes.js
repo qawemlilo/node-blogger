@@ -24,6 +24,8 @@ myblog = new Posts();
     @param: (String) path - url pathl
 */
 function parseFilename (path) {
+    "use strict";
+    
     if (path === '/') {
         return path;
     }
@@ -46,6 +48,8 @@ function parseFilename (path) {
     @param: (Object) res - http response object
 */
 function loadPage (filename, res) {
+    "use strict";
+    
     var page = myblog.fetchPost(filename),
         expires = new Date().getTime() + OneDay;
     
@@ -72,6 +76,8 @@ function loadPage (filename, res) {
     @param: (Object) res - http response object    
 */
 function loadRSS (res) {
+    "use strict";
+    
     res.writeHead(200, {
         'Content-Type': 'application/xml; charset=utf-8'
     });
@@ -87,7 +93,9 @@ function loadRSS (res) {
     @param: (Object) res - http response object    
 */
 function gitPull (res) {
-    var child = exec('git pull origin master', function (error, stdout, stderr) {
+    "use strict";
+    
+    exec('git pull origin master', function (error, stdout, stderr) {
         if (error) {
             throw error;
         } 
@@ -107,23 +115,31 @@ function gitPull (res) {
    Expose our routes to the Global module object
 */
 module.exports = function (req, res) {
+    "use strict";
+    
     var path = url.parse(req.url).path, filename; 
     
-    if (path === '/') {
-        loadPage('index', res);
+    switch (path) {
+    
+        case '/':
+            loadPage('index', res);
+        break;
+        
+        case '/rss':
+            loadRSS(res);
+        break;
+        
+        case '/about':
+            filename = parseFilename('/2013/5/9/about-this-blog');
+            loadPage(filename, res);
+        break;
+
+        case '/pull':
+            gitPull(res);
+        break;
+        
+        default:
+            filename = parseFilename(path);
+            loadPage(filename, res);
     }
-    else if (path === '/rss') {
-        loadRSS(res);
-    }
-    else if (path === '/about') {
-        filename = parseFilename('/2013/5/9/about-this-blog');
-        loadPage(filename, res);
-    }
-    else if (path === '/pull') {
-        gitPull(res);
-    }
-    else {
-        filename = parseFilename(path);
-        loadPage(filename, res);
-    }
-}
+};
