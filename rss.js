@@ -33,8 +33,6 @@ function RSS() {
 }
 
 
-
-
 /*
     Creates rss feed
 */
