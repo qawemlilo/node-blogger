@@ -4,8 +4,8 @@
   "description": "A tiny Node.js blogging engine",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test/index",
-    "jshint": "jshint posts.js rss.js server.js routes.js lib/post.js"
+    "test": "mocha test",
+    "jshint": "jshint posts.js rss.js server.js routes.js lib/post.js lib/compile.post.js lib/compile.index.js"
   },
   "bin": {
     "newpost": "bin/newpost",
@@ -31,8 +31,11 @@
     "markdown": "~0.4.0",
     "connect": "~2.7.8",
     "rss": "0.0.4",
-    "should": "~1.2.2",
-    "xml": "0.0.7"
+    "xml": "0.0.7",
+    "slugg": "~0.1.1"
+  },
+  "devDependencies": {
+    "should": "~1.2.2"
   },
   "engines": {
     "node": ">= 0.8.9",
