@@ -55,7 +55,7 @@ describe('Post', function() {
             var date = new Date(), 
                 filename = post.createFilename(date.getFullYear(), date.getMonth() + 1, date.getDate(), 'My name is Qawe'); 
             
-            filename.should.be.eql('2013-6-19_My name is Qawe');
+            filename.should.be.eql(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '_My name is Qawe');
         });
     });
     
@@ -65,7 +65,7 @@ describe('Post', function() {
             var date = new Date(), 
                 url = post.createUrl('/', date.getFullYear(), date.getMonth() + 1, date.getDate(), 'My name is Qawe'); 
             
-            url.should.be.eql('/2013/6/19/My name is Qawe');
+            url.should.be.eql('/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '/My name is Qawe');
         });
     });
 });
