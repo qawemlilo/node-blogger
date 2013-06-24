@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test",
-    "jshint": "jshint posts.js rss.js server.js routes.js lib/post.js lib/compile.post.js lib/compile.index.js"
+    "jshint": "jshint posts.js rss.js server.js routes.js ./lib/post.js ./lib/compile.posts.js ./lib/compile.index.js"
   },
   "bin": {
     "newpost": "bin/newpost",
@@ -30,12 +30,13 @@
     "ejs": "~0.8.3",
     "markdown": "~0.4.0",
     "connect": "~2.7.8",
-    "rss": "0.0.4",
-    "xml": "0.0.7",
-    "slugg": "~0.1.1"
+    "rss": "~0.0.4",
+    "xml": "~0.0.7"
   },
   "devDependencies": {
-    "should": "~1.2.2"
+    "should": "~1.2.2",
+    "jshint": "*",
+    "mocha": "*"
   },
   "engines": {
     "node": ">= 0.8.9",

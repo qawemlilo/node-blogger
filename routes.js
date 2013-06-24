@@ -6,7 +6,6 @@
 
 
 var url = require('url'),
-    exec = require('child_process').exec,
     Posts = require('./posts'), 
     RSS = require('./rss'),
     OneDay = (1000 * 60 * 60 * 24 * 365),
@@ -65,6 +64,8 @@ function loadPage (filename, res) {
         
         res.end(page);   
     }
+    
+    return res;
 }
 
 
@@ -83,30 +84,11 @@ function loadRSS (res) {
     });
     
     res.end(rss.getFeed());
+    
+    return res;
 }
 
 
-
-/*
-    Post receive hook handler for updating heroku repo  
-
-    @param: (Object) res - http response object    
-*/
-function gitPull (res) {
-    "use strict";
-    
-    exec('git pull origin master', function (error, stdout, stderr) {
-        if (error) {
-            throw error;
-        } 
-        
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-    });
-    
-    res.writeHead(200);
-    res.end('Done');
-}
 
 
 
@@ -122,24 +104,20 @@ module.exports = function (req, res) {
     switch (path) {
     
         case '/':
-            loadPage('index', res);
+            return loadPage('index', res);
         break;
         
         case '/rss':
-            loadRSS(res);
+            return loadRSS(res);
         break;
         
         case '/about':
             filename = parseFilename('/2013/5/9/about-this-blog');
-            loadPage(filename, res);
-        break;
-
-        case '/pull':
-            gitPull(res);
-        break;
+            return loadPage(filename, res);
+        break;                   
         
         default:
             filename = parseFilename(path);
-            loadPage(filename, res);
+            return loadPage(filename, res);
     }
 };
