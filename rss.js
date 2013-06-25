@@ -5,7 +5,6 @@
 
 
 var Feed = require('rss'),
-    fs = require('fs'),
     config = require('./config.json'),
     feed;
 

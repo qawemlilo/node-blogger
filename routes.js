@@ -64,8 +64,6 @@ function loadPage (filename, res) {
         
         res.end(page);   
     }
-    
-    return res;
 }
 
 
@@ -84,8 +82,6 @@ function loadRSS (res) {
     });
     
     res.end(rss.getFeed());
-    
-    return res;
 }
 
 
@@ -104,20 +100,20 @@ module.exports = function (req, res) {
     switch (path) {
     
         case '/':
-            return loadPage('index', res);
+            loadPage('index', res);
         break;
         
         case '/rss':
-            return loadRSS(res);
+            loadRSS(res);
         break;
         
         case '/about':
             filename = parseFilename('/2013/5/9/about-this-blog');
-            return loadPage(filename, res);
+            loadPage(filename, res);
         break;                   
         
         default:
             filename = parseFilename(path);
-            return loadPage(filename, res);
+            loadPage(filename, res);
     }
 };
