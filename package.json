@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test",
-    "jshint": "jshint posts.js rss.js server.js routes.js ./lib/post.js ./lib/compile.posts.js ./lib/compile.index.js"
+    "jshint": "jshint posts.js rss.js server.js routes.js ./lib/post.js ./lib/bin.compile-index.js ./lib/bin.compile-posts.js ./lib/bin.newpost.js ./test/test.rss.js ./test/test.posts.js ./test/test.routes.js ./test/test.sitemap.js ./test/test.post.js ./test/test.compile-posts.js ./test/test.compile-index.js"
   },
   "bin": {
     "newpost": "bin/newpost",
