@@ -1,6 +1,5 @@
 var should = require('should'),
     fs = require('fs'),
-    
     Post = require('../lib/post'),
     options = {
         title: 'New Post Test',
@@ -29,6 +28,9 @@ describe('Post', function() {
             if (error) {
                 throw error;
             }
+            var posts = require('../posts.json');
+            posts.pop();
+            post.savePosts(posts);
             done();
         });  
     }); 

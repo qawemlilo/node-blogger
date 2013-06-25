@@ -6,11 +6,15 @@
 */
 
 function compile() {
-    var Index = require('../lib/compile.index'),
-        Posts = require('../lib/compile.posts');
+    var compileIndex = require('../lib/bin.compile-index'),
+        compilePosts = require('../lib/bin.compile-posts'),
+        index, posts;
     
-    new Index();
-    new Posts();
+    index = new compileIndex();
+    posts = new compilePosts();
+    
+    index.init();
+    posts.init();
 }
 
 /*

@@ -14,6 +14,8 @@ function Sitemap () {
             {_attr: {xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9'}}
         ] 
     }];
+    
+    return this;
 }
 
 
@@ -23,7 +25,7 @@ Sitemap.prototype.add = function (post) {
     this.json[0].urlset.push({
         url: [
             {loc: post.url}, 
-            {lastmod: new Date(post.lastmod).toISOString().substring(0, 10)}, 
+            {lastmod: (new Date(post.lastmod)).toISOString().substring(0, 10)}, 
             {changefreq: 'weekly'}  
         ]
     });
@@ -35,8 +37,8 @@ Sitemap.prototype.add = function (post) {
 Sitemap.prototype.create = function () {
     try {
         var map = this.header + XML(this.json, true);
-        
         fs.writeFileSync('./template/sitemap.xml', map);
+        console.log('Sitemap created!');
     } catch (error) {
         throw error;
     }
