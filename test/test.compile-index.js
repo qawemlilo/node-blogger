@@ -1,7 +1,6 @@
 var should = require('should'),
     Compile = require('../lib/bin.compile-index');
 
-
 describe('Compile', function() {
     "use strict";
     
