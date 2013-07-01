@@ -11,7 +11,7 @@ describe('Compile', function() {
         it('should return the url of the next blog post', function() {
             var next = compile.getNext();
             
-            next.should.be.eql('/2011/8/15/lets-build-an-html5-app');
+            next.should.include('/201');
         });
     });
     
@@ -48,7 +48,7 @@ describe('Compile', function() {
         it('should return an object of a full post', function() {
             var data = compile.compileTemplateData(compile.posts[0], '<h1>Hello World</h1>');
             
-            data.post.title.should.be.eql('Content Slider');
+            data.post.content.should.include('<h1>Hello World</h1>');
         });
     });
 });
