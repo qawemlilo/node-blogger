@@ -13,7 +13,7 @@ Node Blogger is a small blogging platform for Node.js that I created out of my f
  - Syntax Highlighting
  - Search engine friendly urls
 
-DEMO: [http://ragingflameblog.herokuapp.com](http://ragingflameblog.herokuapp.com/)
+DEMO: [http://blog.ragingflame.co.za](http://blog.ragingflame.co.za)
 
 ## Installation
 
