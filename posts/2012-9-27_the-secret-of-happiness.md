@@ -1,5 +1,0 @@
-Regardless of what you do or don't have in this life, your deepest, most lasting happiness will come from knowing God's plan and following it.
-
-We often fall into the trap of thinking a new car, job promotion, beauty makeover, or some level of fame will make us happy. And often they do-for a time. But it never lasts because wealth, power, beauty and fame simply don't bring lasting happiness, as much as we wish they would. Rather, true happiness comes from following Christ's example and developing Godlike attributes such as goodness, love, justice and mercy. It comes from serving others and helping them to follow the example and teachings of Jesus Christ. It comes from overcoming the appetites of our human bodies and instead following the promptings of the Spirit. It comes from working hard and having a healthy lifestyle, friends, family, and personal achievements. Regardless of what you do or don't have in this life, your deepest, most lasting happiness will come from knowing God's plan and following it.
-
-Credit: [http://mormon.org/plan-of-happiness](http://mormon.org/plan-of-happiness)

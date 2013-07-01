@@ -11,7 +11,12 @@ describe('Compile', function() {
         it('should return the url of the next blog post', function() {
             var next = compile.getNext();
             
-            next.should.include('/201');
+            if (compile.posts.length > 1) {
+                next.should.include('/201');
+            }
+            else {
+                next.should.be.false;
+            }
         });
     });
     

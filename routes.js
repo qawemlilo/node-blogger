@@ -108,7 +108,7 @@ module.exports = function (req, res) {
         break;
         
         case '/about':
-            filename = parseFilename('/2013/5/9/about-this-blog');
+            filename = parseFilename('/2013/7/1/about-this-blog');
             loadPage(filename, res);
         break;                   
         

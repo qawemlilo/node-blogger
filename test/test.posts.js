@@ -9,9 +9,9 @@ describe('Posts', function() {
     
     describe('#fetchPost()', function() {
         it('should fetch a post', function() {
-            post = post.fetchPost('2011-8-15_content-slider');
+            post = post.fetchPost('2013-7-1_about-this-blog');
             
-            post.should.include('<h1>Content Slider</h1>');
+            post.should.include('<h1>About this Blog</h1>');
         });
     });
 });

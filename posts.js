@@ -19,7 +19,7 @@ function Posts () {
     self.cache = Object.create({});
 
     if (!postsArray || postsArray.length < 1) {
-        console.log('No posts were found');
+        console.log('No posts were found.\nRun `node bin/newpost` to create a new post.');
         process.exit();
     }
     
