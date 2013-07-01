@@ -2,6 +2,8 @@
 
 Node Blogger is a small blogging platform for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. 
 
+[![Build Status](https://travis-ci.org/qawemlilo/node-blogger.png)](https://travis-ci.org/qawemlilo/node-blogger)
+
 ## Features
  - Super fast, loads only 5 resources and fetches posts from cache
  - Mobile Responsive
