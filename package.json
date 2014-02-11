@@ -8,9 +8,7 @@
     "jshint": "jshint posts.js rss.js server.js routes.js ./lib/post.js ./lib/bin.compile-index.js ./lib/bin.compile-posts.js ./lib/bin.newpost.js"
   },
   "bin": {
-    "newpost": "bin/newpost",
-    "compile": "bin/compile",
-    "setupblog": "bin/setupblog"
+    "blogger": "bin/blogger"
   },
   "repository": {
     "type": "git",
@@ -31,7 +29,8 @@
     "markdown": "~0.4.0",
     "connect": "~2.7.8",
     "rss": "~0.0.4",
-    "xml": "~0.0.7"
+    "xml": "~0.0.7",
+    "simple-prompt": "~0.1.3"
   },
   "devDependencies": {
     "should": "~1.2.2",
