@@ -4,7 +4,22 @@
 */
 
 
-var fs = require('fs');
+var fs = require('fs'), path = require('path');
+
+
+
+/*
+    Handles error messages
+    
+    @params: (String) msg - error message
+*/ 
+function handleError(msg) {
+    console.log();
+    console.log('Error');
+    console.error(' > ' + msg);
+    process.exit(1); 
+}
+
 
 
 
@@ -16,30 +31,30 @@ function Posts () {
     var self = this, postsTxt, postsArray;
     
     postsArray = require('./posts.json');  
-    self.cache = Object.create({});
+    self.cache = {};
 
     if (!postsArray || postsArray.length < 1) {
-        console.log('No posts were found.\nRun `node bin/newpost` to create a new post.');
-        process.exit();
+        handleError('No posts were found.\n > Run `blogger --n` to create a new post.');
     }
     
     // add the index page
     try {
-        self.cache.index = fs.readFileSync('./posts/index.html', 'utf8');
+        self.cache.index = fs.readFileSync(path.join(__dirname, 'posts', 'index.html'), 'utf8');
     }catch (e) {
-        console.log('index.html not found - please run the `compile` command first.');
+        handleError('index.html not found.\n > Run the `blogger --build` command first.');
     }
    
     postsArray.forEach(function (file) {
         try {
-            var data = fs.readFileSync('./posts/' + file.filename + '.html', 'utf8');
+            var data = fs.readFileSync(path.join(__dirname, 'posts', file.filename + '.html'), 'utf8');
             
             self.cache[file.filename] = data;
         } catch (e) {
-            console.log(file.filename + '.html not found - please run the `compile` command first.');
+            handleError(file.filename + '.html not found.\n > Run the `blogger --build` command first.');
         }
     });
 }
+
 
 
 

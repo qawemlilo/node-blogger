@@ -7,7 +7,7 @@
 
 var url = require('url'),
     Posts = require('./posts'), 
-    RSS = require('./rss'),
+    RSS = require('./lib/rss'),
     OneDay = (1000 * 60 * 60 * 24 * 365),
     rss, 
     myblog;

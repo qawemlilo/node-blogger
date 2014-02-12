@@ -1,20 +1,20 @@
 {
     "blog": {
-        "name": "Node Blogger",
-        "description": "A small blogging application for Node.js",
+        "name": "Raging Flame Blog",
+        "description": "My thoughts",
         "baseUrl": "/",
-        "postsFolder": "./posts",
-        "postsFile": "./posts.json",
+        "postsFolder": "c:\\Users\\Qawe Mlilo\\Desktop\\code\\dev\\node-blogger\\posts",
+        "postsFile": "c:\\Users\\Qawe Mlilo\\Desktop\\code\\dev\\node-blogger\\posts.json",
         "url": "http://localhost:3080",
         "rss": "/rss",
         "rssLimit": 10
     },
     "author": {
         "name": "Qawelesizwe Mlilo",
-        "autobio": "I write code and build stuff on the web.",
+        "autobio": "I'm a JavaScript hacker!!",
         "email": "qawemlilo@gmail.com",
         "twitterHandle": "ragingflameblog",
-        "website": "http://blog.ragingflame.co.za",
+        "website": "http://ragingflame.co.za",
         "facbookPage": "#",
         "googlePage": "#",
         "avatar": "/img/avatar.png"

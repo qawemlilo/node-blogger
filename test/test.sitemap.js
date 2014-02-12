@@ -1,6 +1,6 @@
 var should = require('should'),
     posts = require('../posts.json'),
-    sitemap = require('../sitemap');
+    sitemap = require('../lib/sitemap');
 
 
 describe('Sitemap', function() {

@@ -1,5 +1,5 @@
 var should = require('should'),
-    Compile = require('../lib/bin.compile-posts');
+    Compile = require('../lib/build-posts');
 
 
 describe('Compile', function() {

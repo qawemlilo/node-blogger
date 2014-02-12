@@ -10,11 +10,11 @@ describe('Routes', function() {
         mockReq = {url: '/about'};
         mockRes = {
             writeHead: function writeHead(code, obj) {
-                code.should.be.eql(200);
+                code.should.be.eql(404);
             },
             
             end: function writeHead(content) {
-                content.should.include('<h1>About this Blog</h1>');
+                content.should.include('Page not found');
             } 
         };
         

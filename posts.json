@@ -1,17 +1,17 @@
 [
     {
-        "id": 1372685869984,
-        "title": "About this Blog",
-        "description": "This blog is powered by Node blogger, a small Node.js blogging platform",
-        "date": "2013-07-01T13:37:49.984Z",
-        "year": 2013,
-        "month": 7,
-        "day": 1,
-        "filename": "2013-7-1_about-this-blog",
-        "url": "/2013/7/1/about-this-blog",
+        "id": 1392196313556,
+        "title": "Hello world",
+        "description": "Greetings to the world",
+        "date": "2014-02-12T09:11:33.789Z",
+        "year": 2014,
+        "month": 2,
+        "day": 12,
+        "filename": "2014-2-12_hello-world",
+        "url": "/2014/2/12/hello-world",
         "categories": [
-            "node.js"
+            "uncategorised"
         ],
-        "author": "Qawelesizwe Mlilo"
+        "author": "Author"
     }
 ]
