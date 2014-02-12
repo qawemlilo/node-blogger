@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Node-blogger by qawemlilo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Node-blogger</h1>
+        <p>A static blog generator for Node.js.</p>
+
+        <p class="view"><a href="https://github.com/qawemlilo/node-blogger">View the Project on GitHub <small>qawemlilo/node-blogger</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/qawemlilo/node-blogger/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/qawemlilo/node-blogger/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/qawemlilo/node-blogger">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="node-blogger" class="anchor" href="#node-blogger"><span class="octicon octicon-link"></span></a>Node Blogger</h1>
+
+<p>Node Blogger is a small blogging platform for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. </p>
+
+<p><a href="https://travis-ci.org/qawemlilo/node-blogger"><img src="https://travis-ci.org/qawemlilo/node-blogger.png" alt="Build Status"></a></p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Super fast, loads only 5 resources and fetches posts from cache</li>
+<li>Mobile Responsive</li>
+<li>Easily customisable by editing files in the <code>template</code> directory</li>
+<li>Does not require a database</li>
+<li>Easy to deploy (I'm hosting my blog on heroku for free)</li>
+<li>Syntax Highlighting</li>
+<li>Search engine friendly urls</li>
+</ul><p>DEMO: <a href="http://blog.ragingflame.co.za">http://blog.ragingflame.co.za</a></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>First you need to download the repo</p>
+
+<pre><code>git clone https://github.com/qawemlilo/node-blogger.git
+</code></pre>
+
+<p>Then install dependencies</p>
+
+<pre><code>cd node-blogger &amp;&amp; npm install
+</code></pre>
+
+<p>After installing dependencies, link the <code>bin</code> scripts to access them via the commandline</p>
+
+<pre><code>npm link
+</code></pre>
+
+<p>Now you need to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.</p>
+
+<pre><code>setupblog 
+</code></pre>
+
+<p><strong>Note:</strong> If this command doesn't work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
+
+<h2>
+<a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How it works</h2>
+
+<p>Node Blogger is super easy to use once you have installed it as shown above. When you create a new post, the data is logged in <code>posts.json</code>, which is our pseudo-database.</p>
+
+<p>Create a new post from the commandline:</p>
+
+<pre><code>newpost
+
+# prompt
+Title: My NodeJS adventures
+Description: This is a brief description about the new post.
+Categories: node.js, javascript
+Date: 
+</code></pre>
+
+<p><strong>Note:</strong> If this command doesn't work run the script directly: <code>node bin/newpost</code>.</p>
+
+<ul>
+<li>Title: (String) - title of your new post (required)</li>
+<li>Description: (String) - a brief description for your new post (optional, helps with SEO)</li>
+<li>Categories: (String - csv) - categories for your post (optional, defaults to uncategorised)</li>
+<li>Date: (Int - millisecs) - publishing date (optional, defaults to current time)</li>
+</ul><p>A new markdown file is created with some placeholding text. You can find that file in the <code>posts</code> directory, use it to write your post.</p>
+
+<p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.</p>
+
+<pre><code>compile
+</code></pre>
+
+<p><strong>Note:</strong> If this command doesn't work run the script directly: <code>node bin/compile</code>.</p>
+
+<p>Awesome! Now let's fire up the server.</p>
+
+<pre><code>node server.js
+</code></pre>
+
+<p>That's it, your blog in now up and running!</p>
+
+<h2>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
+
+<pre><code> npm test
+
+ npm run-script jshint
+</code></pre>
+
+<h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>EJS -  for templating</li>
+<li>markdown-js - for parsing markdown files.</li>
+<li>connect - for serving static files for the template</li>
+<li>rss - blog rss feed</li>
+</ul><h2>
+<a name="customisation" class="anchor" href="#customisation"><span class="octicon octicon-link"></span></a>Customisation</h2>
+
+<p>You can customise your blog by editing files in the <code>template</code> directory. Node blogger uses EJS for templating, <code>template/index.ejs</code> holds the template for the home page and <code>template/post.ejs</code> holds the template for posts. </p>
+
+<h2>
+<a name="routing" class="anchor" href="#routing"><span class="octicon octicon-link"></span></a>Routing</h2>
+
+<p>The <code>routes.js</code> file contains the connect middleware for handling http requests.</p>
+
+<h2>
+<a name="commands" class="anchor" href="#commands"><span class="octicon octicon-link"></span></a>Commands</h2>
+
+<ul>
+<li>
+<code>setupblog</code> - (bin/setupblog) the setupblog command sets up configuration for a new blog </li>
+<li>
+<code>newpost</code> - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in <code>posts.json</code>, our pseudo-database.</li>
+<li>
+<code>compile</code> - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.</li>
+</ul><h2>
+<a name="server" class="anchor" href="#server"><span class="octicon octicon-link"></span></a>Server</h2>
+
+<p><code>server.js</code> contains our http server which makes our blog posts available and accessible via a browser.</p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Fork and send me a pull request. Do not develop on the master branch.</p>
+
+<ul>
+<li>For bugs and tweaks create new branch prefixed by <code>hotfix-</code>.</li>
+<li>For new features create a new branch prefixed by <code>feature-</code>.</li>
+</ul><h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>Node blogger was inspired by <a href="http://tutorialzine.com/2013/03/simple-php-blogging-system">this post</a> on <a href="http://tutorialzine.com">http://tutorialzine.com</a>.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>(MIT License)</p>
+
+<p>Copyright (c) 2013 Qawelesizwe Mlilo <a href="mailto:qawemlilo@gmail.com">qawemlilo@gmail.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/qawemlilo">qawemlilo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
