@@ -3,11 +3,11 @@ Node Blogger is a light weight blog generator for Node.js that I created out of 
 [![Build Status](https://travis-ci.org/qawemlilo/node-blogger.png)](https://travis-ci.org/qawemlilo/node-blogger)
 
 ## Features
- - Super fast, fetches posts memory
- - Mobile Responsive
+ - Super fast, fetches posts from memory
  - Easily customisable by editing files in the `template` directory
  - Does not require a database
  - Easy to deploy (I'm hosting my blog on heroku for free)
+ - Default template is Mobile Responsive
  - Default template supports syntax Highlighting
  - Search engine friendly urls
 
@@ -32,7 +32,7 @@ npm link
 
 This will create a global command called `blogger`,  use it to set up the basic configs for your blog. This process will update `config.json` with your data.
 ```
-// blogger [command]
+# blogger [command]
 blogger setup 
 ```
 **Note:** You can run the script directly: `node bin/blogger [command]`.
