@@ -1,16 +1,14 @@
-# Node Blogger
-
-Node Blogger is a small blogging platform for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. 
+Node Blogger is a light weight blog generator for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. 
 
 [![Build Status](https://travis-ci.org/qawemlilo/node-blogger.png)](https://travis-ci.org/qawemlilo/node-blogger)
 
 ## Features
- - Super fast, loads only 5 resources and fetches posts from cache
+ - Super fast, fetches posts memory
  - Mobile Responsive
  - Easily customisable by editing files in the `template` directory
  - Does not require a database
  - Easy to deploy (I'm hosting my blog on heroku for free)
- - Syntax Highlighting
+ - Default template supports syntax Highlighting
  - Search engine friendly urls
 
 DEMO: [http://blog.ragingflame.co.za](http://blog.ragingflame.co.za)
@@ -27,16 +25,17 @@ Then install dependencies
 cd node-blogger && npm install
 ```
 
-After installing dependencies, link the `bin` scripts to access them via the commandline
+After installing dependencies, link the executable script to access it via the commandline
 ```
 npm link
 ```
 
-Now you need to set up the basic configs for your blog. This process will update `config.json` with your data.
+This will create a global command called `blogger`,  use it to set up the basic configs for your blog. This process will update `config.json` with your data.
 ```
-setupblog 
+// blogger [command]
+blogger setup 
 ```
-**Note:** If this command doesn't work it means that npm linking did not work. Run the script directly: `node bin/setupblog`.
+**Note:** You can run the script directly: `node bin/blogger [command]`.
 
 
 
@@ -48,15 +47,14 @@ Node Blogger is super easy to use once you have installed it as shown above. Whe
 Create a new post from the commandline:
 
 ```
-newpost
+blogger new
 
 # prompt
 Title: My NodeJS adventures
 Description: This is a brief description about the new post.
 Categories: node.js, javascript
 Date: 
-````
-**Note:** If this command doesn't work run the script directly: `node bin/newpost`.
+```` 
 
  - Title: (String) - title of your new post (required)
  - Description: (String) - a brief description for your new post (optional, helps with SEO)
@@ -65,12 +63,11 @@ Date:
  
 A new markdown file is created with some placeholding text. You can find that file in the `posts` directory, use it to write your post.
 
-After you have finished writing your post in markdown format, compile it to html by running the `compile` command.
+After you have finished writing your post in markdown format, compile it to html.
 
 ```
-compile
+blogger build
 ```
-**Note:** If this command doesn't work run the script directly: `node bin/compile`.
 
 Awesome! Now let's fire up the server.
 
@@ -84,8 +81,6 @@ That's it, your blog in now up and running!
 ## Testing
  ```
  npm test
- 
- npm run-script jshint
  ```
 
 
@@ -102,10 +97,11 @@ You can customise your blog by editing files in the `template` directory. Node b
 ## Routing
 The `routes.js` file contains the connect middleware for handling http requests.
 
+
 ## Commands
- - `setupblog` - (bin/setupblog) the setupblog command sets up configuration for a new blog 
- - `newpost` - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
- - `compile` - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
+ - `setup` - (--setup, --s) the setupblog command sets up configuration for a new blog 
+ - `newpost` - (--newpost, --new, --n) the newpost command creates the markdown file that will contain the new post. It also logs the new post in `posts.json`, our pseudo-database.
+ - `build` - (--build, --b) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.
 
 ## Server
 `server.js` contains our http server which makes our blog posts available and accessible via a browser.
@@ -122,9 +118,6 @@ Fork and send me a pull request. Do not develop on the master branch.
   
 ## Credits
 Node blogger was inspired by [this post](http://tutorialzine.com/2013/03/simple-php-blogging-system) on http://tutorialzine.com.
-
-
-
 
 
 

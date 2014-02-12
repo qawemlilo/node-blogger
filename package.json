@@ -4,8 +4,8 @@
   "description": "A tiny Node.js blogging engine",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test",
-    "jshint": "jshint posts.js rss.js server.js routes.js ./lib/post.js ./lib/bin.compile-index.js ./lib/bin.compile-posts.js ./lib/bin.newpost.js"
+    "test": "npm run jshint && mocha test",
+    "jshint": "jshint posts.js  ./lib/rss.js server.js routes.js ./lib/sitemap.js ./lib/post.js ./lib/build-index.js ./lib/build-posts.js ./lib/newpost.js ./lib/setup.js ./lib/build.js"
   },
   "bin": {
     "blogger": "bin/blogger"
