@@ -1,37 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Node-blogger by qawemlilo</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Node Blogger : A static blog generator for Node.js." />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Node Blogger</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Node-blogger</h1>
-        <p>A static blog generator for Node.js.</p>
 
-        <p class="view"><a href="https://github.com/qawemlilo/node-blogger">View the Project on GitHub <small>qawemlilo/node-blogger</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/qawemlilo/node-blogger">View on GitHub</a>
 
+          <h1 id="project_title">Node Blogger</h1>
+          <h2 id="project_tagline">A static blog generator for Node.js.</h2>
 
-        <ul>
-          <li><a href="https://github.com/qawemlilo/node-blogger/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/qawemlilo/node-blogger/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/qawemlilo/node-blogger">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="node-blogger" class="anchor" href="#node-blogger"><span class="octicon octicon-link"></span></a>Node Blogger</h1>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/qawemlilo/node-blogger/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/qawemlilo/node-blogger/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-<p>Node Blogger is a small blogging platform for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. </p>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Node Blogger is a light weight blog generator for Node.js that I created out of my frustrations with WordPress's bloatedness and never-ending updates. </p>
 
 <p><a href="https://travis-ci.org/qawemlilo/node-blogger"><img src="https://travis-ci.org/qawemlilo/node-blogger.png" alt="Build Status"></a></p>
 
@@ -39,12 +39,12 @@
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
-<li>Super fast, loads only 5 resources and fetches posts from cache</li>
+<li>Super fast, fetches posts memory</li>
 <li>Mobile Responsive</li>
 <li>Easily customisable by editing files in the <code>template</code> directory</li>
 <li>Does not require a database</li>
 <li>Easy to deploy (I'm hosting my blog on heroku for free)</li>
-<li>Syntax Highlighting</li>
+<li>Default template supports syntax Highlighting</li>
 <li>Search engine friendly urls</li>
 </ul><p>DEMO: <a href="http://blog.ragingflame.co.za">http://blog.ragingflame.co.za</a></p>
 
@@ -61,17 +61,18 @@
 <pre><code>cd node-blogger &amp;&amp; npm install
 </code></pre>
 
-<p>After installing dependencies, link the <code>bin</code> scripts to access them via the commandline</p>
+<p>After installing dependencies, link the executable script to access it via the commandline</p>
 
 <pre><code>npm link
 </code></pre>
 
-<p>Now you need to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.</p>
+<p>This will create a global command called <code>blogger</code>,  use it to set up the basic configs for your blog. This process will update <code>config.json</code> with your data.</p>
 
-<pre><code>setupblog 
+<pre><code>// blogger [command]
+blogger setup 
 </code></pre>
 
-<p><strong>Note:</strong> If this command doesn't work it means that npm linking did not work. Run the script directly: <code>node bin/setupblog</code>.</p>
+<p><strong>Note:</strong> You can run the script directly: <code>node bin/blogger [command]</code>.</p>
 
 <h2>
 <a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How it works</h2>
@@ -80,7 +81,7 @@
 
 <p>Create a new post from the commandline:</p>
 
-<pre><code>newpost
+<pre><code>blogger new
 
 # prompt
 Title: My NodeJS adventures
@@ -89,8 +90,6 @@ Categories: node.js, javascript
 Date: 
 </code></pre>
 
-<p><strong>Note:</strong> If this command doesn't work run the script directly: <code>node bin/newpost</code>.</p>
-
 <ul>
 <li>Title: (String) - title of your new post (required)</li>
 <li>Description: (String) - a brief description for your new post (optional, helps with SEO)</li>
@@ -98,12 +97,10 @@ Date:
 <li>Date: (Int - millisecs) - publishing date (optional, defaults to current time)</li>
 </ul><p>A new markdown file is created with some placeholding text. You can find that file in the <code>posts</code> directory, use it to write your post.</p>
 
-<p>After you have finished writing your post in markdown format, compile it to html by running the <code>compile</code> command.</p>
+<p>After you have finished writing your post in markdown format, compile it to html.</p>
 
-<pre><code>compile
+<pre><code>blogger build
 </code></pre>
-
-<p><strong>Note:</strong> If this command doesn't work run the script directly: <code>node bin/compile</code>.</p>
 
 <p>Awesome! Now let's fire up the server.</p>
 
@@ -116,8 +113,6 @@ Date:
 <a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
 
 <pre><code> npm test
-
- npm run-script jshint
 </code></pre>
 
 <h2>
@@ -143,11 +138,11 @@ Date:
 
 <ul>
 <li>
-<code>setupblog</code> - (bin/setupblog) the setupblog command sets up configuration for a new blog </li>
+<code>setup</code> - (--setup, --s) the setupblog command sets up configuration for a new blog </li>
 <li>
-<code>newpost</code> - (bin/newpost) the newpost command creates the markdown file that will contain the new post. It also logs the new post in <code>posts.json</code>, our pseudo-database.</li>
+<code>newpost</code> - (--newpost, --new, --n) the newpost command creates the markdown file that will contain the new post. It also logs the new post in <code>posts.json</code>, our pseudo-database.</li>
 <li>
-<code>compile</code> - (bin/compile) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.</li>
+<code>build</code> - (--build, --b) the compile command generates the html files that are served by our http server. This command is intelligent because it only compiles files that have been modified or are new. If you modify any of the templates it will also know this and make changes accordingly when you compile.</li>
 </ul><h2>
 <a name="server" class="anchor" href="#server"><span class="octicon octicon-link"></span></a>Server</h2>
 
@@ -179,12 +174,17 @@ Date:
 
 <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/qawemlilo">qawemlilo</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Node Blogger maintained by <a href="https://github.com/qawemlilo">qawemlilo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
