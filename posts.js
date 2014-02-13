@@ -39,14 +39,14 @@ function Posts () {
     
     // add the index page
     try {
-        self.cache.index = fs.readFileSync(path.join(__dirname, 'posts', 'index.html'), 'utf8');
+        self.cache.index = fs.readFileSync(path.join(__dirname, 'www', 'index.html'), 'utf8');
     }catch (e) {
         handleError('index.html not found.\n > Run the `blogger --build` command first.');
     }
    
     postsArray.forEach(function (file) {
         try {
-            var data = fs.readFileSync(path.join(__dirname, 'posts', file.filename + '.html'), 'utf8');
+            var data = fs.readFileSync(path.join(__dirname, 'www', file.filename + '.html'), 'utf8');
             
             self.cache[file.filename] = data;
         } catch (e) {

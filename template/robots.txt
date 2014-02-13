@@ -1,4 +1,0 @@
-User-agent: *
-Sitemap: http://blog.ragingflame.co.za/sitemap.xml
-Disallow: /index.ejs
-Disallow: /posts.ejs
