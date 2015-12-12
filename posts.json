@@ -1,18 +1,17 @@
 [
     {
-        "id": 1392209915616,
-        "title": "Hello world",
-        "description": "A static blog generator for Noed.js",
-        "date": "2014-02-12T12:57:25.443Z",
-        "year": 2014,
-        "month": 2,
+        "id": 1449914173826,
+        "title": "Getting started with Node Blogger",
+        "description": "Getting started with Node Blogger",
+        "date": "2015-12-12T09:56:13.825Z",
+        "year": 2015,
+        "month": 12,
         "day": 12,
-        "filename": "2014-2-12_hello-world",
-        "url": "/2014/2/12/hello-world",
+        "filename": "2015-12-12_getting-started-with-node-blogger",
+        "url": "/2015/12/12/getting-started-with-node-blogger",
         "categories": [
-            "node.js",
-            " javascript"
+            "random"
         ],
-        "author": "Qawelesizwe Mlilo"
+        "author": "Your Name"
     }
 ]

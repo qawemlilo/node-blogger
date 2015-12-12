@@ -1,29 +1,36 @@
 {
     "blog": {
-        "name": "Raging Flame Blog",
-        "description": "My thoughts",
+        "name": "Your blog title",
+        "description": "Getting stated with Node Blogger",
         "baseUrl": "/",
-        "postsFolder": "c:\\Users\\Qawe Mlilo\\Desktop\\code\\dev\\node-blogger\\posts",
-        "postsFile": "c:\\Users\\Qawe Mlilo\\Desktop\\code\\dev\\node-blogger\\posts.json",
+        "postsFolder": "./posts",
+        "postsFile": "./posts.json",
         "url": "http://localhost:3080",
         "rss": "/rss",
-        "rssLimit": 10
+        "rssLimit": 10,
+        "scripts": [
+            "template/js/jquery.js",
+            "template/js/bootstrap.js",
+            "template/js/jasny-bootstrap.js",
+            "template/js/prettify.js",
+            "template/js/script.js"
+        ],
+        "css": [
+            "template/css/bootstrap.css",
+            "template/css/jasny-bootstrap.css",
+            "template/css/prettify.css",
+            "template/css/style.css"
+        ],
+        "scriptMin": "script_v1449914208772.js",
+        "cssMin": "style_v1449914208772.css"
     },
     "author": {
-        "name": "Qawelesizwe Mlilo",
-        "autobio": "I'm a JavaScript hacker!!",
-        "email": "qawemlilo@gmail.com",
-        "twitterHandle": "ragingflameblog",
-        "website": "http://ragingflame.co.za",
-        "facbookPage": "#",
+        "name": "Your Name",
+        "autobio": "JavaScript Ninja, Node.js Chuck Norris, all round awesome super-heroe!!!!!!",
+        "email": "your@email.com",
+        "twitterHandle": "JS_Chuck_Norris",
+        "website": "http://blog.ragingflame.co.za",
         "googlePage": "#",
         "avatar": "/img/avatar.png"
-    },
-    "showDate": true,
-    "showPagination": true,
-    "showShareButtons": true,
-    "showFacebookButton": false,
-    "showTwitterButton": true,
-    "showGoogleButton": true,
-    "showRssButton": true
+    }
 }

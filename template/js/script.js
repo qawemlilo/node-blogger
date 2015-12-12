@@ -1,6 +1,17 @@
 ;(function (window) {
     "use strict";
     
+    function styleRibbons() {
+        var images = document.getElementsByTagName('img'), i;
+    
+        for (i = 0; i < images.length; i++) {
+            if (images[i].title === 'Github') {
+                images[i].className = 'github';
+            }
+        }
+    }
+    
+    
     function addClassNames() {
         var pre = document.getElementsByTagName('pre'), i;
     
@@ -37,4 +48,5 @@
     addClassNames();
     prettyPrint();
     inspectLinks();
+    styleRibbons();
 }(window));

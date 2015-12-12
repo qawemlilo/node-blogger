@@ -1,0 +1,4 @@
+User-agent: *
+Sitemap:  /sitemap.xml
+Disallow: /index.ejs
+Disallow: /posts.ejs

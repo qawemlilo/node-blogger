@@ -1,5 +1,5 @@
 var should = require('should'),
-    RSS = require('../lib/rss');
+    RSS = require('../rss');
 
 
 describe('RSS', function() {

@@ -1,19 +1,30 @@
 {
   "name": "node-blogger",
-  "version": "0.1.4",
-  "description": "A tiny Node.js blogging engine",
-  "main": "app.js",
+  "version": "0.1.6",
+  "description": "Raging Flame Blog",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "npm run jshint && mocha test",
-    "jshint": "jshint posts.js  ./lib/rss.js server.js routes.js ./lib/sitemap.js ./lib/post.js ./lib/build-index.js ./lib/build-posts.js ./lib/newpost.js ./lib/setup.js ./lib/build.js"
+    "test": "jshint && mocha test",
+    "jshint": "jshint posts.js rss.js server.js routes.js ./lib/post.js ./lib/bin.compile-index.js ./lib/bin.compile-posts.js ./lib/bin.newpost.js",
+    "compile": "node bin/compile",
+    "setupblog": "node bin/setupblog",
+    "newpost": "node bin/newpost"
   },
   "bin": {
-    "blogger": "bin/blogger"
+    "newpost": "bin/newpost",
+    "compile": "bin/compile",
+    "setupblog": "bin/setupblog"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/qawemlilo/node-blogger.git"
+    "url": "https://github.com/qawemlilo/blog.git"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
   },
   "keywords": [
     "Node",
@@ -26,20 +37,29 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "ejs": "~0.8.5",
-    "markdown": "~0.5.0",
     "connect": "~2.7.8",
-    "rss": "~0.3.2",
-    "xml": "~0.0.7",
-    "simple-prompt": "latest"
+    "connect-route": "^0.1.5",
+    "ejs": "^2.3.4",
+    "lodash": "^3.10.1",
+    "rss": "^1.2.1",
+    "st": "~0.3.1",
+    "xml": "^1.0.0"
   },
   "devDependencies": {
-    "should": "~1.2.2",
+    "clean-css": "^3.3.9",
+    "del": "^1.2.1",
+    "ejs": "~0.8.3",
     "jshint": "*",
-    "mocha": "*"
+    "markdown": "~0.4.0",
+    "mocha": "*",
+    "rss": "~0.0.4",
+    "should": "~1.2.2",
+    "slug": "^0.9.1",
+    "uglify-js": "^2.4.24",
+    "xml": "~0.0.7"
   },
   "engines": {
-    "node": ">= 0.8.9",
-    "npm": ">= 1.1.0"
+    "node": "0.14.x",
+    "npm": "2.14.x"
   }
 }

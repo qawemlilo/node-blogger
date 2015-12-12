@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://localhost:3080</loc>
-        <lastmod>2014-02-13</lastmod>
+        <lastmod>2015-12-12</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>/2014/2/12/hello-world</loc>
-        <lastmod>2014-02-13</lastmod>
+        <loc>/2015/12/12/getting-started-with-node-blogger</loc>
+        <lastmod>2015-12-12</lastmod>
         <changefreq>weekly</changefreq>
     </url>
 </urlset>
