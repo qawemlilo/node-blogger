@@ -3,6 +3,8 @@ Node Blogger is a light weight blog generator for Node.js that I created out of 
 [![Build Status](https://travis-ci.org/qawemlilo/node-blogger.png)](https://travis-ci.org/qawemlilo/node-blogger)
 
 ## Features
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/qawemlilo/node-blogger.svg)](https://greenkeeper.io/)
  - Super fast, fetches posts from memory
  - Easily customisable by editing files in the `template` directory
  - Does not require a database

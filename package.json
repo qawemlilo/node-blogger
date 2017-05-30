@@ -37,26 +37,26 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "connect": "~2.7.8",
+    "connect": "~3.6.2",
     "connect-route": "^0.1.5",
     "ejs": "^2.3.4",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.4",
     "rss": "^1.2.1",
-    "st": "~0.3.1",
+    "st": "~1.2.0",
     "xml": "^1.0.0"
   },
   "devDependencies": {
-    "clean-css": "^3.3.9",
-    "del": "^1.2.1",
-    "ejs": "~0.8.3",
+    "clean-css": "^4.1.3",
+    "del": "^2.2.2",
+    "ejs": "~2.5.6",
     "jshint": "*",
-    "markdown": "~0.4.0",
+    "markdown": "~0.5.0",
     "mocha": "*",
-    "rss": "~0.0.4",
-    "should": "~1.2.2",
+    "rss": "~1.2.2",
+    "should": "~11.2.1",
     "slug": "^0.9.1",
-    "uglify-js": "^2.4.24",
-    "xml": "~0.0.7"
+    "uglify-js": "^3.0.13",
+    "xml": "~1.0.1"
   },
   "engines": {
     "node": "0.14.x",
